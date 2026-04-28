@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="KING'S GLOBAL MARKET – Agence internationale de marketing digital, boostage de comptes, gestion des réseaux sociaux et formations digitales premium.">
+<meta name="keywords" content="marketing digital, boostage réseaux sociaux, TikTok, Instagram, formation digitale, Cameroun, Afrique">
+<title>KING'S GLOBAL MARKET – We Grow Your Digital Presence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #060608;
+    --dark: #0d0d11;
+    --card: #111118;
+    --border: rgba(255,255,255,0.07);
+    --red: #c8001a;
+    --red-glow: rgba(200,0,26,0.35);
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f4f4f6;
+    --muted: rgba(244,244,246,0.45);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+  /* ─── SELECTION ─── */
+  ::selection { background: var(--red); color: #fff; }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 5vw;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(6,6,8,0.75);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    height: 60px;
+    background: rgba(6,6,8,0.95);
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .nav-logo-main {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+  }
+
+  .nav-logo-sub {
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--red);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase;
+    transition: background 0.3s, box-shadow 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: #e0001e !important;
+    box-shadow: 0 0 24px var(--red-glow) !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 5vw;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,0,26,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+
+  .hero-title .accent-red { color: var(--red); }
+  .hero-title .accent-gold { color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: 500;
+    border-radius: 2px;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: #e0001e;
+    box-shadow: 0 0 40px var(--red-glow);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: 500;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, background 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 4rem;
+    right: 5vw;
+    display: flex;
+    gap: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1s forwards;
+  }
+
+  .stat-item { text-align: right; }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .stat-number span { color: var(--red); }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1.2s forwards;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--red), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(1); transform-origin: left; }
+    50% { transform: scaleX(1.3); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 7rem 5vw; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    padding: 0;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 2.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .marquee-item .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+  }
+
+  .about-metric {
+    margin-bottom: 2rem;
+  }
+
+  .metric-bar-wrap {
+    background: rgba(255,255,255,0.05);
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+  }
+
+  .metric-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .metric-bar.animated { transform: scaleX(1); }
+
+  .metric-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .metric-label span:last-child { color: var(--gold); }
+
+  .about-float {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    background: var(--red);
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(200,0,26,0.4);
+  }
+
+  .about-float-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .about-float-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .value-item {
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .value-item:hover {
+    border-color: var(--red);
+    background: rgba(200,0,26,0.04);
+  }
+
+  .value-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+
+  .value-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .value-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--black); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--card); }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+    transition: width 0.5s ease;
+  }
+
+  .service-card:hover::after { width: 100%; }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .service-number {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    transition: color 0.4s;
+  }
+
+  .service-card:hover .service-number { color: rgba(200,0,26,0.08); }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--muted);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .service-card:hover .tag {
+    border-color: rgba(200,0,26,0.3);
+    color: rgba(244,244,246,0.7);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
+    transition: gap 0.3s;
+  }
+
+  .service-link:hover { gap: 0.9rem; }
+
+  /* ─── RESULTS ─── */
+  #results {
+    background: var(--dark);
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .results-header .section-label { justify-content: center; }
+  .results-header .section-label::before { display: none; }
+  .results-header .section-label::after {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--red);
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+
+  .case-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+
+  .case-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .case-platform {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+
+  .platform-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .platform-tiktok { background: linear-gradient(135deg, #010101, #1a1a1a); }
+  .platform-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+  .platform-youtube { background: linear-gradient(135deg, #ff0000, #cc0000); }
+
+  .case-badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  .case-body { padding: 1.5rem; }
+
+  .case-metric {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+
+  .metric-arrow {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--red);
+  }
+
+  .metric-compare {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .metric-compare strong { color: var(--white); }
+
+  .case-duration {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .global-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .global-stat {
+    background: var(--card);
+    padding: 2.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .global-stat:hover { background: var(--dark); }
+
+  .global-stat-number {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--white), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .global-stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: var(--black); }
+
+  .testimonials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+
+  .review-card:hover {
+    border-color: rgba(200,0,26,0.3);
+    transform: translateY(-4px);
+  }
+
+  .review-card.featured {
+    border-color: rgba(201,168,76,0.3);
+    background: linear-gradient(135deg, var(--card), rgba(201,168,76,0.03));
+  }
+
+  .review-quote-mark {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    line-height: 0.5;
+    color: var(--red);
+    opacity: 0.3;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .review-text {
+    font-size: 0.88rem;
+    color: rgba(244,244,246,0.75);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 1.2rem;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .author-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .avatar-1 { background: linear-gradient(135deg, var(--red), #8b0000); }
+  .avatar-2 { background: linear-gradient(135deg, #2d2d2d, #555); }
+  .avatar-3 { background: linear-gradient(135deg, var(--gold), #8b6914); }
+  .avatar-4 { background: linear-gradient(135deg, #1a3a6b, #2563eb); }
+  .avatar-5 { background: linear-gradient(135deg, #1a5c1a, #16a34a); }
+  .avatar-6 { background: linear-gradient(135deg, #4a1a6b, #7c3aed); }
+
+  .author-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .author-role {
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info { padding-top: 1rem; }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    transition: border-color 0.3s;
+  }
+
+  .contact-detail:hover { border-color: rgba(200,0,26,0.3); }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: rgba(200,0,26,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-detail-value {
+    font-size: 0.88rem;
+    color: var(--white);
+  }
+
+  .contact-detail-value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-detail-value a:hover { color: var(--gold); }
+
+  .social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    border-color: var(--red);
+    color: var(--white);
+    background: rgba(200,0,26,0.1);
+    transform: translateY(-3px);
+  }
+
+  /* ─── FORM ─── */
+  .contact-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--gold));
+  }
+
+  .form-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+    -webkit-appearance: none;
+  }
+
+  .form-group select option { background: var(--dark); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--red);
+    background: rgba(200,0,26,0.04);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(244,244,246,0.2);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .form-success-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 4rem 5vw 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand {}
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .footer-logo-sub {
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 260px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .footer-copy span { color: var(--red); }
+
+  .footer-legal {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-legal a {
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.3s;
+  }
+
+  .footer-legal a:hover { color: var(--white); }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 54px; height: 54px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: bounce 3s ease-in-out infinite;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+    animation: none;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(6,6,8,0.98);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    backdrop-filter: blur(20px);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--white);
+    transition: color 0.3s;
+  }
+
+  .mobile-menu a:hover { color: var(--red); }
+
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted);
+    background: none;
+    border: none;
+    transition: color 0.3s;
+  }
+
+  .mobile-close:hover { color: var(--white); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-float { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    #contact { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .global-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-stats { position: relative; bottom: auto; right: auto; flex-direction: row; justify-content: flex-start; margin-top: 3rem; gap: 2rem; }
+    .stat-item { text-align: left; }
+    .scroll-indicator { display: none; }
+    .global-stats { grid-template-columns: repeat(2, 1fr); }
+    .services-header { flex-direction: column; align-items: flex-start; }
+    .about-values { grid-template-columns: 1fr; }
+    .testimonials-header { flex-direction: column; align-items: flex-start; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-legal { flex-direction: column; gap: 1rem; align-items: center; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 5rem 5vw; }
+    .global-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="https://wa.me/237658002433" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">💬</a>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="#home" onclick="closeMobile()">Accueil</a>
+  <a href="#about" onclick="closeMobile()">À Propos</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#results" onclick="closeMobile()">Résultats</a>
+  <a href="#testimonials" onclick="closeMobile()">Avis</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo" aria-label="King's Global Market">
+    <span class="nav-logo-main">KING'S GLOBAL MARKET</span>
+    <span class="nav-logo-sub">Digital Agency · International</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Résultats</a></li>
+    <li><a href="#testimonials">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Consultation</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Agence Digitale Premium · Niveau International</div>
+    <h1 class="hero-title">
+      WE GROW<br>YOUR <span class="accent-red">DIGITAL</span><br>PRESENCE<span class="accent-gold">.</span>
+    </h1>
+    <p class="hero-sub">Stratégies marketing d'élite, boostage de comptes et formations digitales pour propulser votre marque au niveau mondial.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Réserver une Consultation →</a>
+      <a href="#services" class="btn-outline">Découvrir nos Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">500<span>+</span></div>
+      <div class="stat-label">Clients Satisfaits</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">12<span>M+</span></div>
+      <div class="stat-label">Followers Générés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">98<span>%</span></div>
+      <div class="stat-label">Taux de Satisfaction</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Défiler pour explorer
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <div class="marquee-item"><span class="dot"></span>Marketing Digital</div>
+    <div class="marquee-item"><span class="dot"></span>Boostage TikTok</div>
+    <div class="marquee-item"><span class="dot"></span>Croissance Instagram</div>
+    <div class="marquee-item"><span class="dot"></span>YouTube Growth</div>
+    <div class="marquee-item"><span class="dot"></span>Formations Digitales</div>
+    <div class="marquee-item"><span class="dot"></span>Coaching Personnalisé</div>
+    <div class="marquee-item"><span class="dot"></span>Gestion des Réseaux</div>
+    <div class="marquee-item"><span class="dot"></span>Stratégie de Marque</div>
+    <div class="marquee-item"><span class="dot"></span>Marketing Digital</div>
+    <div class="marquee-item"><span class="dot"></span>Boostage TikTok</div>
+    <div class="marquee-item"><span class="dot"></span>Croissance Instagram</div>
+    <div class="marquee-item"><span class="dot"></span>YouTube Growth</div>
+    <div class="marquee-item"><span class="dot"></span>Formations Digitales</div>
+    <div class="marquee-item"><span class="dot"></span>Coaching Personnalisé</div>
+    <div class="marquee-item"><span class="dot"></span>Gestion des Réseaux</div>
+    <div class="marquee-item"><span class="dot"></span>Stratégie de Marque</div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="about-card">
+      <div style="margin-bottom:2rem;">
+        <div class="section-label">Performance</div>
+        <div style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.05em;margin-bottom:0.3rem;">Résultats Prouvés</div>
+        <p style="font-size:0.8rem;color:var(--muted);">Des métriques réelles, des performances mesurables.</p>
+      </div>
+      <div class="about-metric">
+        <div class="metric-label"><span>Croissance Followers</span><span>+340%</span></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="0.94"></div></div>
+      </div>
+      <div class="about-metric">
+        <div class="metric-label"><span>Engagement Rate</span><span>+280%</span></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="0.78"></div></div>
+      </div>
+      <div class="about-metric">
+        <div class="metric-label"><span>Reach & Visibilité</span><span>+520%</span></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="0.88"></div></div>
+      </div>
+      <div class="about-metric">
+        <div class="metric-label"><span>Conversion & Ventes</span><span>+190%</span></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="0.65"></div></div>
+      </div>
+    </div>
+    <div class="about-float">
+      <div class="about-float-num">5★</div>
+      <div class="about-float-text">Note Globale</div>
+    </div>
+  </div>
+  <div class="about-text reveal reveal-delay-2">
+    <div class="section-label">Notre Histoire</div>
+    <h2 class="section-title">DIGITAL<br>EXCELLENCE<br><span style="color:var(--red)">REDEFINED</span></h2>
+    <p class="section-sub" style="margin-bottom:1.5rem;">KING'S GLOBAL MARKET est une agence digitale de référence, fondée sur une conviction simple : chaque marque mérite une présence digitale d'exception. Nous combinons stratégie data-driven, créativité sans limites et expertise technique pour livrer des résultats concrets.</p>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Notre équipe d'experts accompagne entrepreneurs, influenceurs et entreprises internationales vers une croissance digitale durable et mesurable.</p>
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-icon">🎯</div>
+        <div class="value-title">Vision Stratégique</div>
+        <div class="value-desc">Chaque décision est guidée par les données et l'objectif de croissance.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌍</div>
+        <div class="value-title">Portée Internationale</div>
+        <div class="value-desc">Expertise locale avec une perspective et une ambition mondiales.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Excellence Technique</div>
+        <div class="value-desc">Outils et méthodes de pointe pour des résultats au-delà des attentes.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Partenariat Durable</div>
+        <div class="value-desc">Votre succès à long terme est notre priorité absolue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="services-header">
+    <div class="reveal">
+      <div class="section-label">Ce Que Nous Faisons</div>
+      <h2 class="section-title">NOS<br><span style="color:var(--red)">SERVICES</span></h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-2">Des solutions digitales complètes, conçues pour transformer votre présence en ligne en moteur de croissance réelle.</p>
+  </div>
+  <div class="services-grid reveal">
+    <!-- Service 1 -->
+    <div class="service-card">
+      <span class="service-number">01</span>
+      <span class="service-icon">🔥</span>
+      <div class="service-name">Marketing Digital</div>
+      <p class="service-desc">Stratégies marketing complètes basées sur les données : SEO, publicité payante, content marketing et brand awareness pour maximiser votre ROI.</p>
+      <div class="service-tags">
+        <span class="tag">SEO/SEM</span>
+        <span class="tag">Ads Facebook</span>
+        <span class="tag">Content</span>
+        <span class="tag">Analytics</span>
+      </div>
+      <a href="#contact" class="service-link">Obtenir un Devis →</a>
+    </div>
+    <!-- Service 2 -->
+    <div class="service-card">
+      <span class="service-number">02</span>
+      <span class="service-icon">📈</span>
+      <div class="service-name">Boostage de Comptes</div>
+      <p class="service-desc">Croissance organique et accélérée de vos followers, likes et vues sur TikTok, Instagram, Facebook et YouTube. Des résultats réels et durables.</p>
+      <div class="service-tags">
+        <span class="tag">TikTok</span>
+        <span class="tag">Instagram</span>
+        <span class="tag">YouTube</span>
+        <span class="tag">Facebook</span>
+      </div>
+      <a href="#contact" class="service-link">Booster Mon Compte →</a>
+    </div>
+    <!-- Service 3 -->
+    <div class="service-card">
+      <span class="service-number">03</span>
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Gestion des Réseaux</div>
+      <p class="service-desc">Gestion complète de vos réseaux sociaux : création de contenu, planning éditorial, community management et reporting détaillé chaque mois.</p>
+      <div class="service-tags">
+        <span class="tag">Community</span>
+        <span class="tag">Contenu</span>
+        <span class="tag">Stratégie</span>
+        <span class="tag">Reporting</span>
+      </div>
+      <a href="#contact" class="service-link">Déléguer Ma Gestion →</a>
+    </div>
+    <!-- Service 4 -->
+    <div class="service-card">
+      <span class="service-number">04</span>
+      <span class="service-icon">🎓</span>
+      <div class="service-name">Formations Digitales</div>
+      <p class="service-desc">Programmes de formation structurés du niveau débutant au niveau avancé, disponibles en présentiel et en ligne. Apprenez à maîtriser votre présence digitale.</p>
+      <div class="service-tags">
+        <span class="tag">Présentiel</span>
+        <span class="tag">En ligne</span>
+        <span class="tag">Débutant</span>
+        <span class="tag">Avancé</span>
+      </div>
+      <a href="#contact" class="service-link">S'inscrire à une Formation →</a>
+    </div>
+    <!-- Service 5 -->
+    <div class="service-card">
+      <span class="service-number">05</span>
+      <span class="service-icon">🧠</span>
+      <div class="service-name">Coaching Personnalisé</div>
+      <p class="service-desc">Accompagnement individuel sur-mesure : tutorat digital, coaching de marque personnelle et mentorat stratégique pour atteindre vos objectifs plus vite.</p>
+      <div class="service-tags">
+        <span class="tag">1-on-1</span>
+        <span class="tag">Tutorat</span>
+        <span class="tag">Mentorat</span>
+        <span class="tag">Sur-Mesure</span>
+      </div>
+      <a href="#contact" class="service-link">Démarrer Mon Coaching →</a>
+    </div>
+    <!-- CTA Card -->
+    <div class="service-card" style="background:linear-gradient(135deg, rgba(200,0,26,0.15), rgba(201,168,76,0.08)); border-color: rgba(200,0,26,0.25); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">👑</div>
+      <div style="font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.05em;margin-bottom:0.8rem;">Solution Premium</div>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;">Besoin d'une approche sur-mesure? Parlons de votre projet et construisons ensemble votre stratégie gagnante.</p>
+      <a href="#contact" class="btn-primary" style="font-size:0.72rem;">Consultation Gratuite →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results">
+  <div class="results-header reveal">
+    <div class="section-label">Nos Preuves</div>
+    <h2 class="section-title">RÉSULTATS<br><span style="color:var(--red)">CLIENTS</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Des chiffres réels, des transformations prouvées. Voici ce que nous avons accompli pour nos clients.</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <div class="case-header">
+        <div class="case-platform">
+          <div class="platform-icon platform-tiktok">🎵</div>
+          TikTok Creator
+        </div>
+        <span class="case-badge">30 Jours</span>
+      </div>
+      <div class="case-body">
+        <div class="case-metric">
+          <div class="metric-arrow">+48K</div>
+          <div class="metric-compare">Followers: <strong>2,100 → 50,200</strong></div>
+        </div>
+        <div class="case-duration">🎯 Croissance organique ciblée</div>
+      </div>
+    </div>
+    <div class="case-card reveal reveal-delay-1">
+      <div class="case-header">
+        <div class="case-platform">
+          <div class="platform-icon platform-instagram">📷</div>
+          Business Instagram
+        </div>
+        <span class="case-badge">60 Jours</span>
+      </div>
+      <div class="case-body">
+        <div class="case-metric">
+          <div class="metric-arrow">×7.3</div>
+          <div class="metric-compare">Engagement: <strong>1.2% → 8.8%</strong></div>
+        </div>
+        <div class="case-duration">🔥 Stratégie contenu premium</div>
+      </div>
+    </div>
+    <div class="case-card reveal reveal-delay-2">
+      <div class="case-header">
+        <div class="case-platform">
+          <div class="platform-icon platform-youtube">▶️</div>
+          YouTube Channel
+        </div>
+        <span class="case-badge">90 Jours</span>
+      </div>
+      <div class="case-body">
+        <div class="case-metric">
+          <div class="metric-arrow">+120K</div>
+          <div class="metric-compare">Vues/mois: <strong>8K → 128K</strong></div>
+        </div>
+        <div class="case-duration">📈 SEO YouTube + Distribution</div>
+      </div>
+    </div>
+  </div>
+  <div class="global-stats reveal">
+    <div class="global-stat">
+      <div class="global-stat-number">500+</div>
+      <div class="global-stat-label">Clients Accompagnés</div>
+    </div>
+    <div class="global-stat">
+      <div class="global-stat-number">12M+</div>
+      <div class="global-stat-label">Followers Générés</div>
+    </div>
+    <div class="global-stat">
+      <div class="global-stat-number">98%</div>
+      <div class="global-stat-label">Satisfaction Client</div>
+    </div>
+    <div class="global-stat">
+      <div class="global-stat-number">4+</div>
+      <div class="global-stat-label">Années d'Expertise</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div class="reveal">
+      <div class="section-label">Témoignages</div>
+      <h2 class="section-title">CE QUE DISENT<br><span style="color:var(--red)">NOS CLIENTS</span></h2>
+    </div>
+    <p class="section-sub reveal reveal-delay-2">L'avis de ceux qui ont fait confiance à notre expertise pour transformer leur présence digitale.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card featured reveal">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">King's Global Market a transformé mon compte TikTok en quelques semaines. Je suis passé de 800 à 62,000 abonnés de manière organique. Leur stratégie est redoutablement efficace et leur équipe est d'un professionnalisme exceptionnel.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-1">AK</div>
+        <div>
+          <div class="author-name">Aristide Kamdem</div>
+          <div class="author-role">Créateur de Contenu, Douala</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">La formation en marketing digital que j'ai suivie m'a permis de lancer ma propre agence. Le contenu est concret, applicable immédiatement. J'ai rentabilisé mon investissement en moins d'un mois après la formation.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-2">SM</div>
+        <div>
+          <div class="author-name">Sarah Mbarga</div>
+          <div class="author-role">Entrepreneur Digitale, Yaoundé</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Notre restaurant a vu ses réservations augmenter de 300% grâce à la gestion de nos réseaux sociaux par King's Global Market. Un investissement qui se rentabilise chaque semaine. Je recommande les yeux fermés.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-3">JF</div>
+        <div>
+          <div class="author-name">Jean-François Nkolo</div>
+          <div class="author-role">Gérant Restaurant, Kribi</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">J'ai confié la gestion de ma marque de mode à leur équipe. Le résultat est bluffant : mon compte Instagram est passé à 28K abonnés et mes ventes en ligne ont triplé. Vraiment du travail de haute qualité.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-4">LB</div>
+        <div>
+          <div class="author-name">Laure Biyong</div>
+          <div class="author-role">Designer de Mode, Paris</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Le coaching personnalisé m'a aidé à structurer ma stratégie digitale et à définir mon positionnement de marque. Ce sont des professionnels qui maîtrisent vraiment leur domaine et qui s'engagent pour votre réussite.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-5">ET</div>
+        <div>
+          <div class="author-name">Emmanuel Tagne</div>
+          <div class="author-role">Coach Business, Bafoussam</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Après avoir boosté ma chaîne YouTube avec King's Global Market, j'ai atteint la monétisation en 45 jours. Leur approche est data-driven et leurs conseils sont toujours pertinents. Une équipe de haut niveau.</p>
+      <div class="review-author">
+        <div class="author-avatar avatar-6">RF</div>
+        <div>
+          <div class="author-name">Rachel Fongang</div>
+          <div class="author-role">YouTubeuse, Ngaoundéré</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <div class="section-label">Parlons de Votre Projet</div>
+    <h2 class="section-title">PRÊT À<br><span style="color:var(--red)">GRANDIR?</span></h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Réservez votre consultation gratuite et découvrons ensemble comment propulser votre présence digitale au niveau supérieur.</p>
+    <div class="contact-detail">
+      <div class="contact-icon">📧</div>
+      <div>
+        <div class="contact-detail-label">Email</div>
+        <div class="contact-detail-value"><a href="mailto:dongmokkdeuxf@gmail.com">dongmokkdeuxf@gmail.com</a></div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">📞</div>
+      <div>
+        <div class="contact-detail-label">Téléphone / WhatsApp</div>
+        <div class="contact-detail-value"><a href="tel:+237658002433">+237 658 00 24 33</a></div>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-detail-label">Localisation</div>
+        <div class="contact-detail-value">Douala, Cameroun · Service International</div>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+      <a href="#" class="social-link" aria-label="Instagram">📷</a>
+      <a href="#" class="social-link" aria-label="Facebook">📘</a>
+      <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+      <a href="https://wa.me/237658002433" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="contact-form" id="contactForm">
+      <div class="form-title">CONSULTATION GRATUITE</div>
+      <p class="form-subtitle">Remplissez le formulaire — nous vous répondons sous 24h.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Prénom</label>
+          <input type="text" id="fname" placeholder="Jean" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Nom</label>
+          <input type="text" id="lname" placeholder="Dupont" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Adresse Email</label>
+        <input type="email" id="email" placeholder="jean@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Téléphone / WhatsApp</label>
+        <input type="tel" id="phone" placeholder="+237 6XX XXX XXX" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label for="service">Service Souhaité</label>
+        <select id="service">
+          <option value="" disabled selected>Choisir un service…</option>
+          <option>Marketing Digital</option>
+          <option>Boostage de Compte</option>
+          <option>Gestion des Réseaux Sociaux</option>
+          <option>Formation Digitale</option>
+          <option>Coaching Personnalisé</option>
+          <option>Solution Complète</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Décrivez votre projet</label>
+        <textarea id="message" placeholder="Parlez-nous de votre marque, vos objectifs et vos défis actuels…"></textarea>
+      </div>
+      <button class="btn-primary" onclick="submitForm()" style="width:100%;justify-content:center;">
+        Envoyer ma Demande →
+      </button>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✅</div>
+      <div style="font-family:var(--font-display);font-size:2rem;letter-spacing:0.05em;margin-bottom:0.5rem;">MESSAGE ENVOYÉ</div>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem;">Merci pour votre confiance. Notre équipe vous contactera sous 24 heures.</p>
+      <a href="https://wa.me/237658002433" class="btn-primary" target="_blank" rel="noopener">Discuter sur WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">KING'S GLOBAL MARKET</span>
+      <span class="footer-logo-sub">Digital Agency · International</span>
+      <p class="footer-tagline">Nous transformons votre présence digitale en avantage compétitif durable, à l'échelle mondiale.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="TikTok" style="width:36px;height:36px;font-size:0.9rem;">🎵</a>
+        <a href="#" class="social-link" aria-label="Instagram" style="width:36px;height:36px;font-size:0.9rem;">📷</a>
+        <a href="#" class="social-link" aria-label="Facebook" style="width:36px;height:36px;font-size:0.9rem;">📘</a>
+        <a href="https://wa.me/237658002433" class="social-link" aria-label="WhatsApp" style="width:36px;height:36px;font-size:0.9rem;" target="_blank" rel="noopener">💬</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Marketing Digital</a></li>
+        <li><a href="#services">Boostage de Comptes</a></li>
+        <li><a href="#services">Gestion Réseaux Sociaux</a></li>
+        <li><a href="#services">Formations Digitales</a></li>
+        <li><a href="#services">Coaching Personnalisé</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Entreprise</div>
+      <ul class="footer-links">
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="#results">Nos Résultats</a></li>
+        <li><a href="#testimonials">Témoignages</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Consultation Gratuite</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:dongmokkdeuxf@gmail.com">dongmokkdeuxf@gmail.com</a></li>
+        <li><a href="tel:+237658002433">+237 658 00 24 33</a></li>
+        <li><a href="https://wa.me/237658002433" target="_blank" rel="noopener">WhatsApp Direct</a></li>
+        <li><a href="#">Douala, Cameroun</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 <span>KING'S GLOBAL MARKET</span>. Tous droits réservés.</div>
+    <div class="footer-legal">
+      <a href="#">Politique de Confidentialité</a>
+      <a href="#">Conditions d'Utilisation</a>
+      <a href="#">Mentions Légales</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── NAV SCROLL ───
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ─── MOBILE MENU ───
+  function openMobile() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ─── REVEAL ON SCROLL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => revealObserver.observe(r));
+
+  // ─── METRIC BARS ───
+  const bars = document.querySelectorAll('.metric-bar');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = parseFloat(e.target.dataset.width);
+        e.target.style.transform = `scaleX(${w})`;
+        e.target.classList.add('animated');
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  bars.forEach(b => barObserver.observe(b));
+
+  // ─── FORM SUBMIT ───
+  function submitForm() {
+    const email = document.getElementById('email').value;
+    const fname = document.getElementById('fname').value;
+    const service = document.getElementById('service').value;
+    if (!fname || !email || !service) {
+      alert('Veuillez remplir les champs obligatoires (Prénom, Email, Service).');
+      return;
+    }
+    document.getElementById('contactForm').style.display = 'none';
+    const s = document.getElementById('formSuccess');
+    s.style.display = 'block';
+  }
+
+  // ─── SMOOTH HOVER CURSOR GLOW ───
+  document.addEventListener('mousemove', (e) => {
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    if (el && el.closest('.service-card')) {
+      const card = el.closest('.service-card');
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', x + '%');
+      card.style.setProperty('--mouse-y', y + '%');
+    }
+  });
+
+  // ─── COUNTER ANIMATION ───
+  function animateCounter(el, target, suffix) {
+    let start = 0;
+    const duration = 2000;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start) + suffix;
+    }, 16);
+  }
+
+  const statNumbers = document.querySelectorAll('.global-stat-number');
+  const statData = [
+    { value: 500, suffix: '+' },
+    { value: 12, suffix: 'M+' },
+    { value: 98, suffix: '%' },
+    { value: 4, suffix: '+' }
+  ];
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(statNumbers).indexOf(e.target);
+        if (idx >= 0) animateCounter(e.target, statData[idx].value, statData[idx].suffix);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(n => counterObserver.observe(n));
+</script>
+</body>
+</html>
