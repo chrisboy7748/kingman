@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>King's Logo Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap">
+<style>
+  /* Layout: one centred column — the 3D stage carries the logo lockup, the controls sit underneath it.
+     Tokens are the King's Global Market site tokens; the page commits to the brand's dark look. */
+  :root {
+    --black: #060608;
+    --dark: #0d0d11;
+    --line: rgba(255, 255, 255, 0.09);
+    --red: #c8001a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f4f4f6;
+    --muted: rgba(244, 244, 246, 0.58);
+    --font-display: 'Bebas Neue', 'Oswald', 'Arial Narrow', Impact, sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    /* stage (switchable between the site's dark ground and a light ground) */
+    --stage-glow-red: rgba(200, 0, 26, 0.16);
+    --stage-glow-gold: rgba(201, 168, 76, 0.07);
+    --stage-top: #060608;
+    --stage-bottom: #0d0d11;
+    --stage-grid: rgba(255, 255, 255, 0.028);
+    --word: #f4f4f6;
+    --word-shine: #e8c97a;
+    --sub: #c9a84c;
+    color-scheme: dark;
+  }
+
+  .stage[data-ground="light"] {
+    --stage-glow-red: rgba(200, 0, 26, 0.07);
+    --stage-glow-gold: rgba(201, 168, 76, 0.10);
+    --stage-top: #f1f1f3;
+    --stage-bottom: #e4e4e8;
+    --stage-grid: rgba(13, 13, 17, 0.045);
+    --word: #0d0d11;
+    --word-shine: #c8001a;
+    --sub: #84661c;
+  }
+
+  html, body { background: var(--black); }
+
+  body {
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: clamp(16px, 4vw, 40px);
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 24px;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .head p.lede {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* ─── STAGE ─── */
+  .stage {
+    position: relative;
+    overflow: hidden;
+    height: clamp(460px, 74vh, 780px);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 42%, var(--stage-glow-red) 0%, transparent 62%),
+      radial-gradient(ellipse 45% 35% at 22% 85%, var(--stage-glow-gold) 0%, transparent 55%),
+      linear-gradient(180deg, var(--stage-top) 0%, var(--stage-bottom) 100%);
+    transition: background 0.5s ease;
+    isolation: isolate;
+  }
+
+  .stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--stage-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 0%, transparent 100%);
+    mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: pan-y;
+  }
+
+  .lockup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(22px, 6%, 56px);
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding-inline: 16px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .word {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6.4vw, 4.4rem);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    padding-left: 0.12em; /* balances the trailing letter-spacing so the word sits centred */
+    color: var(--word);
+    background-image: linear-gradient(100deg, var(--word) 0%, var(--word) 42%, var(--word-shine) 50%, var(--word) 58%, var(--word) 100%);
+    background-size: 260% 100%;
+    background-position: var(--shine, 100%) 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: word-in 1.6s cubic-bezier(.2, .7, .1, 1) both;
+  }
+
+  .sub {
+    font-size: clamp(0.56rem, 1.3vw, 0.74rem);
+    letter-spacing: 0.38em;
+    padding-left: 0.38em;
+    text-transform: uppercase;
+    color: var(--sub);
+    font-weight: 400;
+    animation: sub-in 1.6s ease 0.35s both;
+  }
+
+  @keyframes word-in {
+    from { letter-spacing: 0.5em; padding-left: 0.5em; opacity: 0.25; filter: blur(6px); }
+    to   { letter-spacing: 0.12em; padding-left: 0.12em; opacity: 1; filter: blur(0); }
+  }
+
+  @keyframes sub-in {
+    from { opacity: 0.2; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .fallback {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ─── CONTROLS ─── */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px 28px;
+  }
+
+  .seg {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .seg legend {
+    padding: 0;
+    margin-bottom: 6px;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .seg .opts {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .seg input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .seg label,
+  .btn {
+    font: 500 0.74rem/1 var(--font-body);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.05rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    user-select: none;
+  }
+
+  .seg label + input + label { border-left: 1px solid var(--line); }
+
+  .seg input:checked + label {
+    color: var(--black);
+    background: var(--gold);
+  }
+
+  .seg input:focus-visible + label,
+  .btn:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+  }
+
+  .seg label:hover,
+  .btn:hover { color: var(--white); }
+  .seg input:checked + label:hover { color: var(--black); }
+
+  .btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    margin-left: auto;
+  }
+
+  .btn[aria-pressed="true"] {
+    border-color: var(--red);
+    color: var(--white);
+  }
+
+  .note {
+    margin: 4px 0 0;
+    max-width: 68ch;
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+
+  .note strong { color: var(--white); font-weight: 500; }
+
+  @media (max-width: 560px) {
+    .stage { height: clamp(440px, 70vh, 620px); }
+    .btn { margin-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word, .sub { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <header class="head">
+    <p class="eyebrow">Animation du logo · démo 3D</p>
+    <p class="lede">Anneaux chromés en rotation autour du monogramme, sur le modèle de la vidéo.</p>
+  </header>
+
+  <section class="stage" id="stage" data-ground="dark" aria-label="Logo King's Global Market animé">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <p class="fallback" id="fallback" hidden>La 3D ne s'affiche pas dans ce navigateur (WebGL désactivé). Le logo reste visible ci-dessous.</p>
+    <div class="lockup">
+      <span class="word" id="word">KING'S GLOBAL MARKET</span>
+      <span class="sub">Digital Agency · International</span>
+    </div>
+  </section>
+
+  <div class="controls">
+    <fieldset class="seg">
+      <legend>Fond</legend>
+      <div class="opts">
+        <input type="radio" name="ground" id="ground-dark" value="dark" checked><label for="ground-dark">Sombre</label>
+        <input type="radio" name="ground" id="ground-light" value="light"><label for="ground-light">Clair</label>
+      </div>
+    </fieldset>
+    <fieldset class="seg">
+      <legend>Finition</legend>
+      <div class="opts">
+        <input type="radio" name="finish" id="finish-chrome" value="chrome" checked><label for="finish-chrome">Chrome irisé</label>
+        <input type="radio" name="finish" id="finish-gold" value="gold"><label for="finish-gold">Or &amp; rouge</label>
+      </div>
+    </fieldset>
+    <button class="btn" id="play" type="button" aria-pressed="false">Pause</button>
+  </div>
+
+  <p class="note"><strong>Rendu 3D en temps réel</strong>, pas une vidéo : la scène est calculée dans le navigateur. Le « K » est tracé d'après la police Bebas Neue de votre site, et les reflets reprennent votre rouge et votre or. Bougez la souris (ou le doigt) sur la scène pour l'incliner.</p>
+</main>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js';
+
+const stage = document.getElementById('stage');
+const canvas = document.getElementById('gl');
+const word = document.getElementById('word');
+const playBtn = document.getElementById('play');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
+} catch (err) {
+  document.getElementById('fallback').hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setClearColor(0x000000, 0);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 100);
+camera.position.set(0, 0, 12);
+
+/* ─── Studio lighting, baked into an environment map ─── */
+const pmrem = new THREE.PMREMGenerator(renderer);
+
+function studio(ground) {
+  const env = new THREE.Scene();
+  const R = 30;
+  const sky = new THREE.SphereGeometry(R, 64, 32);
+  const stops = ground === 'light'
+    ? [[-1, '#3a3a44'], [-0.25, '#121217'], [0.02, '#08080b'], [0.2, '#55555f'], [1, '#a4a4ae']]
+    : [[-1, '#050507'], [-0.12, '#0d0d12'], [0.06, '#2a2a33'], [0.5, '#4a4a56'], [1, '#7a7a88']];
+  const cols = stops.map(([y, hex]) => [y, new THREE.Color(hex)]);
+  const c = new THREE.Color();
+  const p = sky.attributes.position;
+  const rgb = [];
+  for (let i = 0; i < p.count; i++) {
+    const y = p.getY(i) / R;
+    let k = 0;
+    while (k < cols.length - 2 && y > cols[k + 1][0]) k++;
+    const [y0, c0] = cols[k], [y1, c1] = cols[k + 1];
+    c.copy(c0).lerp(c1, THREE.MathUtils.clamp((y - y0) / (y1 - y0), 0, 1));
+    rgb.push(c.r, c.g, c.b);
+  }
+  sky.setAttribute('color', new THREE.Float32BufferAttribute(rgb, 3));
+  env.add(new THREE.Mesh(sky, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide })));
+
+  const lamp = (w, h, hex, power, x, y, z) => {
+    const m = new THREE.Mesh(
+      new THREE.PlaneGeometry(w, h),
+      new THREE.MeshBasicMaterial({ color: new THREE.Color(hex).multiplyScalar(power), side: THREE.DoubleSide })
+    );
+    m.position.set(x, y, z);
+    m.lookAt(0, 0, 0);
+    env.add(m);
+  };
+  lamp(18, 6, '#ffffff', 3.2, 0, 14, 3);        // overhead softbox
+  lamp(2.4, 20, '#ffffff', 7.0, -12, 1, 5);     // key strip
+  lamp(1.8, 20, '#ffffff', 5.0, 12, -1, 3);     // rim strip
+  lamp(12, 12, '#ff1636', 5.5, -9, -3, -10);    // brand red
+  lamp(11, 11, '#ffb54a', 5.0, 10, 4, -9);      // brand gold
+  lamp(16, 4, '#ff2a3c', 2.6, 0, -12, 6);       // red bounce from below
+  lamp(14, 5, '#ffffff', 2.4, -2, 6, 14);       // large front softbox (behind the camera)
+  lamp(20, 7, '#fff4e0', 1.5, 0, -1, 15);       // wide front wash: lights the face of the K
+  lamp(5, 5, '#ffd27a', 3.0, 7, -5, 12);        // warm front kicker
+
+  const tex = pmrem.fromScene(env, 0.035).texture;
+  env.traverse((o) => { if (o.isMesh) { o.geometry.dispose(); o.material.dispose(); } });
+  return tex;
+}
+const envMaps = { dark: studio('dark'), light: studio('light') };
+scene.environment = envMaps.dark;
+
+/* ─── Materials ─── */
+const mats = {
+  chromeRing: new THREE.MeshPhysicalMaterial({
+    color: 0xffffff, metalness: 1, roughness: 0.07,
+    iridescence: 1, iridescenceIOR: 1.55, iridescenceThicknessRange: [160, 640],
+    clearcoat: 1, clearcoatRoughness: 0.04,
+  }),
+  goldRing: new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color('#f0c868'), metalness: 1, roughness: 0.1,
+    iridescence: 0.5, iridescenceIOR: 1.4, iridescenceThicknessRange: [150, 420],
+    clearcoat: 1, clearcoatRoughness: 0.05,
+  }),
+  goldK: new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color('#e9c063'), metalness: 1, roughness: 0.16,
+    iridescence: 0.25, iridescenceIOR: 1.3, iridescenceThicknessRange: [200, 380],
+    clearcoat: 0.7, clearcoatRoughness: 0.08,
+  }),
+  redK: new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color('#c8001a'), metalness: 0.35, roughness: 0.22,
+    clearcoat: 1, clearcoatRoughness: 0.03,
+  }),
+};
+
+/* ─── Ring: a flat band with a rounded, super-elliptic cross-section ─── */
+function ringGeometry(R, a, b, n = 2.4, seg = 256, prof = 64) {
+  const pos = [], nor = [], idx = [];
+  const e = 2 / n;
+  for (let i = 0; i <= seg; i++) {
+    const u = (i / seg) * Math.PI * 2, cu = Math.cos(u), su = Math.sin(u);
+    for (let j = 0; j <= prof; j++) {
+      const v = (j / prof) * Math.PI * 2, cv = Math.cos(v), sv = Math.sin(v);
+      const x = a * Math.sign(cv) * Math.abs(cv) ** e;   // radial offset
+      const y = b * Math.sign(sv) * Math.abs(sv) ** e;   // offset along the ring's axis
+      let nx = (Math.sign(x) * Math.abs(x / a) ** (n - 1)) / a;
+      let ny = (Math.sign(y) * Math.abs(y / b) ** (n - 1)) / b;
+      const l = Math.hypot(nx, ny) || 1;
+      nx /= l; ny /= l;
+      pos.push((R + x) * cu, (R + x) * su, y);
+      nor.push(nx * cu, nx * su, ny);
+    }
+  }
+  for (let i = 0; i < seg; i++) {
+    for (let j = 0; j < prof; j++) {
+      const a0 = i * (prof + 1) + j, b0 = a0 + prof + 1;
+      idx.push(a0, b0, a0 + 1, b0, b0 + 1, a0 + 1);
+    }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
+  g.setIndex(idx);
+  return g;
+}
+
+/* ─── The K, traced from the Bebas Neue glyph (font units, 1000/em) ─── */
+const K_OUTLINE = [[41, 0], [41, 700], [151, 700], [151, 405], [291, 700], [401, 700], [270, 443], [403, 0], [288, 0], [195, 312], [151, 223], [151, 0]];
+const kShape = new THREE.Shape(K_OUTLINE.map(([x, y]) => new THREE.Vector2(x, y)));
+const kGeo = new THREE.ExtrudeGeometry(kShape, { depth: 70, bevelEnabled: true, bevelThickness: 22, bevelSize: 11, bevelSegments: 6, curveSegments: 1 });
+kGeo.center();
+kGeo.scale(1.5 / 700, 1.5 / 700, 1.5 / 700);
+
+const rig = new THREE.Group();      // pointer tilt
+const emblem = new THREE.Group();   // choreography
+rig.add(emblem);
+scene.add(rig);
+
+const kMesh = new THREE.Mesh(kGeo, mats.goldK);
+emblem.add(kMesh);
+
+// Three rings; when they all stand edge-on they draw a six-branch star with one vertical branch.
+const RINGS = [
+  { R: 1.78, angle: Math.PI / 2,            amp: 0.84 },
+  { R: 1.92, angle: Math.PI / 2 + 2.0944,  amp: -0.62 },
+  { R: 2.06, angle: Math.PI / 2 + 4.18879, amp: 1.02 },
+];
+const rings = RINGS.map((cfg) => {
+  const mesh = new THREE.Mesh(ringGeometry(cfg.R, 0.2, 0.052), mats.chromeRing);
+  emblem.add(mesh);
+  return { ...cfg, mesh, axis: new THREE.Vector3(Math.cos(cfg.angle), Math.sin(cfg.angle), 0) };
+});
+
+/* ─── Choreography ─── */
+const PERIOD = 8;            // seconds per loop; the star forms twice per loop
+const PHASE0 = 0.05;
+const INTRO = 1.6;
+const q = new THREE.Quaternion();
+const easeOut = (x) => 1 - (1 - x) ** 3;
+const signedPow = (x, k) => Math.sign(x) * Math.abs(x) ** k;
+
+function pose(t) {
+  const p = ((t / PERIOD + PHASE0) % 1 + 1) % 1;
+  const c = Math.cos(p * Math.PI * 2);
+  const open = signedPow(c, 1.5);             // 0 = star, ±1 = fully open; lingers near both
+
+  const intro = easeOut(THREE.MathUtils.clamp(t / INTRO, 0, 1));
+  for (const r of rings) {
+    q.setFromAxisAngle(r.axis, Math.PI / 2 + r.amp * open + (1 - intro) * 1.4 * Math.sign(r.amp));
+    r.mesh.quaternion.copy(q);
+    r.mesh.scale.setScalar(0.55 + 0.45 * intro);
+  }
+
+  emblem.rotation.z = 0.32 * Math.sin(p * Math.PI * 4);
+  emblem.rotation.y = 0.16 * Math.sin(p * Math.PI * 2 + 0.6) * Math.abs(open);
+
+  kMesh.rotation.y = 0.42 * Math.sin(t * 0.55) - (1 - intro) * 1.6;
+  kMesh.rotation.x = 0.06 * Math.sin(t * 0.8);
+  kMesh.scale.setScalar(0.7 + 0.3 * intro);
+
+  // Light sweep across the wordmark each time the star forms (p = 0.25 and 0.75).
+  const d = (p % 0.5) - 0.25;
+  const sweep = THREE.MathUtils.clamp(d / 0.07, -1, 1);
+  word.style.setProperty('--shine', `${(50 - 50 * sweep).toFixed(1)}%`);
+}
+
+/* ─── Layout: keep the emblem clear of the wordmark at any stage size ─── */
+const EMBLEM_RADIUS = 2.3;
+let W = 1, H = 1;
+function fit() {
+  const rect = stage.getBoundingClientRect();
+  W = Math.max(1, Math.round(rect.width));
+  H = Math.max(1, Math.round(rect.height));
+  renderer.setSize(W, H, false);
+  camera.aspect = W / H;
+  const centreFromTop = 0.42;
+  const radiusPx = Math.min(0.355 * H, 0.45 * W);
+  const pxPerUnit = radiusPx / EMBLEM_RADIUS;
+  const halfHeightUnits = H / 2 / pxPerUnit;
+  camera.position.z = halfHeightUnits / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  camera.setViewOffset(W, H, 0, (0.5 - centreFromTop) * H, W, H);
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(fit).observe(stage);
+fit();
+
+/* ─── Pointer tilt ─── */
+const tilt = { x: 0, y: 0, tx: 0, ty: 0 };
+stage.addEventListener('pointermove', (ev) => {
+  const r = stage.getBoundingClientRect();
+  tilt.ty = ((ev.clientX - r.left) / r.width - 0.5) * 0.45;
+  tilt.tx = ((ev.clientY - r.top) / r.height - 0.5) * 0.35;
+});
+stage.addEventListener('pointerleave', () => { tilt.tx = 0; tilt.ty = 0; });
+
+/* ─── Controls ─── */
+function setGround(g) {
+  stage.dataset.ground = g;
+  scene.environment = envMaps[g];
+  renderer.toneMappingExposure = g === 'light' ? 1.0 : 1.05;
+}
+function setFinish(f) {
+  const gold = f === 'gold';
+  for (const r of rings) r.mesh.material = gold ? mats.goldRing : mats.chromeRing;
+  kMesh.material = gold ? mats.redK : mats.goldK;
+}
+document.querySelectorAll('input[name="ground"]').forEach((el) => el.addEventListener('change', () => setGround(el.value)));
+document.querySelectorAll('input[name="finish"]').forEach((el) => el.addEventListener('change', () => setFinish(el.value)));
+
+let clock = reduceMotion ? 3.1 : 0;
+let playing = !reduceMotion;
+function syncPlay() {
+  playBtn.textContent = playing ? 'Pause' : 'Lecture';
+  playBtn.setAttribute('aria-pressed', String(!playing));
+}
+playBtn.addEventListener('click', () => { playing = !playing; syncPlay(); });
+syncPlay();
+
+let visible = true;
+new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }).observe(stage);
+
+function renderAt(t) {
+  tilt.x += (tilt.tx - tilt.x) * 0.06;
+  tilt.y += (tilt.ty - tilt.y) * 0.06;
+  rig.rotation.set(tilt.x, tilt.y, 0);
+  pose(t);
+  renderer.render(scene, camera);
+}
+
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  if (playing) clock += dt;
+  if (visible && !document.hidden) renderAt(clock);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// Hook used to render the animation frame by frame (video export).
+window.__logoMotion = { seek: (t) => { clock = t; renderAt(t); }, setGround, setFinish, pause: () => { playing = false; syncPlay(); }, PERIOD };
+</script>
+</body>
+</html>
