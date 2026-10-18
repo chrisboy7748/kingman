@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaWave Agency – Motion design, sites web, marketing digital</title>
+<meta name="description" content="AlphaWave Agency : motion design, création de sites web, marketing digital et community management pour faire grandir votre marque.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:title" content="AlphaWave Agency">
+<meta property="og:description" content="Grow · Connect · Succeed. Motion design, sites web, marketing digital et community management.">
+<meta property="og:image" content="assets/alphawave-logo-480.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0E1F4D;
+    --blue: #1A63D6;
+    --orange: #F26A1B;
+    --paper: #FFFFFF;
+    --mist: #EEF3FB;
+    --muted: #4A5878;
+    --line: #D5DDEC;
+    --wide: 125%;
+    --measure: 64ch;
+    --gutter: clamp(16px, 5vw, 64px);
+    --max: 1240px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--navy);
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  h1, h2, h3 {
+    font-stretch: var(--wide);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  h1 { font-size: clamp(2.4rem, 6.2vw, 5.4rem); font-weight: 800; }
+  h2 { font-size: clamp(1.9rem, 3.8vw, 3.1rem); }
+  h3 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+  p { margin: 0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: .6em;
+    padding: .95em 1.5em;
+    border-radius: 999px;
+    font: inherit; font-weight: 600; font-size: 1rem;
+    text-decoration: none; cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+  .btn-primary { background: var(--orange); color: var(--navy); }
+  .btn-primary:hover { background: var(--navy); color: var(--paper); }
+  .btn-ghost { border-color: var(--navy); color: var(--navy); background: transparent; }
+  .btn-ghost:hover { background: var(--navy); color: var(--paper); }
+
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .site-header.scrolled { border-bottom-color: var(--line); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+  .brand img { height: 38px; width: auto; }
+  .brand-name { font-stretch: var(--wide); font-weight: 700; font-size: 1.05rem; letter-spacing: .04em; }
+  .brand-name span { color: var(--orange); }
+  .nav { display: flex; align-items: center; gap: 2rem; }
+  .nav a:not(.btn) { text-decoration: none; font-weight: 500; }
+  .nav a:not(.btn):hover { color: var(--blue); }
+  .nav .btn { padding: .65em 1.2em; }
+  .nav-toggle {
+    display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--navy);
+  }
+  .nav-toggle svg { width: 28px; height: 28px; }
+
+  /* Hero */
+  .hero { padding: clamp(48px, 8vw, 110px) 0 0; overflow: hidden; }
+  .hero h1 { max-width: 14ch; }
+  .hero-lead { margin-top: 1.6rem; max-width: 46ch; font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--muted); }
+  .hero-actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+  .hero h1, .hero-lead, .hero-actions { position: relative; z-index: 1; }
+  @media (min-width: 961px) { .hero .curve { margin-top: -9vw; } }
+
+  .curve { position: relative; margin-top: clamp(24px, 4vw, 48px); aspect-ratio: 12 / 4; }
+  .curve svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .curve .peaks { fill: var(--mist); }
+  .curve .wave {
+    fill: none; stroke: var(--orange); stroke-width: 6; stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .curve .arrow { fill: var(--orange); }
+  .curve .dot { fill: var(--paper); stroke: var(--blue); stroke-width: 3; vector-effect: non-scaling-stroke; }
+  .curve-label {
+    position: absolute; transform: translate(-50%, calc(-100% - 18px));
+    white-space: nowrap; text-decoration: none;
+    font-weight: 600; font-size: clamp(.8rem, 1.2vw, 1rem);
+    background: var(--paper); padding: .3em .8em; border-radius: 999px;
+    border: 1.5px solid var(--line);
+    transition: border-color .2s, color .2s;
+  }
+  .curve-label:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js .curve .wave { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.6s cubic-bezier(.6,.05,.3,1) .2s forwards; }
+    .js .curve .arrow, .js .curve .dot, .js .curve-label { opacity: 0; animation: pop .4s ease-out forwards; animation-delay: var(--delay, 1.7s); }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pop { to { opacity: 1; } }
+  }
+
+  /* Sections */
+  section { padding: clamp(72px, 10vw, 130px) 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); }
+  .section-head p { color: var(--muted); max-width: 48ch; }
+
+  /* Services */
+  #services { background: var(--mist); }
+  .group + .group { margin-top: clamp(56px, 7vw, 88px); }
+  .group-title {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 1.05rem; font-weight: 600; margin: 0 0 .5rem;
+  }
+  .group-title::before { content: ''; width: 36px; height: 6px; border-radius: 3px; background: var(--c); }
+  .group-create { --c: var(--blue); }
+  .group-grow { --c: var(--orange); }
+
+  .service {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 1.5rem 4rem;
+    padding: clamp(28px, 4vw, 44px) 0;
+    border-top: 1px solid var(--line);
+  }
+  .service h3 { margin-bottom: .9rem; }
+  .service > div > p { color: var(--muted); max-width: 42ch; }
+  .deliverables { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .2rem 2rem; align-content: start; }
+  .deliverables li { padding: .55rem 0 .55rem 1.4rem; position: relative; border-bottom: 1px solid var(--line); }
+  .deliverables li::before {
+    content: ''; position: absolute; left: 0; top: 1.05rem;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--c);
+  }
+
+  /* Method */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; counter-reset: step; }
+  .steps li { counter-increment: step; position: relative; padding-top: 4.2rem; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute; top: 0; left: 0;
+    width: 3rem; height: 3rem; border-radius: 50%;
+    display: grid; place-items: center;
+    font-stretch: var(--wide); font-weight: 700; font-size: 1.1rem;
+    border: 2px solid var(--navy); background: var(--paper);
+  }
+  .steps li:last-child::before { background: var(--orange); border-color: var(--orange); }
+  .steps li:not(:last-child)::after {
+    content: ''; position: absolute; top: 1.5rem; left: 3.6rem; right: -1.9rem;
+    height: 2px; background: var(--line);
+  }
+  .steps h3 { font-size: 1.3rem; margin-bottom: .6rem; }
+  .steps p { color: var(--muted); }
+
+  /* Promise band */
+  .promise { background: var(--navy); color: var(--paper); }
+  .promise h2 { max-width: 20ch; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: clamp(40px, 6vw, 64px); }
+  .pillar { border-top: 2px solid rgba(255,255,255,.2); padding-top: 1.4rem; }
+  .pillar h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: .2rem; }
+  .pillar .fr { color: #9FB6E6; font-weight: 500; margin-bottom: .9rem; }
+  .pillar p:last-child { color: #CBD6EE; max-width: 34ch; }
+  .pillar:nth-child(1) h3 { color: #6FA2F5; }
+  .pillar:nth-child(3) h3 { color: var(--orange); }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem 5rem; }
+  .contact-info p { color: var(--muted); max-width: 40ch; margin-top: 1.2rem; }
+  .channels { list-style: none; padding: 0; margin: 2.2rem 0 0; display: grid; gap: 1rem; }
+  .channels a { font-weight: 600; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .channels span { display: block; color: var(--muted); font-size: .9rem; }
+
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.5rem; }
+  .field { display: grid; gap: .4rem; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-weight: 600; font-size: .95rem; }
+  input, select, textarea {
+    font: inherit; color: var(--navy);
+    padding: .85rem 1rem;
+    border: 1.5px solid var(--line); border-radius: 10px;
+    background: var(--paper);
+    transition: border-color .2s;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,99,214,.18); }
+  textarea { min-height: 150px; resize: vertical; }
+  .form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+  .form-note { color: var(--muted); font-size: .9rem; }
+  .form-status { grid-column: 1 / -1; font-weight: 600; color: var(--blue); min-height: 1.5em; }
+
+  /* Footer */
+  .site-footer { border-top: 1px solid var(--line); padding: 48px 0; }
+  .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  .site-footer img { width: 96px; height: 96px; }
+  .site-footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .site-footer nav a { text-decoration: none; color: var(--muted); }
+  .site-footer nav a:hover { color: var(--navy); }
+  .site-footer small { color: var(--muted); font-size: .9rem; }
+
+  .curve-list { display: none; flex-wrap: wrap; gap: .6rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+  .curve-list a { display: inline-block; text-decoration: none; font-weight: 600; font-size: .95rem; padding: .4em .9em; border: 1.5px solid var(--line); border-radius: 999px; }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .section-head, .service, .contact-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; }
+    .steps li::after { display: none; }
+    .pillars { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .nav-toggle { display: block; }
+    .nav {
+      position: absolute; top: 76px; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: .5rem var(--gutter) 1.5rem;
+      display: none;
+    }
+    .nav.open { display: flex; }
+    .nav a:not(.btn) { padding: .9rem 0; width: 100%; border-bottom: 1px solid var(--line); }
+    .nav .btn { margin-top: 1.2rem; }
+    .curve { aspect-ratio: 12 / 6; }
+    .curve-label { display: none; }
+    .curve-list { display: flex; }
+    .deliverables { grid-template-columns: 1fr; }
+    form { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .brand-name { font-size: .95rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="AlphaWave Agency, retour en haut">
+      <img src="assets/alphawave-mark.png" alt="" width="71" height="38">
+      <span class="brand-name">ALPHA<span>WAVE</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#methode">Méthode</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary">Demander un devis</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <h1 id="hero-title">Votre marque mérite de monter plus haut.</h1>
+      <p class="hero-lead">AlphaWave crée vos vidéos animées, votre site web et vos campagnes, puis anime votre communauté pour que chaque visite devienne un client.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+        <a href="#services" class="btn btn-ghost">Voir nos services</a>
+      </div>
+
+      <div class="curve" aria-hidden="true">
+        <svg viewBox="0 0 1200 400" focusable="false">
+          <path class="peaks" d="M0 400 L180 200 L330 400 Z M260 400 L470 150 L680 400 Z M600 400 L760 240 L920 400 Z"/>
+          <path class="wave" id="wave" d="M10 390 C 380 370, 760 290, 1150 50"/>
+          <g class="arrow" transform="translate(1150 50) rotate(-31.6)"><polygon points="26,0 -18,-18 -8,0 -18,18"/></g>
+        </svg>
+      </div>
+      <ul class="curve-list">
+        <li><a href="#motion">Motion design</a></li>
+        <li><a href="#web">Sites web</a></li>
+        <li><a href="#marketing">Marketing digital</a></li>
+        <li><a href="#community">Community management</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="services-title">Quatre métiers, une seule équipe.</h2>
+        <p>On construit d'abord ce qui vous rend visible, puis on fait venir et revenir votre public. Vous pouvez nous confier un seul service ou l'ensemble.</p>
+      </div>
+
+      <div class="group group-create">
+        <p class="group-title">Créer votre image</p>
+
+        <article class="service" id="motion">
+          <div>
+            <h3>Motion design</h3>
+            <p>Des vidéos animées qui expliquent votre offre en quelques secondes et arrêtent le défilement sur les réseaux.</p>
+          </div>
+          <ul class="deliverables">
+            <li>Vidéos explicatives</li>
+            <li>Animation de logo</li>
+            <li>Formats Reels et TikTok</li>
+            <li>Publicités animées</li>
+            <li>Habillage de vidéos</li>
+            <li>Présentations animées</li>
+          </ul>
+        </article>
+
+        <article class="service" id="web">
+          <div>
+            <h3>Création de sites web</h3>
+            <p>Un site rapide, clair sur mobile et pensé pour convertir : vitrine, catalogue ou boutique en ligne.</p>
+          </div>
+          <ul class="deliverables">
+            <li>Sites vitrines</li>
+            <li>Boutiques en ligne</li>
+            <li>Pages de vente</li>
+            <li>Refonte de site</li>
+            <li>Référencement de base</li>
+            <li>Maintenance et hébergement</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="group group-grow">
+        <p class="group-title">Faire grandir votre audience</p>
+
+        <article class="service" id="marketing">
+          <div>
+            <h3>Marketing digital</h3>
+            <p>Des campagnes ciblées pour toucher les bonnes personnes, avec des résultats mesurés chaque mois.</p>
+          </div>
+          <ul class="deliverables">
+            <li>Publicité Facebook et Instagram</li>
+            <li>Publicité Google</li>
+            <li>Stratégie de contenu</li>
+            <li>E-mailing</li>
+            <li>Référencement (SEO)</li>
+            <li>Rapports de performance</li>
+          </ul>
+        </article>
+
+        <article class="service" id="community">
+          <div>
+            <h3>Community management</h3>
+            <p>On publie, on répond et on fait vivre vos réseaux au quotidien pour transformer vos abonnés en clients fidèles.</p>
+          </div>
+          <ul class="deliverables">
+            <li>Calendrier éditorial</li>
+            <li>Création de publications</li>
+            <li>Réponses aux messages</li>
+            <li>Gestion des avis</li>
+            <li>Collaborations influenceurs</li>
+            <li>Suivi des statistiques</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="methode" aria-labelledby="methode-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="methode-title">Comment on travaille ensemble.</h2>
+        <p>Un interlocuteur unique du premier appel jusqu'aux résultats. Vous validez chaque étape avant que l'on passe à la suivante.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Écouter</h3>
+          <p>Un appel gratuit pour comprendre votre activité, vos clients et vos objectifs.</p>
+        </li>
+        <li>
+          <h3>Proposer</h3>
+          <p>Vous recevez un plan d'action et un devis clair sous 48 heures.</p>
+        </li>
+        <li>
+          <h3>Créer</h3>
+          <p>On produit vos vidéos, votre site ou vos campagnes, avec vos retours à chaque version.</p>
+        </li>
+        <li>
+          <h3>Faire grandir</h3>
+          <p>On lance, on mesure et on ajuste chaque mois pour améliorer vos résultats.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="promise" aria-labelledby="promise-title">
+    <div class="wrap">
+      <h2 id="promise-title">Ce qui guide chacun de nos projets.</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <h3 lang="en">Grow</h3>
+          <p class="fr">Grandir</p>
+          <p>Chaque création a un objectif chiffré : plus de visites, plus de messages, plus de ventes.</p>
+        </div>
+        <div class="pillar">
+          <h3 lang="en">Connect</h3>
+          <p class="fr">Connecter</p>
+          <p>On parle à votre public avec ses mots, sur les plateformes où il passe son temps.</p>
+        </div>
+        <div class="pillar">
+          <h3 lang="en">Succeed</h3>
+          <p class="fr">Réussir</p>
+          <p>Vous voyez où va votre budget et ce qu'il rapporte, grâce à un rapport simple chaque mois.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2 id="contact-title">Parlons de votre projet.</h2>
+        <p>Décrivez votre besoin en quelques lignes. On vous répond sous 24 heures avec les prochaines étapes.</p>
+        <ul class="channels">
+          <!-- Remplacer par les vraies coordonnées de l'agence -->
+          <li><a href="mailto:contact@alphawave-agency.com">contact@alphawave-agency.com</a><span>E-mail</span></li>
+          <li><a href="https://wa.me/000000000000">+00 0 00 00 00 00</a><span>WhatsApp</span></li>
+        </ul>
+      </div>
+
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Nom</label>
+          <input id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field full">
+          <label for="service">Service souhaité</label>
+          <select id="service" name="service">
+            <option>Motion design</option>
+            <option>Création de site web</option>
+            <option>Marketing digital</option>
+            <option>Community management</option>
+            <option>Plusieurs services</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="message">Votre projet</label>
+          <textarea id="message" name="message" required placeholder="Votre activité, votre objectif, votre délai…"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+          <span class="form-note">Votre messagerie s'ouvre avec le message prêt à envoyer.</span>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="assets/alphawave-logo-480.png" alt="AlphaWave Agency – Grow, Connect, Succeed" width="96" height="96" loading="lazy">
+    <nav aria-label="Pied de page">
+      <a href="#services">Services</a>
+      <a href="#methode">Méthode</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <small>© <span id="year">2026</span> AlphaWave Agency</small>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  // Sticky header border
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  nav.addEventListener('click', e => {
+    if (e.target.closest('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Place the four services as stops along the growth curve
+  const curve = document.querySelector('.curve');
+  const svg = curve.querySelector('svg');
+  const wave = document.getElementById('wave');
+  const len = wave.getTotalLength();
+  wave.style.setProperty('--len', len);
+  const stops = [
+    ['Motion design', '#motion', .2],
+    ['Sites web', '#web', .45],
+    ['Marketing digital', '#marketing', .68],
+    ['Community management', '#community', .88]
+  ];
+  stops.forEach(([label, href, at], i) => {
+    const p = wave.getPointAtLength(len * at);
+    const delay = (0.2 + 1.6 * at + 0.1) + 's';
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('class', 'dot');
+    dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y); dot.setAttribute('r', 9);
+    dot.style.setProperty('--delay', delay);
+    svg.appendChild(dot);
+    const a = document.createElement('a');
+    a.className = 'curve-label';
+    a.href = href; a.textContent = label;
+    a.tabIndex = -1;
+    a.style.left = (p.x / 1200 * 100) + '%';
+    a.style.top = (p.y / 400 * 100) + '%';
+    a.style.setProperty('--delay', delay);
+    curve.appendChild(a);
+  });
+
+  // Contact form: open the visitor's mail app with a prefilled message
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const missing = [...form.querySelectorAll('[required]')].find(f => !f.value.trim() || !f.checkValidity());
+    if (missing) {
+      status.textContent = missing.type === 'email' && missing.value
+        ? "L'adresse e-mail n'est pas valide. Vérifiez-la puis renvoyez."
+        : 'Remplissez le champ « ' + form.querySelector('label[for="' + missing.id + '"]').textContent + ' » pour envoyer votre demande.';
+      missing.focus();
+      return;
+    }
+    const d = new FormData(form);
+    const subject = 'Demande de devis – ' + d.get('service');
+    const body = 'Nom : ' + d.get('name') + '\nE-mail : ' + d.get('email') + '\nService : ' + d.get('service') + '\n\n' + d.get('message');
+    window.location.href = 'mailto:contact@alphawave-agency.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Votre messagerie s\'est ouverte : il ne reste qu\'à envoyer le message.';
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
