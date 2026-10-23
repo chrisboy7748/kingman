@@ -38,6 +38,11 @@ export default function Privacy() {
       <ul>
         <li>[Hébergeur du site] et [hébergeur de la base de données], en qualité de sous-traitants.</li>
         <li>PayPal (Europe) S.à r.l. et Cie, S.C.A., pour les paiements.</li>
+        <li>
+          Resend [raison sociale exacte à reprendre du contrat], société établie aux États-Unis, pour l&apos;envoi des e-mails : il reçoit uniquement votre
+          prénom et votre adresse e-mail, jamais vos mesures. [Transfert encadré par les clauses contractuelles
+          types de la Commission européenne : à vérifier dans le contrat Resend.]
+        </li>
       </ul>
 
       <h2>Durée de conservation</h2>

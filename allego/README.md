@@ -12,7 +12,8 @@ Application d'accompagnement à la perte de poids, avec abonnement payé par Pay
 - **Journal** : une cinquantaine d'aliments courants ou une saisie libre, total par repas et par jour, macronutriments.
 - **Activités** : 12 activités, calories estimées selon le poids, suivi des 150 minutes par semaine conseillées par l'OMS.
 - **Programme** : objectif calorique, menus sur 7 jours ajustés aux calories, séances selon le niveau, une habitude par semaine sur 12 semaines.
-- **Abonnement** : 7 jours d'essai sans paiement, puis abonnement mensuel (9,99 €) ou annuel (79,99 €) par PayPal. La résiliation se fait depuis l'application, et l'accès reste ouvert jusqu'à la fin de la période payée.
+- **Abonnement** : 7 jours d'essai sans paiement, puis abonnement mensuel (12,99 €) ou annuel (99,99 €) par PayPal. La résiliation se fait depuis l'application, et l'accès reste ouvert jusqu'à la fin de la période payée.
+- **E-mails** (Resend) : bienvenue, mot de passe oublié, confirmation de changement de mot de passe, rappel 48 heures avant la fin de l'essai, abonnement actif, paiement refusé, résiliation.
 - **Mon compte** : modifier le profil, télécharger ses données (RGPD), supprimer son compte (l'abonnement PayPal est résilié automatiquement).
 - **Administration** (`/admin`) : nombre de comptes, essais en cours, abonnés, revenu mensuel récurrent, encaissements sur 30 jours, derniers inscrits.
 
@@ -53,6 +54,16 @@ Tests : `npm test`. Ils utilisent une base séparée, `allego_test`, qu'ils vide
 
 Fonctionnement : le bouton « Payer avec PayPal » crée l'abonnement côté serveur et envoie l'utilisateur sur PayPal. Au retour, l'abonnement est relu chez PayPal avant d'être activé. Les webhooks tiennent ensuite le statut à jour : renouvellement, échec de paiement, résiliation. Leur signature est vérifiée, et chaque événement n'est traité qu'une fois. Si l'utilisateur s'abonne pendant son essai, le premier prélèvement n'a lieu qu'à la fin de l'essai.
 
+## Brancher les e-mails (Resend)
+
+1. Créez un compte sur [resend.com](https://resend.com), puis une clé dans **API Keys** (droit *Sending access* suffit). Mettez-la dans `RESEND_API_KEY`.
+2. Tant que vous n'avez pas de nom de domaine, gardez `EMAIL_FROM=Allégo <onboarding@resend.dev>`. Resend n'envoie alors qu'à l'adresse e-mail de votre compte Resend, ce qui suffit pour tester.
+3. Quand vous aurez un domaine : dans **Domains**, ajoutez-le et copiez les enregistrements DNS indiqués chez votre registraire. Une fois le domaine vérifié, mettez par exemple `EMAIL_FROM=Allégo <bonjour@votre-domaine.fr>`. Les e-mails partent alors vers n'importe quelle adresse.
+
+Sans `RESEND_API_KEY`, l'application fonctionne : les e-mails sont écrits dans les journaux du serveur au lieu d'être envoyés.
+
+Le rappel de fin d'essai est envoyé par une tâche quotidienne (`vercel.json`, 8 h UTC). Sur Vercel, définissez `CRON_SECRET` avec une valeur aléatoire : Vercel l'envoie de lui-même à chaque appel.
+
 ## Mettre en ligne (Vercel et Supabase)
 
 1. **Base de données** : créez un projet [Supabase](https://supabase.com) dans une région européenne. Dans *Connect*, copiez l'URL du **Transaction pooler** dans `DATABASE_URL`, puis lancez `npm run db:migrate` avec cette URL.
@@ -64,5 +75,5 @@ Fonctionnement : le bouton « Payer avec PayPal » crée l'abonnement côté ser
 
 - Complétez les pages légales (passages entre crochets) et faites-les relire par un juriste.
 - Données de santé : faites vérifier si votre activité impose un hébergeur certifié HDS. Un registre des traitements RGPD est obligatoire dans tous les cas.
-- Ajoutez l'envoi d'e-mails (bienvenue, mot de passe oublié, fin d'essai) avec un service comme Resend ou Brevo. Ce n'est pas encore fait.
+- Vérifiez un nom de domaine chez Resend, sinon les e-mails ne partent que vers votre propre adresse.
 - Limitez les tentatives de connexion (anti force brute) au niveau de l'hébergeur ou de l'application.

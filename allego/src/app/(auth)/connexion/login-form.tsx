@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { login } from "../actions";
 import { FormMessage } from "@/components/ui";
@@ -12,7 +13,7 @@ export function LoginForm() {
       <FormMessage state={state} />
       <div>
         <label htmlFor="email" className="label">E-mail</label>
-        <input id="email" name="email" type="email" className="input" autoComplete="email" required />
+        <input id="email" name="email" type="email" className="input" autoComplete="email" defaultValue={state?.values?.email} required />
       </div>
       <div>
         <label htmlFor="password" className="label">Mot de passe</label>
@@ -24,6 +25,9 @@ export function LoginForm() {
           autoComplete="current-password"
           required
         />
+        <Link href="/mot-de-passe-oublie" className="mt-2 inline-block text-sm text-feuille underline">
+          Mot de passe oublié ?
+        </Link>
       </div>
       <SubmitButton pendingLabel="Connexion…">Se connecter</SubmitButton>
     </form>

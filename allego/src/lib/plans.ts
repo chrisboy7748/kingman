@@ -2,25 +2,44 @@ export type PlanKey = "mensuel" | "annuel";
 
 export const TRIAL_DAYS = 7;
 
+const MONTHLY = 12.99;
+const YEARLY = 99.99;
+
+export function formatEuros(amount: number) {
+  return amount.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+}
+
+/** Économie de la formule annuelle par rapport à 12 mois de formule mensuelle, en %. */
+const YEARLY_SAVING = Math.round((1 - YEARLY / (MONTHLY * 12)) * 100);
+
 export const PLANS: Record<
   PlanKey,
-  { name: string; price: string; amount: number; interval: "MONTH" | "YEAR"; monthlyEquivalent: number; note: string }
+  {
+    name: string;
+    price: string;
+    amount: number;
+    interval: "MONTH" | "YEAR";
+    monthlyEquivalent: number;
+    note: string;
+    badge?: string;
+  }
 > = {
   mensuel: {
     name: "Mensuel",
-    price: "9,99 €",
-    amount: 9.99,
+    price: formatEuros(MONTHLY),
+    amount: MONTHLY,
     interval: "MONTH",
-    monthlyEquivalent: 9.99,
+    monthlyEquivalent: MONTHLY,
     note: "par mois, sans engagement",
   },
   annuel: {
     name: "Annuel",
-    price: "79,99 €",
-    amount: 79.99,
+    price: formatEuros(YEARLY),
+    amount: YEARLY,
     interval: "YEAR",
-    monthlyEquivalent: 79.99 / 12,
-    note: "par an, soit 6,67 € par mois",
+    monthlyEquivalent: YEARLY / 12,
+    note: `par an, soit ${formatEuros(Math.round((YEARLY / 12) * 100) / 100)} par mois`,
+    badge: `${YEARLY_SAVING} % moins cher`,
   },
 };
 

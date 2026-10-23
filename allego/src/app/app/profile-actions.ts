@@ -43,14 +43,15 @@ const createSchema = profileSchema.extend({ weightKg: decimal("Poids actuel", 35
 export async function saveProfile(mode: "create" | "edit", _: FormState, formData: FormData): Promise<FormState> {
   const user = await requireUser();
   const raw = Object.fromEntries(formData);
+  const values = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, String(v)]));
   const day = today();
 
   if (mode === "create") {
     const parsed = createSchema.safeParse(raw);
-    if (!parsed.success) return { error: parsed.error.issues[0].message };
+    if (!parsed.success) return { error: parsed.error.issues[0].message, values };
     const { weightKg, ...p } = parsed.data;
     const check = checkGoal({ age: ageFrom(p.birthDate, day), heightCm: p.heightCm, weightKg, targetWeightKg: p.targetWeightKg });
-    if (!check.ok) return { error: check.reason };
+    if (!check.ok) return { error: check.reason, values };
 
     await db.transaction(async (tx) => {
       await tx
@@ -69,7 +70,7 @@ export async function saveProfile(mode: "create" | "edit", _: FormState, formDat
   }
 
   const parsed = profileSchema.safeParse(raw);
-  if (!parsed.success) return { error: parsed.error.issues[0].message };
+  if (!parsed.success) return { error: parsed.error.issues[0].message, values };
   const p = parsed.data;
   const profile = await db.query.profiles.findFirst({ where: eq(schema.profiles.userId, user.id) });
   if (!profile) redirect("/app/bienvenue");
@@ -79,9 +80,9 @@ export async function saveProfile(mode: "create" | "edit", _: FormState, formDat
   });
   const weightKg = latest?.weightKg ?? profile.startWeightKg;
   const check = checkGoal({ age: ageFrom(p.birthDate, day), heightCm: p.heightCm, weightKg, targetWeightKg: p.targetWeightKg });
-  if (!check.ok) return { error: check.reason };
+  if (!check.ok) return { error: check.reason, values };
 
   await db.update(schema.profiles).set({ ...p, updatedAt: new Date() }).where(eq(schema.profiles.userId, user.id));
   revalidatePath("/app", "layout");
-  return { ok: "Profil enregistré. Votre objectif calorique a été recalculé." };
+  return { ok: "Profil enregistré. Votre objectif calorique a été recalculé.", values };
 }

@@ -35,30 +35,35 @@ function Choice({ name, value, checked, title, detail }: { name: string; value: 
 
 export function ProfileForm({ mode, defaults = {} }: { mode: "create" | "edit"; defaults?: Defaults }) {
   const [state, action] = useActionState(saveProfile.bind(null, mode), null);
+  // Après une erreur, on réaffiche les réponses envoyées plutôt que les valeurs de départ.
+  const v = state?.values;
+  const sex = v?.sex ?? defaults.sex;
+  const activity = v?.activityLevel ?? defaults.activityLevel;
+  const pace = v?.weeklyGoalKg ? Number(v.weeklyGoalKg) : (defaults.weeklyGoalKg ?? 0.5);
   return (
     <form action={action} className="space-y-8">
       <fieldset>
         <legend className="label">Sexe</legend>
         <p className="hint mb-2">Il entre dans le calcul de votre métabolisme de base.</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Choice name="sex" value="femme" checked={defaults.sex === "femme"} title="Femme" />
-          <Choice name="sex" value="homme" checked={defaults.sex === "homme"} title="Homme" />
+          <Choice name="sex" value="femme" checked={sex === "femme"} title="Femme" />
+          <Choice name="sex" value="homme" checked={sex === "homme"} title="Homme" />
         </div>
       </fieldset>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="birthDate" className="label">Date de naissance</label>
-          <input id="birthDate" name="birthDate" type="date" className="input" defaultValue={defaults.birthDate} required />
+          <input id="birthDate" name="birthDate" type="date" className="input" defaultValue={v?.birthDate ?? defaults.birthDate} required />
         </div>
         <div>
           <label htmlFor="heightCm" className="label">Taille (cm)</label>
-          <input id="heightCm" name="heightCm" inputMode="numeric" className="input tabular" defaultValue={defaults.heightCm} placeholder="168" required />
+          <input id="heightCm" name="heightCm" inputMode="numeric" className="input tabular" defaultValue={v?.heightCm ?? defaults.heightCm} placeholder="168" required />
         </div>
         {mode === "create" && (
           <div>
             <label htmlFor="weightKg" className="label">Poids actuel (kg)</label>
-            <input id="weightKg" name="weightKg" inputMode="decimal" className="input tabular" placeholder="78,5" required />
+            <input id="weightKg" name="weightKg" inputMode="decimal" className="input tabular" defaultValue={v?.weightKg} placeholder="78,5" required />
           </div>
         )}
         <div>
@@ -68,7 +73,7 @@ export function ProfileForm({ mode, defaults = {} }: { mode: "create" | "edit"; 
             name="targetWeightKg"
             inputMode="decimal"
             className="input tabular"
-            defaultValue={defaults.targetWeightKg?.toString().replace(".", ",")}
+            defaultValue={v?.targetWeightKg ?? defaults.targetWeightKg?.toString().replace(".", ",")}
             placeholder="70"
             required
           />
@@ -83,7 +88,7 @@ export function ProfileForm({ mode, defaults = {} }: { mode: "create" | "edit"; 
               key={key}
               name="activityLevel"
               value={key}
-              checked={defaults.activityLevel === key}
+              checked={activity === key}
               title={ACTIVITY_LEVELS[key].label}
               detail={ACTIVITY_LEVELS[key].detail}
             />
@@ -99,7 +104,7 @@ export function ProfileForm({ mode, defaults = {} }: { mode: "create" | "edit"; 
               key={g}
               name="weeklyGoalKg"
               value={String(g)}
-              checked={(defaults.weeklyGoalKg ?? 0.5) === g}
+              checked={pace === g}
               title={`${g.toString().replace(".", ",")} kg par semaine`}
               detail={PACE_DETAIL[g]}
             />

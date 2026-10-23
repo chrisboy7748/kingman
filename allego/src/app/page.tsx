@@ -140,7 +140,7 @@ export default async function Home() {
                   >
                     <div className="flex items-baseline justify-between gap-3">
                       <h3 className="text-2xl font-bold">{plan.name}</h3>
-                      {best && <span className="text-sm font-semibold">2 mois offerts</span>}
+                      {plan.badge && <span className="text-sm font-semibold">{plan.badge}</span>}
                     </div>
                     <p className="font-display mt-4 text-5xl font-extrabold tabular">{plan.price}</p>
                     <p className="mt-1 opacity-80">{plan.note}</p>

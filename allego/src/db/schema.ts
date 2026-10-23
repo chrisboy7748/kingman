@@ -33,8 +33,27 @@ export const users = pgTable("users", {
   name: text("name").notNull(),
   healthConsentAt: timestamp("health_consent_at", { withTimezone: true }).notNull(),
   trialEndsAt: timestamp("trial_ends_at", { withTimezone: true }).notNull(),
+  /** Les sessions ouvertes avant cette date sont refusées (mot de passe réinitialisé). */
+  passwordChangedAt: timestamp("password_changed_at", { withTimezone: true }),
+  trialReminderSentAt: timestamp("trial_reminder_sent_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+/** Liens de réinitialisation du mot de passe. Seule l'empreinte SHA-256 du jeton est stockée. */
+export const passwordResets = pgTable(
+  "password_resets",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    tokenHash: text("token_hash").notNull().unique(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    usedAt: timestamp("used_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("password_resets_user").on(t.userId)],
+);
 
 export const profiles = pgTable("profiles", {
   userId: uuid("user_id")
@@ -112,6 +131,8 @@ export const subscriptions = pgTable(
     status: text("status").notNull(),
     /** Fin de la période déjà payée : l'accès reste ouvert jusque-là après une résiliation. */
     currentPeriodEnd: timestamp("current_period_end", { withTimezone: true }),
+    /** Dernier statut pour lequel l'abonné a été prévenu par e-mail. */
+    notifiedStatus: text("notified_status"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },

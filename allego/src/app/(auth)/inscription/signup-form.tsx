@@ -13,11 +13,11 @@ export function SignupForm() {
       <FormMessage state={state} />
       <div>
         <label htmlFor="name" className="label">Prénom</label>
-        <input id="name" name="name" className="input" autoComplete="given-name" required />
+        <input id="name" name="name" className="input" autoComplete="given-name" defaultValue={state?.values?.name} required />
       </div>
       <div>
         <label htmlFor="email" className="label">E-mail</label>
-        <input id="email" name="email" type="email" className="input" autoComplete="email" required />
+        <input id="email" name="email" type="email" className="input" autoComplete="email" defaultValue={state?.values?.email} required />
       </div>
       <div>
         <label htmlFor="password" className="label">Mot de passe</label>
@@ -34,7 +34,7 @@ export function SignupForm() {
         <p id="password-hint" className="hint mt-1">8 caractères minimum.</p>
       </div>
       <label className="flex items-start gap-3 text-sm">
-        <input type="checkbox" name="healthConsent" className="mt-1 h-4 w-4 accent-feuille" required />
+        <input type="checkbox" name="healthConsent" className="mt-1 h-4 w-4 accent-feuille" defaultChecked={state?.values?.healthConsent === "on"} required />
         <span>
           J&apos;accepte qu&apos;Allégo enregistre mes mesures (poids, taille, alimentation), qui sont des
           données de santé, uniquement pour calculer et suivre mon programme. Je peux retirer cet accord
@@ -42,7 +42,7 @@ export function SignupForm() {
         </span>
       </label>
       <label className="flex items-start gap-3 text-sm">
-        <input type="checkbox" name="terms" className="mt-1 h-4 w-4 accent-feuille" required />
+        <input type="checkbox" name="terms" className="mt-1 h-4 w-4 accent-feuille" defaultChecked={state?.values?.terms === "on"} required />
         <span>
           J&apos;ai lu les{" "}
           <Link href="/cgv" className="underline" target="_blank">conditions générales</Link> et la{" "}

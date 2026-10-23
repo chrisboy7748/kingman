@@ -10,10 +10,7 @@ import { getAccess } from "@/lib/account";
 import { refreshSubscription } from "@/lib/billing";
 import { cancelPaypalSubscription, createPaypalSubscription, paypalConfigured } from "@/lib/paypal";
 import { paypalPlanId } from "@/lib/plans";
-
-function appUrl() {
-  return (process.env.APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
-}
+import { appUrl } from "@/lib/url";
 
 /** Crée l'abonnement chez PayPal puis envoie l'utilisateur sur PayPal pour le valider. */
 export async function startCheckout(formData: FormData) {

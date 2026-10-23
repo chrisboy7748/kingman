@@ -14,6 +14,7 @@ function sub(status: string, currentPeriodEnd: Date | null = null): Subscription
     plan: "mensuel",
     status,
     currentPeriodEnd,
+    notifiedStatus: null,
     createdAt: past,
     updatedAt: past,
   };

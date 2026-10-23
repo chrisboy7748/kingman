@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import type { PaypalSubscription } from "@/lib/paypal";
 
 const remote = new Map<string, PaypalSubscription>();
+vi.mock("@/lib/email", () => ({ sendEmailSafely: async () => true }));
 vi.mock("@/lib/paypal", () => ({
   getPaypalSubscription: async (id: string) => {
     const sub = remote.get(id);
@@ -42,7 +43,7 @@ describe("syncSubscription", () => {
     const user = await makeUser();
     const row = await syncSubscription(paypalSub("I-A", user.id));
     expect(row).toMatchObject({ userId: user.id, plan: "mensuel", status: "ACTIVE" });
-    expect(row.currentPeriodEnd?.toISOString()).toBe("2026-11-23T10:00:00.000Z");
+    expect(row?.currentPeriodEnd?.toISOString()).toBe("2026-11-23T10:00:00.000Z");
   });
 
   it("garde la fin de période connue après une résiliation", async () => {
@@ -59,14 +60,15 @@ describe("syncSubscription", () => {
     const row = await syncSubscription(
       paypalSub("I-C", user.id, { plan_id: "P-ANNUEL", status: "CANCELLED", billing_info: { last_payment: { time: "2026-03-01T08:00:00Z" } } }),
     );
-    expect(row.plan).toBe("annuel");
-    expect(row.currentPeriodEnd?.toISOString()).toBe("2027-03-01T08:00:00.000Z");
+    expect(row?.plan).toBe("annuel");
+    expect(row?.currentPeriodEnd?.toISOString()).toBe("2027-03-01T08:00:00.000Z");
   });
 
-  it("refuse un plan inconnu ou un compte inexistant", async () => {
+  it("refuse un plan inconnu et ignore un compte supprimé", async () => {
     const user = await makeUser();
     await expect(syncSubscription(paypalSub("I-D", user.id, { plan_id: "P-AUTRE" }))).rejects.toThrow("Plan PayPal inconnu");
-    await expect(syncSubscription(paypalSub("I-E", crypto.randomUUID()))).rejects.toThrow("compte inexistant");
+    expect(await syncSubscription(paypalSub("I-E", crypto.randomUUID()))).toBeNull();
+    expect(await subscriptionRow("I-E")).toBeUndefined();
   });
 });
 

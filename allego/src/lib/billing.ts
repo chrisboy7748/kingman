@@ -1,6 +1,9 @@
 import "server-only";
-import { eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
+import type { Subscription, User } from "@/db/schema";
+import { sendEmailSafely } from "@/lib/email";
+import { paymentFailedEmail, subscriptionActiveEmail, subscriptionCancelledEmail } from "@/lib/email-templates";
 import { getPaypalSubscription, type PaypalSubscription } from "@/lib/paypal";
 import { PLANS, planFromPaypalId, type PlanKey } from "@/lib/plans";
 
@@ -16,13 +19,14 @@ function addInterval(from: Date, plan: PlanKey) {
  * PayPal reste la source de vérité : on relit toujours l'abonnement chez PayPal
  * plutôt que de faire confiance au contenu d'un webhook ou d'une URL.
  */
-export async function syncSubscription(sub: PaypalSubscription) {
+export async function syncSubscription(sub: PaypalSubscription): Promise<Subscription | null> {
   const plan = planFromPaypalId(sub.plan_id);
   if (!plan) throw new Error(`Plan PayPal inconnu : ${sub.plan_id}`);
   const userId = sub.custom_id;
   if (!userId) throw new Error(`Abonnement ${sub.id} sans custom_id`);
   const user = await db.query.users.findFirst({ where: eq(schema.users.id, userId) });
-  if (!user) throw new Error(`Abonnement ${sub.id} lié à un compte inexistant`);
+  // Compte supprimé entre-temps : ses abonnements ont été résiliés avant la suppression.
+  if (!user) return null;
 
   const existing = await db.query.subscriptions.findFirst({
     where: eq(schema.subscriptions.paypalSubscriptionId, sub.id),
@@ -42,7 +46,26 @@ export async function syncSubscription(sub: PaypalSubscription) {
     .values({ paypalSubscriptionId: sub.id, ...values })
     .onConflictDoUpdate({ target: schema.subscriptions.paypalSubscriptionId, set: values })
     .returning();
+  await notifyStatusChange(row, user);
   return row;
+}
+
+/**
+ * Prévient l'abonné quand son abonnement devient actif, est résilié ou suspendu.
+ * La mise à jour conditionnelle garantit un seul e-mail par changement de statut,
+ * même si le retour de PayPal et le webhook arrivent en même temps.
+ */
+async function notifyStatusChange(sub: Subscription, user: User) {
+  const [claimed] = await db
+    .update(schema.subscriptions)
+    .set({ notifiedStatus: sub.status })
+    .where(and(eq(schema.subscriptions.id, sub.id), sql`${schema.subscriptions.notifiedStatus} IS DISTINCT FROM ${sub.status}`))
+    .returning({ id: schema.subscriptions.id });
+  if (!claimed) return;
+
+  if (sub.status === "ACTIVE") await sendEmailSafely(subscriptionActiveEmail(user, sub.plan, sub.currentPeriodEnd));
+  else if (sub.status === "CANCELLED") await sendEmailSafely(subscriptionCancelledEmail(user, sub.currentPeriodEnd));
+  else if (sub.status === "SUSPENDED") await sendEmailSafely(paymentFailedEmail(user));
 }
 
 export async function refreshSubscription(paypalSubscriptionId: string) {

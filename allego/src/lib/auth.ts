@@ -44,12 +44,13 @@ export async function endSession() {
   (await cookies()).delete(COOKIE);
 }
 
-async function sessionUserId(): Promise<string | null> {
+async function readSession(): Promise<{ userId: string; issuedAt: number } | null> {
   const token = (await cookies()).get(COOKIE)?.value;
   if (!token) return null;
   try {
     const { payload } = await jwtVerify(token, secret(), { algorithms: ["HS256"] });
-    return payload.sub ?? null;
+    if (!payload.sub || !payload.iat) return null;
+    return { userId: payload.sub, issuedAt: payload.iat };
   } catch {
     return null;
   }
@@ -57,10 +58,13 @@ async function sessionUserId(): Promise<string | null> {
 
 /** Utilisateur connecté, ou null. Mis en cache pour la durée d'une requête. */
 export const getCurrentUser = cache(async () => {
-  const id = await sessionUserId();
-  if (!id) return null;
-  const user = await db.query.users.findFirst({ where: eq(schema.users.id, id) });
-  return user ?? null;
+  const session = await readSession();
+  if (!session) return null;
+  const user = await db.query.users.findFirst({ where: eq(schema.users.id, session.userId) });
+  if (!user) return null;
+  // Une session ouverte avant le dernier changement de mot de passe n'est plus valable.
+  if (user.passwordChangedAt && session.issuedAt < Math.floor(user.passwordChangedAt.getTime() / 1000)) return null;
+  return user;
 });
 
 export async function requireUser() {
