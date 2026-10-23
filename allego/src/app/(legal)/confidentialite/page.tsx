@@ -18,6 +18,10 @@ export default function Privacy() {
           activités notés.
         </li>
         <li>
+          Sécurité : adresse IP et adresse e-mail des tentatives de connexion, d&apos;inscription et de
+          réinitialisation du mot de passe, pour bloquer les tentatives en série.
+        </li>
+        <li>
           Paiement : identifiant de l&apos;abonnement PayPal et historique des paiements. Allégo ne reçoit jamais
           vos coordonnées bancaires, qui restent chez PayPal.
         </li>
@@ -48,8 +52,8 @@ export default function Privacy() {
       <h2>Durée de conservation</h2>
       <p>
         Vos données sont conservées tant que votre compte existe, puis effacées immédiatement à sa suppression.
-        Les pièces comptables sont conservées 10 ans conformément à la loi. Un compte inactif depuis [3 ans] est
-        supprimé après un e-mail de rappel.
+        Les traces de paiement sont conservées 10 ans, comme l&apos;exige la loi pour les pièces comptables. Les
+        adresses IP enregistrées pour la sécurité sont effacées au bout de 24 heures.
       </p>
 
       <h2>Vos droits</h2>

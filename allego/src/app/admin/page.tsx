@@ -7,7 +7,9 @@ import { isAdmin, requireUser } from "@/lib/auth";
 import { accessState } from "@/lib/access";
 import { formatDateTime } from "@/lib/dates";
 import { PLANS } from "@/lib/plans";
+import { checkEnv } from "@/lib/env";
 import { Logo } from "@/components/ui";
+import { PaypalSetupForm } from "./paypal-setup-form";
 
 export const metadata: Metadata = { title: "Administration", robots: { index: false } };
 
@@ -35,6 +37,8 @@ export default async function AdminPage() {
   const active = activeByPlan.reduce((s, r) => s + r.n, 0);
   const mrr = activeByPlan.reduce((s, r) => s + r.n * PLANS[r.plan].monthlyEquivalent, 0);
   const eur = (v: number) => v.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+  const problems = checkEnv();
+  const paypalReady = Boolean(process.env.PAYPAL_PLAN_MONTHLY && process.env.PAYPAL_PLAN_YEARLY && process.env.PAYPAL_WEBHOOK_ID);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -43,6 +47,32 @@ export default async function AdminPage() {
         <Link href="/app" className="font-medium underline">Retour à l&apos;application</Link>
       </div>
       <h1 className="mt-8 text-4xl font-extrabold">Administration</h1>
+
+      <section className="panel mt-6">
+        <h2 className="text-2xl font-bold">Configuration</h2>
+        {problems.length === 0 ? (
+          <p className="mt-2">Tout est configuré : paiements PayPal en mode réel, e-mails et rappels actifs.</p>
+        ) : (
+          <ul className="mt-3 space-y-2">
+            {problems.map((p) => (
+              <li key={p.message} className={`notice ${p.level === "erreur" ? "notice-warn" : ""}`}>
+                {p.message}
+              </li>
+            ))}
+          </ul>
+        )}
+        {!paypalReady && (
+          <div className="mt-6 border-t border-brume pt-5">
+            <h3 className="text-xl font-bold">Brancher PayPal</h3>
+            <p className="mt-1 max-w-2xl text-grise">
+              Une fois PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET et PAYPAL_ENV renseignés dans Vercel, ce bouton crée chez
+              PayPal les deux formules ({PLANS.mensuel.price} et {PLANS.annuel.price}) et le webhook, puis affiche les
+              valeurs à recopier.
+            </p>
+            <PaypalSetupForm />
+          </div>
+        )}
+      </section>
 
       <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-brume bg-brume md:grid-cols-5">
         {[

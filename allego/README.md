@@ -2,6 +2,8 @@
 
 Application d'accompagnement à la perte de poids, avec abonnement payé par PayPal.
 
+**Pour mettre le site en ligne, suivez [MISE-EN-LIGNE.md](MISE-EN-LIGNE.md)** : guide pas à pas, sans terminal.
+
 ## Ce que contient cette première version
 
 - **Site public** : page d'accueil, tarifs, questions fréquentes, mentions légales, confidentialité et conditions générales (modèles à compléter).
@@ -15,7 +17,8 @@ Application d'accompagnement à la perte de poids, avec abonnement payé par Pay
 - **Abonnement** : 7 jours d'essai sans paiement, puis abonnement mensuel (12,99 €) ou annuel (99,99 €) par PayPal. La résiliation se fait depuis l'application, et l'accès reste ouvert jusqu'à la fin de la période payée.
 - **E-mails** (Resend) : bienvenue, mot de passe oublié, confirmation de changement de mot de passe, rappel 48 heures avant la fin de l'essai, abonnement actif, paiement refusé, résiliation.
 - **Mon compte** : modifier le profil, télécharger ses données (RGPD), supprimer son compte (l'abonnement PayPal est résilié automatiquement).
-- **Administration** (`/admin`) : nombre de comptes, essais en cours, abonnés, revenu mensuel récurrent, encaissements sur 30 jours, derniers inscrits.
+- **Administration** (`/admin`) : état de la configuration, création des formules et du webhook PayPal en un clic, nombre de comptes, essais en cours, abonnés, revenu mensuel récurrent, encaissements sur 30 jours, derniers inscrits.
+- **Sécurité** : limitation des tentatives de connexion, d'inscription et de mot de passe oublié ; en-têtes de sécurité (CSP, HSTS) ; polices hébergées sur le site (aucune requête vers Google) ; tables protégées contre l'API publique de Supabase.
 
 Les calculs reposent sur la formule de Mifflin-St Jeor. L'apport ne descend jamais sous 1 200 kcal (femme) ou 1 500 kcal (homme).
 
@@ -39,41 +42,24 @@ Sans les clés PayPal, toute l'application fonctionne pendant l'essai gratuit. S
 
 Tests : `npm test`. Ils utilisent une base séparée, `allego_test`, qu'ils vident à chaque lancement. Vous pouvez en choisir une autre avec `TEST_DATABASE_URL`.
 
-## Brancher PayPal
+## Brancher PayPal et les e-mails
 
-1. Créez un **compte PayPal Business**.
-2. Sur [developer.paypal.com](https://developer.paypal.com), ouvrez **Apps & Credentials**, mode **Sandbox**, et créez une application. Copiez le *Client ID* et le *Secret* dans `PAYPAL_CLIENT_ID` et `PAYPAL_CLIENT_SECRET`, avec `PAYPAL_ENV=sandbox`.
-3. Lancez `npm run paypal:setup`. Le script crée le produit et les deux formules chez PayPal, puis affiche les lignes `PAYPAL_PLAN_MONTHLY` et `PAYPAL_PLAN_YEARLY` à copier dans `.env`.
-4. Dans votre application PayPal, ajoutez un **webhook** :
-   - URL : `https://<votre-domaine>/api/paypal/webhook`
-   - Événements : `BILLING.SUBSCRIPTION.*` (tous) et `PAYMENT.SALE.COMPLETED`
+Le plus simple est de suivre [MISE-EN-LIGNE.md](MISE-EN-LIGNE.md) : les formules et le webhook PayPal se créent depuis la page Administration du site. En local, `npm run paypal:setup` fait la même chose (le webhook n'est créé que si `APP_URL` est une adresse publique en https).
 
-   Copiez l'*ID du webhook* dans `PAYPAL_WEBHOOK_ID`. PayPal ne peut pas joindre `localhost` : pour tester les webhooks en local, utilisez un tunnel (par exemple `ngrok`) ou testez directement sur le site en ligne.
-5. Testez un abonnement avec un compte acheteur sandbox (onglet *Sandbox accounts*).
-6. Pour les vrais paiements, refaites les étapes 2 à 4 en mode **Live**, avec `PAYPAL_ENV=live`.
+Fonctionnement des paiements : le bouton « Payer avec PayPal » crée l'abonnement côté serveur et envoie l'utilisateur sur PayPal. Au retour, l'abonnement est relu chez PayPal avant d'être activé. Les webhooks tiennent ensuite le statut à jour : renouvellement, échec de paiement, résiliation. Leur signature est vérifiée, et chaque événement n'est traité qu'une fois. Si l'utilisateur s'abonne pendant son essai, le premier prélèvement n'a lieu qu'à la fin de l'essai.
 
-Fonctionnement : le bouton « Payer avec PayPal » crée l'abonnement côté serveur et envoie l'utilisateur sur PayPal. Au retour, l'abonnement est relu chez PayPal avant d'être activé. Les webhooks tiennent ensuite le statut à jour : renouvellement, échec de paiement, résiliation. Leur signature est vérifiée, et chaque événement n'est traité qu'une fois. Si l'utilisateur s'abonne pendant son essai, le premier prélèvement n'a lieu qu'à la fin de l'essai.
+Sans `RESEND_API_KEY`, l'application fonctionne : les e-mails sont écrits dans les journaux du serveur au lieu d'être envoyés. Sans domaine vérifié chez Resend, ils ne partent que vers l'adresse de votre compte Resend.
 
-## Brancher les e-mails (Resend)
+## Déploiement
 
-1. Créez un compte sur [resend.com](https://resend.com), puis une clé dans **API Keys** (droit *Sending access* suffit). Mettez-la dans `RESEND_API_KEY`.
-2. Tant que vous n'avez pas de nom de domaine, gardez `EMAIL_FROM=Allégo <onboarding@resend.dev>`. Resend n'envoie alors qu'à l'adresse e-mail de votre compte Resend, ce qui suffit pour tester.
-3. Quand vous aurez un domaine : dans **Domains**, ajoutez-le et copiez les enregistrements DNS indiqués chez votre registraire. Une fois le domaine vérifié, mettez par exemple `EMAIL_FROM=Allégo <bonjour@votre-domaine.fr>`. Les e-mails partent alors vers n'importe quelle adresse.
-
-Sans `RESEND_API_KEY`, l'application fonctionne : les e-mails sont écrits dans les journaux du serveur au lieu d'être envoyés.
-
-Le rappel de fin d'essai est envoyé par une tâche quotidienne (`vercel.json`, 8 h UTC). Sur Vercel, définissez `CRON_SECRET` avec une valeur aléatoire : Vercel l'envoie de lui-même à chaque appel.
-
-## Mettre en ligne (Vercel et Supabase)
-
-1. **Base de données** : créez un projet [Supabase](https://supabase.com) dans une région européenne. Dans *Connect*, copiez l'URL du **Transaction pooler** dans `DATABASE_URL`, puis lancez `npm run db:migrate` avec cette URL.
-2. **Site** : importez le dépôt sur [Vercel](https://vercel.com), avec `allego` comme *Root Directory*.
-3. Dans Vercel, renseignez toutes les variables de `.env.example`. Mettez `APP_URL` sur votre domaine (`https://…`, sans `/` final) et une valeur aléatoire pour `SESSION_SECRET` (`openssl rand -base64 32`).
-4. Indiquez votre e-mail dans `ADMIN_EMAILS` pour accéder à `/admin`.
+- `vercel.json` : construction avec `npm run vercel-build`, fonctions à Paris (`cdg1`), tâche quotidienne `/api/cron/rappels` à 8 h UTC (rappels de fin d'essai et ménage).
+- Les migrations de la base sont appliquées à chaque déploiement de production, et ignorées pour les déploiements de prévisualisation.
+- Au démarrage, le serveur écrit dans ses journaux les variables manquantes ; la page Administration affiche le même bilan.
+- `/api/sante` répond `{"statut":"ok"}` quand le site et la base fonctionnent.
+- Toute nouvelle table doit recevoir `ENABLE ROW LEVEL SECURITY` dans sa migration (voir `drizzle/0003_enable_rls.sql`).
 
 ## Avant d'ouvrir au public
 
 - Complétez les pages légales (passages entre crochets) et faites-les relire par un juriste.
 - Données de santé : faites vérifier si votre activité impose un hébergeur certifié HDS. Un registre des traitements RGPD est obligatoire dans tous les cas.
 - Vérifiez un nom de domaine chez Resend, sinon les e-mails ne partent que vers votre propre adresse.
-- Limitez les tentatives de connexion (anti force brute) au niveau de l'hébergeur ou de l'application.

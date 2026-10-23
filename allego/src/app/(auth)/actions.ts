@@ -9,6 +9,10 @@ import { TRIAL_DAYS } from "@/lib/plans";
 import { sendEmailSafely } from "@/lib/email";
 import { welcomeEmail } from "@/lib/email-templates";
 import { requestPasswordReset, resetPassword } from "@/lib/password-reset";
+import { clientIp, isRateLimited, recordAttempt } from "@/lib/rate-limit";
+
+const MINUTE = 60_000;
+const TOO_MANY = "Trop de tentatives. Réessayez dans un quart d'heure.";
 
 /** `values` renvoie les saisies après une erreur, pour que le formulaire ne se vide pas. */
 export type FormState = { error?: string; ok?: string; values?: Record<string, string> } | null;
@@ -30,6 +34,11 @@ export async function signup(_: FormState, formData: FormData): Promise<FormStat
   if (!parsed.success) return { error: parsed.error.issues[0].message, values };
   const { name, email, password } = parsed.data;
 
+  const ipKey = `inscription:ip:${await clientIp()}`;
+  if (await isRateLimited(ipKey, 5, 60 * MINUTE)) {
+    return { error: "Trop de comptes créés depuis cette connexion. Réessayez dans une heure.", values };
+  }
+
   const existing = await db.query.users.findFirst({ where: eq(schema.users.email, email) });
   if (existing) return { error: "Un compte existe déjà avec cette adresse. Connectez-vous.", values };
 
@@ -47,6 +56,7 @@ export async function signup(_: FormState, formData: FormData): Promise<FormStat
     .returning();
   if (!user) return { error: "Un compte existe déjà avec cette adresse. Connectez-vous.", values };
 
+  await recordAttempt(ipKey);
   await sendEmailSafely(welcomeEmail(user, user.trialEndsAt));
   await startSession(user.id);
   redirect("/app/bienvenue");
@@ -59,8 +69,15 @@ const loginSchema = z.object({
 
 export async function login(_: FormState, formData: FormData): Promise<FormState> {
   const { email, password } = loginSchema.parse(Object.fromEntries(formData));
+  // Échecs comptés par compte et par connexion, pour freiner les essais de mots de passe en série.
+  const emailKey = `connexion:email:${email}`;
+  const ipKey = `connexion:ip:${await clientIp()}`;
+  if ((await isRateLimited(emailKey, 10, 15 * MINUTE)) || (await isRateLimited(ipKey, 30, 15 * MINUTE))) {
+    return { error: TOO_MANY, values: { email } };
+  }
   const user = await db.query.users.findFirst({ where: eq(schema.users.email, email) });
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
+    await Promise.all([recordAttempt(emailKey), recordAttempt(ipKey)]);
     return { error: "E-mail ou mot de passe incorrect.", values: { email } };
   }
   await startSession(user.id);
@@ -75,6 +92,9 @@ export async function logout() {
 export async function forgotPassword(_: FormState, formData: FormData): Promise<FormState> {
   const email = z.email().safeParse(String(formData.get("email") ?? "").trim().toLowerCase());
   if (!email.success) return { error: "Cette adresse e-mail n'est pas valide.", values: echo(formData, ["email"]) };
+  const ipKey = `oubli:ip:${await clientIp()}`;
+  if (await isRateLimited(ipKey, 10, 60 * MINUTE)) return { error: TOO_MANY, values: { email: email.data } };
+  await recordAttempt(ipKey);
   await requestPasswordReset(email.data);
   // Même réponse que le compte existe ou non.
   return {

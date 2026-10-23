@@ -158,3 +158,14 @@ export const paypalEvents = pgTable("paypal_events", {
 export type User = typeof users.$inferSelect;
 export type Profile = typeof profiles.$inferSelect;
 export type Subscription = typeof subscriptions.$inferSelect;
+
+/** Tentatives récentes (connexion, inscription…), pour limiter les abus. Purgées chaque jour. */
+export const rateLimitEvents = pgTable(
+  "rate_limit_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    key: text("key").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("rate_limit_events_key_created").on(t.key, t.createdAt)],
+);

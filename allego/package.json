@@ -9,8 +9,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "paypal:setup": "tsx scripts/paypal-setup.ts"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "paypal:setup": "tsx scripts/paypal-setup.ts",
+    "vercel-build": "npm run db:migrate && next build"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -34,5 +35,8 @@
     "tsx": "^4.23.15",
     "typescript": "5.9",
     "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }
