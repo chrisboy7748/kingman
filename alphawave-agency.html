@@ -373,16 +373,24 @@
   @media (max-width: 900px) {
     .nav-links, .nav .btn { display: none; }
     .menu-btn { display: block; }
-    .hero { min-height: 0; padding-top: 110px; }
-    .hero-3d { position: relative; width: 100%; height: 400px; order: 2; margin-top: 1rem; }
-    .hero-glow { top: auto; bottom: 60px; right: 0; width: 100vw; height: 100vw; }
-    .hero-inner { order: 1; }
-    .hero-meta { order: 3; margin-top: 1rem; }
+    .hero { min-height: 0; padding: 96px 0 12px; }
+    /* flatten the copy so the 3D logo can slot in right under the headline */
+    .hero-inner, .hero-copy { display: contents; }
+    .hero .kicker, .hero .display, .hero .lead, .hero .actions { margin-left: var(--gutter); margin-right: var(--gutter); position: relative; z-index: 2; }
+    .hero .kicker { order: 1; }
+    .hero .display { order: 2; margin-top: .9rem; line-height: .98; }
+    .hero-3d { order: 3; position: relative; width: 100%; height: 380px; margin: -6px 0 -10px; }
+    .hero .lead { order: 4; margin-top: 0; }
+    .hero .actions { order: 5; margin-top: 1.6rem; }
+    .hero-meta { display: none; }
+    .hero-glow { top: 190px; bottom: auto; right: -20vw; width: 120vw; height: 120vw; }
+    .scrolled .nav-shell { background: rgba(9,13,26,.94); }
     .commit-panel { grid-template-columns: 1fr 1fr; }
     .commit-item:nth-child(3)::before { display: none; }
     .commit-item:nth-child(n+3) { border-top: 1px solid var(--line); }
     .projects-grid { grid-template-columns: 1fr; }
-    .proj { aspect-ratio: 4 / 3.6; }
+    .proj { aspect-ratio: 4 / 4.9; }
+    .proj .shade { background: linear-gradient(180deg, rgba(7,10,19,0) 48%, rgba(7,10,19,.96) 74%); }
     .videos-row { grid-template-columns: 1fr; }
     .videos-intro { flex-direction: row; align-items: end; }
     .videos-intro p { max-width: 36ch; }
@@ -395,15 +403,19 @@
     .svc:last-child { grid-column: 1 / -1; flex-direction: row; align-items: center; }
     .svc:last-child .icon { width: 46%; flex: none; }
     .process-panel { grid-template-columns: 1fr; }
+    .step { padding: 18px 20px; gap: .35rem; }
+    .step svg { display: none; }
     .step::before { display: none; }
     .step + .step { border-top: 1px solid var(--line); }
     .cta-panel { grid-template-columns: 1fr; }
     .cta-art { order: -1; max-width: 360px; margin: -10px auto 0; }
     form { grid-template-columns: 1fr; }
     .brand svg { width: 140px; }
-    .hero-meta { flex-direction: column; align-items: start; }
-    .available { text-align: left; justify-items: start; }
-    .hero-3d { height: 340px; }
+    .hero-3d { height: 330px; }
+    .actions .btn { flex: 1 1 auto; justify-content: space-between; }
+    .site-footer nav a { display: inline-block; padding: .55rem 0; }
+    .contact-list a { display: inline-block; padding: .45rem 0; }
+    .brand { padding: 10px 0; }
     .videos-intro { flex-direction: column; align-items: start; }
     .videos-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 6px; scrollbar-width: none; }
     .videos-track::-webkit-scrollbar { display: none; }
@@ -1002,7 +1014,7 @@
     hero3d = (() => {
       const host = $('#hero3d');
       const renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth < 900 ? 1.5 : 1.75));
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth < 900 ? 1.25 : 1.75));
       renderer.toneMapping = T.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.05;
       renderer.localClippingEnabled = true;
@@ -1051,7 +1063,8 @@
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         const tan = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
-        camera.position.z = Math.max(7.6 / (2 * tan), 10.4 / (2 * tan * camera.aspect));
+        const fitW = innerWidth < 900 ? 11.4 : 10.4, fitH = innerWidth < 900 ? 8.4 : 7.6;
+        camera.position.z = Math.max(fitH / (2 * tan), fitW / (2 * tan * camera.aspect));
         camera.updateProjectionMatrix();
       }
       resize();
