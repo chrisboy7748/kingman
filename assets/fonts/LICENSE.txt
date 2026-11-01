@@ -1,0 +1,8 @@
+Polices hébergées avec le site AlphaWave Agency
+
+- Big Shoulders Display et Big Shoulders Text, par Patric King (XXIX)
+- Literata, par TypeTogether
+
+Les deux familles sont distribuées sous la licence SIL Open Font License 1.1 :
+https://openfontlicense.org
+Fichiers obtenus depuis Google Fonts (sous-ensembles latin et latin-ext).
