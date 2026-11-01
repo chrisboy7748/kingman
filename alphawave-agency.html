@@ -6,10 +6,12 @@
 <title>AlphaWave Agency</title>
 <meta name="description" content="AlphaWave Agency, agence créative et digitale à Dubaï : motion design, UI/UX design, création de sites web, marketing digital et community management.">
 <meta name="theme-color" content="#070A13">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/svg+xml" href="assets/logo/alphawave-app-icon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <meta property="og:title" content="AlphaWave Agency">
 <meta property="og:description" content="Grandir, connecter, réussir. Motion design, UI/UX, sites web, marketing digital et community management.">
-<meta property="og:image" content="assets/alphawave-logo-480.png">
+<meta property="og:image" content="assets/logo/alphawave-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
@@ -31,7 +33,7 @@
     --soft: #B7C0D6;
     --blue: #2F6BFF;
     --blue-2: #7FB2FF;
-    --orange: #FF6A1A;
+    --orange: #FF7A1A;
     --orange-2: #FFA05A;
     --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
     --gutter: clamp(16px, 4.5vw, 64px);
@@ -109,12 +111,8 @@
   }
   .loader.done { opacity: 0; visibility: hidden; }
   .loader-box { display: grid; justify-items: center; gap: 22px; }
-  .loader svg { width: 120px; }
-  .loader .lzig { stroke-dasharray: 1700; stroke-dashoffset: 1700; animation: dash 1.2s var(--ease) forwards; }
-  .loader .larr { stroke-dasharray: 800; stroke-dashoffset: 800; animation: dash 1s var(--ease) .5s forwards; }
-  .loader .lhead, .loader .ltri { opacity: 0; animation: pop .5s var(--ease) 1s forwards; }
-  @keyframes dash { to { stroke-dashoffset: 0; } }
-  @keyframes pop { to { opacity: 1; } }
+  .loader-logo { width: min(320px, 70vw); color: var(--text); clip-path: inset(0 100% 0 0); animation: wipe 1.1s var(--ease) .15s forwards; }
+  @keyframes wipe { to { clip-path: inset(0 0 0 0); } }
   .loader-bar { width: 140px; height: 2px; border-radius: 2px; background: var(--line); overflow: hidden; }
   .loader-bar i { display: block; height: 100%; width: 40%; background: var(--orange); animation: load 1.1s ease-in-out infinite; }
   @keyframes load { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
@@ -129,9 +127,7 @@
   }
   .scrolled .nav-shell { background: rgba(9,13,26,.66); border-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
   .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
-  .brand svg { width: 46px; height: auto; }
-  .brand span { font-stretch: 112%; font-weight: 800; letter-spacing: .12em; font-size: .95rem; }
-  .brand b { color: var(--orange); font-weight: 800; }
+  .brand svg { width: 168px; height: auto; color: var(--text); }
   .nav { display: flex; align-items: center; gap: 2rem; }
   .nav-links { display: flex; gap: 1.8rem; list-style: none; margin: 0; padding: 0; }
   .nav-links a { text-decoration: none; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transition: color .3s; }
@@ -157,7 +153,7 @@
   .hero { position: relative; min-height: max(760px, 100svh); display: flex; flex-direction: column; justify-content: center; padding: 120px 0 40px; overflow: hidden; }
   .hero-3d { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; z-index: 0; }
   .hero-3d canvas { width: 100% !important; height: 100% !important; }
-  .hero-3d .fallback { display: none; position: absolute; inset: 0; margin: auto; width: 60%; filter: drop-shadow(0 30px 60px rgba(47,107,255,.45)); }
+  .hero-3d .fallback { display: none; position: absolute; inset: 0; margin: auto; width: 60%; color: var(--text); }
   .no-webgl .hero-3d .fallback { display: block; }
   .hero-glow { position: absolute; right: 8%; top: 20%; width: 46vw; height: 46vw; max-width: 700px; max-height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,.25), rgba(255,106,26,.08) 45%, transparent 70%); filter: blur(20px); z-index: 0; pointer-events: none; }
   .hero-inner { position: relative; z-index: 2; width: 100%; pointer-events: none; }
@@ -247,7 +243,7 @@
   .vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform 1s var(--ease); }
   .vid:hover img { transform: scale(1.06); }
   .vid-fallback { position: absolute; inset: 0; z-index: -2; display: grid; place-items: center; background: radial-gradient(80% 55% at 50% 38%, rgba(47,107,255,.35), transparent 70%), linear-gradient(180deg, #141B36, #0A0E1D); }
-  .vid-fallback svg { width: 46%; margin-top: -75%; opacity: .9; }
+  .vid-fallback svg { width: 52%; margin-top: -75%; color: var(--text); }
   .vid .play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform .5s var(--ease), background-color .3s, border-color .3s; }
   .vid .play::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); animation: ring 2.4s ease-out infinite; }
   @keyframes ring { from { transform: scale(.85); opacity: 1; } to { transform: scale(1.35); opacity: 0; } }
@@ -348,7 +344,7 @@
   .site-footer { border-top: 1px solid var(--line); padding-block: 40px; }
   .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
   .foot-brand { display: flex; align-items: center; gap: 1rem; }
-  .foot-brand img { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 0 0 5px rgba(255,255,255,.04); }
+  .foot-brand img { width: 120px; height: auto; }
   .foot-brand small { color: var(--muted); font-size: .82rem; }
   .site-footer nav { display: flex; flex-wrap: wrap; gap: 1.6rem; }
   .site-footer nav a { text-decoration: none; color: var(--muted); font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
@@ -402,7 +398,7 @@
     .cta-panel { grid-template-columns: 1fr; }
     .cta-art { order: -1; max-width: 360px; margin: -10px auto 0; }
     form { grid-template-columns: 1fr; }
-    .brand span { display: none; }
+    .brand svg { width: 140px; }
     .hero-meta { flex-direction: column; align-items: start; }
     .available { text-align: left; justify-items: start; }
     .hero-3d { height: 340px; }
@@ -421,28 +417,15 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="g-blue" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2450F5"/><stop offset=".6" stop-color="#2F6BFF"/><stop offset="1" stop-color="#8CBBFF"/></linearGradient>
-    <linearGradient id="g-orange" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#E5480C"/><stop offset="1" stop-color="#FF9A3D"/></linearGradient>
-  </defs>
-  <symbol id="aw-mark" viewBox="-20 -10 900 540">
-    <path d="M15 450 L230 105 L410 450 L535 230 L625 350 L800 115" fill="none" stroke="url(#g-blue)" stroke-width="64" stroke-linejoin="miter" stroke-miterlimit="10"/>
-    <path d="M170 330 C 380 262, 640 215, 800 60" fill="none" stroke="url(#g-orange)" stroke-width="26" stroke-linecap="round"/>
-    <polygon points="852,8 760,36 822,100" fill="url(#g-orange)"/>
-    <polygon points="140,452 196,360 252,452" fill="url(#g-orange)"/>
-  </symbol>
+  <symbol id="aw-mark" viewBox="0 0 258.44 100"><g transform="translate(6.9 0)"><path id="aw-wave" fill="currentColor" d="M16.3 100L52.76 22.44A2.5 2.5 0 0 1 57.28 22.44L87.39 86.5A23.5 23.5 0 0 0 129.93 86.5L146.87 50.44A2.5 2.5 0 0 1 151.4 50.44L168.35 86.5A23.5 23.5 0 0 0 210.88 86.5L251.54 0L228.33 0L191.88 77.56A2.5 2.5 0 0 1 187.35 77.56L170.4 41.5A23.5 23.5 0 0 0 127.87 41.5L110.92 77.56A2.5 2.5 0 0 1 106.4 77.56L76.29 13.5A23.5 23.5 0 0 0 33.75 13.5L-6.9 100Z"/><circle fill="#FF7A1A" cx="55.02" cy="75" r="11"/></g></symbol>
+  <symbol id="aw-logo" viewBox="0 0 717 100"><g transform="translate(6.9 0)"><path fill="currentColor" d="M16.3 100L52.76 22.44A2.5 2.5 0 0 1 57.28 22.44L87.39 86.5A23.5 23.5 0 0 0 129.93 86.5L146.87 50.44A2.5 2.5 0 0 1 151.4 50.44L168.35 86.5A23.5 23.5 0 0 0 210.88 86.5L251.54 0L228.33 0L191.88 77.56A2.5 2.5 0 0 1 187.35 77.56L170.4 41.5A23.5 23.5 0 0 0 127.87 41.5L110.92 77.56A2.5 2.5 0 0 1 106.4 77.56L76.29 13.5A23.5 23.5 0 0 0 33.75 13.5L-6.9 100Z"/><circle fill="#FF7A1A" cx="55.02" cy="75" r="11"/></g><path fill="currentColor" d="M300.37 59.05L288.44 59.05L312.21 0L321.53 0L345.22 59.05L333.04 59.05L328.93 48.05L304.57 48.05L300.37 59.05ZM308.26 38.47L325.23 38.47L316.83 16.13L308.26 38.47ZM361.43 59.05L350.43 59.05L350.43-1.68L361.43-1.68L361.43 59.05ZM392.43 59.89L392.43 59.89Q388.06 59.89 384.53 58.04L384.53 58.04Q382.43 57.04 380.84 55.44L380.84 55.44L380.84 76.02L369.92 76.02L369.92 18.48L380.92 18.48L380.92 22.09Q382.52 20.58 384.62 19.49L384.62 19.49Q388.06 17.64 392.43 17.64L392.43 17.64Q398.06 17.64 402.51 20.41Q406.96 23.18 409.52 27.97Q412.09 32.76 412.09 38.81L412.09 38.81Q412.09 44.77 409.52 49.56Q406.96 54.35 402.51 57.12Q398.06 59.89 392.43 59.89ZM390.50 49.73L390.50 49.73Q393.52 49.73 395.87 48.34Q398.23 46.96 399.53 44.48Q400.83 42.00 400.83 38.72L400.83 38.72Q400.83 35.53 399.53 33.05Q398.23 30.58 395.87 29.19Q393.52 27.80 390.50 27.80L390.50 27.80Q387.56 27.80 385.21 29.19Q382.85 30.58 381.55 33.05Q380.25 35.53 380.25 38.72L380.25 38.72Q380.25 42.00 381.55 44.48Q382.85 46.96 385.16 48.34Q387.47 49.73 390.50 49.73ZM456.35 59.05L445.35 59.05L445.35 35.78Q445.35 32.17 443.08 29.90Q440.81 27.64 437.20 27.64L437.20 27.64Q434.85 27.64 433.00 28.64Q431.15 29.65 430.10 31.50Q429.05 33.35 429.05 35.78L429.05 35.78L429.05 59.05L418.05 59.05L418.05-1.68L429.05-1.68L429.05 22.18Q430.48 20.75 432.41 19.66L432.41 19.66Q435.94 17.64 440.56 17.64Q445.18 17.64 448.75 19.66Q452.32 21.67 454.34 25.20Q456.35 28.73 456.35 33.35L456.35 33.35L456.35 59.05ZM480.97 59.89L480.97 59.89Q475.42 59.89 470.97 57.12Q466.52 54.35 464.00 49.56Q461.48 44.77 461.48 38.81L461.48 38.81Q461.48 32.76 464.00 27.97Q466.52 23.18 470.97 20.41Q475.42 17.64 480.97 17.64L480.97 17.64Q485.33 17.64 488.78 19.40L488.78 19.40Q491.05 20.58 492.73 22.34L492.73 22.34L492.73 18.48L503.65 18.48L503.65 59.05L492.73 59.05L492.73 55.10Q491.05 56.87 488.78 58.04L488.78 58.04Q485.33 59.89 480.97 59.89ZM482.98 49.73L482.98 49.73Q487.60 49.73 490.46 46.66Q493.31 43.60 493.31 38.72L493.31 38.72Q493.31 35.53 492.01 33.05Q490.71 30.58 488.40 29.19Q486.09 27.80 482.98 27.80L482.98 27.80Q479.96 27.80 477.65 29.19Q475.34 30.58 474.04 33.05Q472.73 35.53 472.73 38.72L472.73 38.72Q472.73 42.00 474.04 44.48Q475.34 46.96 477.65 48.34Q479.96 49.73 482.98 49.73ZM536.83 59.05L528.26 59.05L509.11 0L520.36 0L532.63 39.31L544.72 0L553.21 0L565.22 39.23L577.57 0L588.82 0L569.59 59.05L561.10 59.05L548.92 19.66L536.83 59.05ZM605.62 59.89L605.62 59.89Q600.08 59.89 595.63 57.12Q591.17 54.35 588.65 49.56Q586.13 44.77 586.13 38.81L586.13 38.81Q586.13 32.76 588.65 27.97Q591.17 23.18 595.63 20.41Q600.08 17.64 605.62 17.64L605.62 17.64Q609.99 17.64 613.43 19.40L613.43 19.40Q615.70 20.58 617.38 22.34L617.38 22.34L617.38 18.48L628.30 18.48L628.30 59.05L617.38 59.05L617.38 55.10Q615.70 56.87 613.43 58.04L613.43 58.04Q609.99 59.89 605.62 59.89ZM607.64 49.73L607.64 49.73Q612.26 49.73 615.11 46.66Q617.97 43.60 617.97 38.72L617.97 38.72Q617.97 35.53 616.67 33.05Q615.37 30.58 613.06 29.19Q610.75 27.80 607.64 27.80L607.64 27.80Q604.61 27.80 602.30 29.19Q599.99 30.58 598.69 33.05Q597.39 35.53 597.39 38.72L597.39 38.72Q597.39 42.00 598.69 44.48Q599.99 46.96 602.30 48.34Q604.61 49.73 607.64 49.73ZM657.87 59.05L649.97 59.05L632.08 18.48L644.18 18.48L654.09 44.18L664.00 18.48L675.68 18.48L657.87 59.05ZM697.69 59.89L697.69 59.89Q691.30 59.89 686.35 57.16Q681.39 54.43 678.49 49.64Q675.59 44.86 675.59 38.72L675.59 38.72Q675.59 32.68 678.41 27.93Q681.22 23.18 686.09 20.37Q690.97 17.56 696.93 17.56L696.93 17.56Q702.81 17.56 707.30 20.20Q711.80 22.85 714.36 27.43Q716.92 32.00 716.92 37.80L716.92 37.80Q716.92 38.89 716.80 40.03Q716.67 41.16 716.33 42.59L716.33 42.59L686.68 42.67Q687.02 43.93 687.61 44.94L687.61 44.94Q688.95 47.71 691.55 49.18Q694.16 50.65 697.60 50.65L697.60 50.65Q700.71 50.65 703.23 49.60Q705.75 48.55 707.60 46.45L707.60 46.45L714.07 52.92Q711.13 56.36 706.88 58.13Q702.64 59.89 697.69 59.89ZM686.68 34.44L686.68 34.44L706.34 34.36Q706.00 32.93 705.50 31.75L705.50 31.75Q704.32 29.32 702.18 28.01Q700.04 26.71 696.93 26.71L696.93 26.71Q693.65 26.71 691.22 28.18Q688.78 29.65 687.52 32.26L687.52 32.26Q687.02 33.26 686.68 34.44Z"></path><path fill="currentColor" d="M291.12 100L288.44 100L294.77 84.60L296.53 84.60L302.83 100L300.10 100L298.93 97.03L292.31 97.03L291.12 100ZM293.19 94.83L298.05 94.83L295.63 88.69L293.19 94.83ZM318.36 100.22L318.36 100.22Q316.77 100.22 315.37 99.60Q313.96 98.99 312.90 97.90Q311.85 96.81 311.24 95.37Q310.64 93.93 310.64 92.28Q310.64 90.63 311.24 89.20Q311.85 87.77 312.91 86.68Q313.98 85.59 315.42 84.98Q316.86 84.38 318.53 84.38L318.53 84.38Q320.36 84.38 321.92 85.08Q323.48 85.79 324.54 87.09L324.54 87.09L322.82 88.80Q322.14 87.83 321.00 87.32Q319.85 86.80 318.53 86.80L318.53 86.80Q316.95 86.80 315.75 87.49Q314.55 88.19 313.89 89.42Q313.23 90.65 313.23 92.28Q313.23 93.91 313.90 95.15Q314.57 96.39 315.72 97.10Q316.86 97.80 318.31 97.80L318.31 97.80Q319.85 97.80 320.96 97.24Q322.08 96.68 322.67 95.56L322.67 95.56Q323.04 94.87 323.18 93.97L323.18 93.97L318.27 93.97L318.27 91.66L325.88 91.66L325.88 92.01Q325.88 94.76 324.90 96.59Q323.92 98.42 322.23 99.32Q320.54 100.22 318.36 100.22ZM346.23 100L335.87 100L335.87 84.60L346.12 84.60L346.12 86.91L338.40 86.91L338.40 91.02L345.48 91.02L345.48 93.25L338.40 93.25L338.40 97.69L346.23 97.69L346.23 100ZM358.86 100L356.33 100L356.33 84.60L358.09 84.60L366.23 95.23L366.23 84.60L368.76 84.60L368.76 100L367.00 100L358.86 89.37L358.86 100ZM386.58 100.22L386.58 100.22Q384.91 100.22 383.49 99.61Q382.07 99.01 381.01 97.92Q379.96 96.83 379.39 95.39Q378.81 93.95 378.81 92.30L378.81 92.30Q378.81 90.65 379.39 89.21Q379.96 87.77 381.01 86.69Q382.07 85.61 383.49 85.00Q384.91 84.38 386.58 84.38L386.58 84.38Q388.45 84.38 389.81 85.00Q391.18 85.61 392.23 86.67L392.23 86.67L390.52 88.38Q389.84 87.64 388.86 87.22Q387.88 86.80 386.58 86.80L386.58 86.80Q385.44 86.80 384.49 87.20Q383.54 87.59 382.85 88.33Q382.16 89.07 381.78 90.08Q381.41 91.09 381.41 92.30L381.41 92.30Q381.41 93.51 381.78 94.52Q382.16 95.53 382.85 96.27Q383.54 97.01 384.49 97.40Q385.44 97.80 386.58 97.80L386.58 97.80Q387.99 97.80 388.97 97.37Q389.95 96.94 390.63 96.19L390.63 96.19L392.34 97.91Q391.29 98.99 389.86 99.60Q388.43 100.22 386.58 100.22ZM408.47 100L405.94 100L405.94 93.29L400.29 84.60L403.21 84.60L407.22 90.89L411.22 84.60L414.10 84.60L408.47 93.20L408.47 100Z"></path></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-box">
-    <svg viewBox="-20 -10 900 540">
-      <path class="lzig" d="M15 450 L230 105 L410 450 L535 230 L625 350 L800 115" fill="none" stroke="url(#g-blue)" stroke-width="64" stroke-linejoin="miter" stroke-miterlimit="10"/>
-      <path class="larr" d="M170 330 C 380 262, 640 215, 800 60" fill="none" stroke="url(#g-orange)" stroke-width="26" stroke-linecap="round"/>
-      <polygon class="lhead" points="852,8 760,36 822,100" fill="url(#g-orange)"/>
-      <polygon class="ltri" points="140,452 196,360 252,452" fill="url(#g-orange)"/>
-    </svg>
+    <svg class="loader-logo" viewBox="0 0 717 100"><use href="#aw-logo"/></svg>
     <div class="loader-bar"><i></i></div>
   </div>
 </div>
@@ -451,8 +434,7 @@
   <div class="wrap">
     <div class="nav-shell">
       <a href="#top" class="brand" aria-label="AlphaWave Agency, retour en haut">
-        <svg viewBox="-20 -10 900 540" aria-hidden="true"><use href="#aw-mark"/></svg>
-        <span>ALPHA<b>WAVE</b></span>
+        <svg viewBox="0 0 717 100" aria-hidden="true"><use href="#aw-logo"/></svg>
       </a>
       <nav class="nav" aria-label="Navigation principale">
         <ul class="nav-links">
@@ -481,7 +463,7 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-3d" id="hero3d" aria-hidden="true">
-      <svg class="fallback" viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg>
+      <svg class="fallback" viewBox="0 0 258.44 100"><use href="#aw-mark"/></svg>
     </div>
     <div class="wrap hero-inner">
       <div class="hero-copy">
@@ -587,7 +569,7 @@
         </div>
         <div class="videos-track">
           <a href="https://www.youtube.com/shorts/Cs_ZUEI8Aw4" target="_blank" rel="noopener" class="proj vid glass" data-video="Cs_ZUEI8Aw4" data-reveal style="--d:0.00s" aria-label="Regarder la vidéo : Des vues aux clients">
-            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="0 0 258.44 100"><use href="#aw-mark"/></svg></span>
             <img src="assets/videos/Cs_ZUEI8Aw4.jpg" alt="" loading="lazy" onerror="this.remove()">
             <div class="shade"></div>
             <span class="tag">Vidéo</span>
@@ -595,7 +577,7 @@
             <div class="info"><div><h3>Des vues aux clients</h3><p class="cat">Vidéo promo, motion design</p></div></div>
           </a>
           <a href="https://www.youtube.com/shorts/r_yoi4I5fr0" target="_blank" rel="noopener" class="proj vid glass" data-video="r_yoi4I5fr0" data-reveal style="--d:0.08s" aria-label="Regarder la vidéo : Logo animé AlphaWave">
-            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="0 0 258.44 100"><use href="#aw-mark"/></svg></span>
             <img src="assets/videos/r_yoi4I5fr0.jpg" alt="" loading="lazy" onerror="this.remove()">
             <div class="shade"></div>
             <span class="tag">Vidéo</span>
@@ -603,7 +585,7 @@
             <div class="info"><div><h3>Logo animé AlphaWave</h3><p class="cat">Animation de logo</p></div></div>
           </a>
           <a href="https://www.youtube.com/shorts/Kb-3bDBLm-w" target="_blank" rel="noopener" class="proj vid glass" data-video="Kb-3bDBLm-w" data-reveal style="--d:0.16s" aria-label="Regarder la vidéo : Concept immobilier Tilal">
-            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="0 0 258.44 100"><use href="#aw-mark"/></svg></span>
             <img src="assets/videos/Kb-3bDBLm-w.jpg" alt="" loading="lazy" onerror="this.remove()">
             <div class="shade"></div>
             <span class="tag">Concept</span>
@@ -734,7 +716,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-brand">
-      <img src="assets/alphawave-logo-480.png" alt="AlphaWave Agency" width="64" height="64" loading="lazy">
+      <img src="assets/logo/alphawave-logo-vertical-white.svg" alt="AlphaWave Agency" width="120" height="71" loading="lazy">
       <small>© <span id="year">2026</span> AlphaWave Agency<br>Grow, Connect, Succeed</small>
     </div>
     <nav aria-label="Pied de page">
@@ -922,7 +904,7 @@
       };
       panel(0xffffff, 7, [0, 9, 1], [Math.PI / 2, 0, 0], [9, 6, 1]);
       panel(0x2f6bff, 6, [-9, 1.5, 1], [0, Math.PI / 2, 0], [4, 14, 1]);
-      panel(0xff6a1a, 6, [9, 1, -1], [0, -Math.PI / 2, 0], [3.5, 14, 1]);
+      panel(0xff7a1a, 6, [9, 1, -1], [0, -Math.PI / 2, 0], [3.5, 14, 1]);
       panel(0xcfe0ff, 1.7, [0, .5, 10], [0, Math.PI, 0], [16, 9, 1]);
       panel(0xffffff, 4, [0, 3.2, 10], [0, Math.PI, 0], [12, 1.4, 1]);
       panel(0xbfd4ff, 1.6, [-3, 3, -9], [0, 0, 0], [6, 6, 1]);
@@ -944,10 +926,10 @@
         chrome: new T.MeshPhysicalMaterial({ color: 0xe9eef8, metalness: 1, roughness: .07, envMapIntensity: 1.25 }),
         blueChrome: new T.MeshPhysicalMaterial({ color: 0x4d82ff, metalness: 1, roughness: .16, clearcoat: 1, clearcoatRoughness: .05, envMapIntensity: 1.6 }),
         navyChrome: new T.MeshPhysicalMaterial({ color: 0x2a4fc4, metalness: .95, roughness: .2, clearcoat: 1, envMapIntensity: 1.7 }),
-        orange: new T.MeshPhysicalMaterial({ color: 0xff6a1a, metalness: .1, roughness: .16, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.2, emissive: 0x3a0e00 }),
+        orange: new T.MeshPhysicalMaterial({ color: 0xff7a1a, metalness: .1, roughness: .16, clearcoat: 1, clearcoatRoughness: .04, envMapIntensity: 1.2, emissive: 0x3a0e00 }),
         clear: glass(0xeef4ff, 0xd8e6ff),
         blueGlass: glass(0x8fb6ff, 0x2f6bff),
-        orangeGlass: glass(0xffb27a, 0xff6a1a)
+        orangeGlass: glass(0xffb27a, 0xff7a1a)
       };
     }
 
@@ -977,29 +959,41 @@
       g.center(); return g;
     };
 
-    /* The AlphaWave mark rebuilt in 3D: chrome zigzag, glossy orange arrow and triangle */
+    /* The AlphaWave wave, extruded from the logo's own outline, with its orange dot */
     function awMark(M) {
       const g = new T.Group();
-      const P = [[15, 450], [230, 105], [410, 450], [535, 230], [625, 350], [800, 115]].map(([x, y]) => new T.Vector2((x - 408) / 100, -(y - 280) / 100));
-      P.slice(0, -1).forEach((a, i) => {
-        const b = P[i + 1], len = a.distanceTo(b);
-        const seg = new T.Mesh(new RoundedBox(len + .3, .64, .62, 3, .12), i % 2 ? M.blueChrome : M.navyChrome);
-        seg.position.set((a.x + b.x) / 2, (a.y + b.y) / 2, i * .002);
-        seg.rotation.z = Math.atan2(b.y - a.y, b.x - a.x);
-        g.add(seg);
-      });
-      const curve = new T.CubicBezierCurve3(
-        new T.Vector3(-2.38, -.5, .55), new T.Vector3(-.28, .18, .7), new T.Vector3(2.32, .65, .7), new T.Vector3(3.9, 2.18, .55));
-      g.add(new T.Mesh(new T.TubeGeometry(curve, 80, .13, 20, false), M.orange));
-      const tip = new T.Mesh(new T.ConeGeometry(.34, .72, 32), M.orange);
-      const tan = curve.getTangent(1);
-      tip.position.copy(curve.getPoint(1)).addScaledVector(tan, .25);
-      tip.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), tan);
-      g.add(tip);
-      const tri = new T.Mesh(extrude(shapeTriangle(.52, .18), .3, .05), M.orange);
-      tri.position.set(-2.12, -1.36, .2);
-      g.add(tri);
-      return g;
+      const NS = 'http://www.w3.org/2000/svg';
+      const tmp = document.createElementNS(NS, 'svg');
+      tmp.setAttribute('width', '0'); tmp.setAttribute('height', '0'); tmp.style.position = 'absolute';
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', $('#aw-wave').getAttribute('d'));
+      tmp.appendChild(path); document.body.appendChild(tmp);
+      const S = 7.6 / 258.44, cx = 122.32, cy = 50, len = path.getTotalLength(), N = 640, pts = [];
+      for (let i = 0; i < N; i++) {
+        const p = path.getPointAtLength(len * i / N);
+        pts.push(new T.Vector2((p.x - cx) * S, -(p.y - cy) * S));
+      }
+      tmp.remove();
+      const geo = new T.ExtrudeGeometry(new T.Shape(pts), { depth: .62, bevelEnabled: true, bevelThickness: .12, bevelSize: .07, bevelSegments: 6, curveSegments: 1 });
+      geo.translate(0, 0, -.31);
+      // a clipping plane sweeps left to right to "draw" the wave in
+      const wipe = new T.Plane(new T.Vector3(-1, 0, 0), 5);
+      // glossy royal-blue lacquer: stays saturated instead of mirroring the pale studio light
+      const waveMat = new T.MeshPhysicalMaterial({ color: 0x1846d6, metalness: .35, roughness: .22, clearcoat: 1, clearcoatRoughness: .05, envMapIntensity: 1.1 });
+      waveMat.clippingPlanes = [wipe];
+      waveMat.clipShadows = true;
+      g.add(new T.Mesh(geo, waveMat));
+      const at = (x, y, z = .62) => new T.Vector3((x - cx) * S, -(y - cy) * S, z);
+      const rest = at(55.02, 75, .55);
+      const dot = new T.Mesh(new T.SphereGeometry(11 * S * 1.2, 48, 48), M.orange);
+      dot.position.copy(rest);
+      g.add(dot);
+      // the line the dot surfs along: up the A, down into each trough, out at the top right
+      const ride = new T.CatmullRomCurve3([
+        rest, at(55, 30), at(56, 12), at(82, 50), at(108.6, 86), at(129, 62), at(149, 40),
+        at(170, 62), at(189.6, 86), at(215, 45), at(240, 6), at(250, -6)
+      ], false, 'centripetal');
+      return { g, wipe, dot, rest, ride };
     }
 
     /* ───── Hero scene ───── */
@@ -1009,6 +1003,7 @@
       renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth < 900 ? 1.5 : 1.75));
       renderer.toneMapping = T.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.05;
+      renderer.localClippingEnabled = true;
       host.appendChild(renderer.domElement);
       const scene = new T.Scene();
       scene.environment = studioEnv(renderer);
@@ -1017,7 +1012,8 @@
       camera.position.set(0, 0, 15);
 
       const world = new T.Group(); scene.add(world);
-      world.add(awMark(M));
+      const mark = awMark(M);
+      world.add(mark.g);
 
       const arch = new T.Mesh(new T.TorusGeometry(4.2, .17, 48, 160, Math.PI), M.chrome);
       arch.position.set(.4, -1.6, -2.6); arch.rotation.z = .05;
@@ -1043,10 +1039,10 @@
       });
 
       const key = new T.DirectionalLight(0xffffff, 1.2); key.position.set(3, 6, 8); scene.add(key);
-      const rimO = new T.PointLight(0xff6a1a, 30, 20); rimO.position.set(6, -2, 3); scene.add(rimO);
+      const rimO = new T.PointLight(0xff7a1a, 30, 20); rimO.position.set(6, -2, 3); scene.add(rimO);
       const rimB = new T.PointLight(0x2f6bff, 30, 20); rimB.position.set(-6, 3, 2); scene.add(rimB);
 
-      let mx = 0, my = 0, tx = 0, ty = 0, scrollP = 0, sp = 0, visible = true, playing = reduced, intro = reduced ? 1 : 0;
+      let mx = 0, my = 0, tx = 0, ty = 0, scrollP = 0, sp = 0, visible = true, playing = reduced, intro = reduced ? 1 : 0, playT0 = -1;
       function resize() {
         const w = host.clientWidth, h = host.clientHeight;
         if (!w || !h) return;
@@ -1062,6 +1058,57 @@
       new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(host);
 
       const clock = new T.Clock();
+      /* Logo animation: wipe-in, dot drop with squash, then the dot surfs the wave every few seconds */
+      const easeInOut = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      const bounce = k => {
+        const n = 7.5625, d = 2.75;
+        if (k < 1 / d) return n * k * k;
+        if (k < 2 / d) return n * (k -= 1.5 / d) * k + .75;
+        if (k < 2.5 / d) return n * (k -= 2.25 / d) * k + .9375;
+        return n * (k -= 2.625 / d) * k + .984375;
+      };
+      const tmpV = new T.Vector3(), localWipe = new T.Plane(new T.Vector3(-1, 0, 0), 5);
+      // clipping planes live in world space, so the wipe is expressed in the logo's own frame and carried along
+      const setWipe = x => {
+        world.updateMatrixWorld(true);
+        localWipe.constant = x;
+        mark.wipe.copy(localWipe).applyMatrix4(mark.g.matrixWorld);
+      };
+      function animateMark(e) {
+        const { dot, rest, ride } = mark;
+        if (reduced) { setWipe(5); dot.position.copy(rest); dot.scale.setScalar(1); return; }
+        // 1. the wave is drawn from left to right
+        setWipe(-4.8 + 9.8 * easeInOut(Math.min(1, e / 1.5)));
+        // 2. the dot drops in and squashes on landing
+        if (e < 1.2) { dot.visible = false; return; }
+        dot.visible = true;
+        if (e < 2.2) {
+          const k = (e - 1.2) / 1, b = bounce(k);
+          dot.position.set(rest.x, rest.y + (1 - b) * 4, rest.z);
+          const impact = Math.max(0, 1 - Math.abs(b - 1) * 12) * (1 - k);
+          dot.scale.set(1 + impact * .35, 1 - impact * .3, 1 + impact * .35);
+          return;
+        }
+        // 3. every 8 s the dot rides the wave, then jumps back home
+        const c = (e - 2.2) % 8;
+        dot.scale.setScalar(1);
+        if (c > 5.4 && c < 7.5) {
+          const k = (c - 5.4) / 2.1;
+          if (k < .78) {
+            ride.getPointAt(easeInOut(k / .78), dot.position);
+          } else {
+            const j = (k - .78) / .22;
+            ride.getPointAt(1, tmpV);
+            dot.position.lerpVectors(tmpV, rest, easeInOut(j));
+            dot.position.y += Math.sin(Math.PI * j) * 1.6;
+          }
+          dot.rotation.z -= .25;
+        } else {
+          dot.position.copy(rest);
+          dot.position.y += Math.sin(e * 2.2) * .03;
+        }
+      }
+
       function frame() {
         const t = clock.getElapsedTime();
         mx += (tx - mx) * .05; my += (ty - my) * .05; sp += (scrollP - sp) * .08;
@@ -1076,6 +1123,7 @@
           c.mesh.position.y = c.y + Math.sin(t * c.f + c.ph) * .18;
         });
         sphere.position.y = -2.1 + Math.sin(t * .7) * .15;
+        animateMark(playing ? (playT0 < 0 ? (playT0 = t, 0) : t - playT0) : 0);
         renderer.render(scene, camera);
       }
       function loop() { if (visible) frame(); requestAnimationFrame(loop); }
