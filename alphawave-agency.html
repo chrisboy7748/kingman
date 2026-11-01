@@ -251,6 +251,38 @@
   .proj:hover .go { background: var(--text); color: var(--bg); transform: rotate(45deg); }
   .tag { position: absolute; top: 18px; left: 18px; padding: .35em .8em; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(7,10,19,.55); border: 1px solid var(--line-2); backdrop-filter: blur(6px); }
   .projects-note { margin-top: 1.2rem; color: var(--muted); font-size: .88rem; }
+  .sub-kicker { margin: clamp(48px, 6vw, 80px) 0 1.2rem; }
+
+  /* Real video projects (YouTube Shorts) */
+  .videos-row { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 3fr); gap: 18px; }
+  .videos-intro { border-radius: 22px; padding: clamp(22px, 2.5vw, 32px); display: flex; flex-direction: column; justify-content: space-between; gap: 1.4rem; }
+  .videos-intro strong { display: block; font-stretch: 70%; font-weight: 300; font-size: clamp(3rem, 5vw, 4.6rem); line-height: 1; margin-bottom: .8rem; }
+  .videos-intro h3 { font-stretch: 85%; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.05; }
+  .videos-intro p { color: var(--muted); font-size: .95rem; }
+  .videos-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .proj.vid { aspect-ratio: 9 / 16; }
+  .vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform 1s var(--ease); }
+  .vid:hover img { transform: scale(1.06); }
+  .vid-fallback { position: absolute; inset: 0; z-index: -2; display: grid; place-items: center; background: radial-gradient(80% 55% at 50% 38%, rgba(47,107,255,.35), transparent 70%), linear-gradient(180deg, #141B36, #0A0E1D); }
+  .vid-fallback svg { width: 46%; margin-top: -75%; opacity: .9; }
+  .vid .play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform .5s var(--ease), background-color .3s, border-color .3s; }
+  .vid .play::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); animation: ring 2.4s ease-out infinite; }
+  @keyframes ring { from { transform: scale(.85); opacity: 1; } to { transform: scale(1.35); opacity: 0; } }
+  .vid .play svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+  .vid:hover .play { transform: scale(1.1); background: var(--orange); border-color: var(--orange); }
+
+  /* Video player overlay */
+  .vmodal { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .35s var(--ease); }
+  .vmodal[hidden] { display: none; }
+  .vmodal.open { opacity: 1; }
+  .vmodal-backdrop { position: absolute; inset: 0; background: rgba(4,6,12,.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .vmodal-box { position: relative; width: min(400px, 100%, calc((100svh - 140px) * 9 / 16)); display: grid; gap: 14px; justify-items: center; transform: translateY(20px) scale(.97); transition: transform .5s var(--ease); }
+  .vmodal.open .vmodal-box { transform: none; }
+  .vmodal-frame { width: 100%; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 40px 100px -20px rgba(0,0,0,.9), 0 0 0 1px var(--line-2); }
+  .vmodal-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .vmodal-close { position: absolute; top: -8px; right: -60px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(255,255,255,.08); cursor: pointer; display: grid; place-items: center; }
+  .vmodal-close svg { width: 18px; height: 18px; }
+  .vmodal-yt { font-size: .85rem; color: var(--muted); }
 
   /* mock 1: dashboard */
   .m-dash { background: linear-gradient(160deg, #141B33, #0A0F20); padding: 60px 22px 22px; display: grid; grid-template-columns: 34px 1fr; gap: 14px; }
@@ -370,6 +402,9 @@
     .commit-item:nth-child(n+3) { border-top: 1px solid var(--line); }
     .projects-grid { grid-template-columns: 1fr; }
     .proj { aspect-ratio: 4 / 3.6; }
+    .videos-row { grid-template-columns: 1fr; }
+    .videos-intro { flex-direction: row; align-items: end; }
+    .videos-intro p { max-width: 36ch; }
     .contact-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
@@ -388,6 +423,11 @@
     .hero-meta { flex-direction: column; align-items: start; }
     .available { text-align: left; justify-items: start; }
     .hero-3d { height: 340px; }
+    .videos-intro { flex-direction: column; align-items: start; }
+    .videos-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 6px; scrollbar-width: none; }
+    .videos-track::-webkit-scrollbar { display: none; }
+    .videos-track .vid { flex: 0 0 68%; scroll-snap-align: center; }
+    .vmodal-close { top: auto; bottom: -60px; right: 50%; margin-right: -23px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -554,6 +594,42 @@
         </div>
         <a href="#contact" class="link-pill" data-reveal style="--d:.1s">Lancer le vôtre <svg><use href="#i-right"/></svg></a>
       </div>
+      <div class="videos-row">
+        <div class="videos-intro glass" data-reveal>
+          <div>
+            <strong class="chrome">03</strong>
+            <h3>Nos dernières vidéos</h3>
+          </div>
+          <p>Des formats courts pensés pour les réseaux sociaux. Touchez une vidéo pour la regarder ici, sans quitter le site.</p>
+        </div>
+        <div class="videos-track">
+          <a href="https://www.youtube.com/shorts/Cs_ZUEI8Aw4" target="_blank" rel="noopener" class="proj vid glass" data-video="Cs_ZUEI8Aw4" data-reveal style="--d:0.00s" aria-label="Regarder le projet vidéo 01">
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <img src="https://i.ytimg.com/vi/Cs_ZUEI8Aw4/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <div class="shade"></div>
+            <span class="tag">Vidéo</span>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <div class="info"><div><h3>Projet vidéo 01</h3><p class="cat">YouTube Shorts</p></div></div>
+          </a>
+          <a href="https://www.youtube.com/shorts/r_yoi4I5fr0" target="_blank" rel="noopener" class="proj vid glass" data-video="r_yoi4I5fr0" data-reveal style="--d:0.08s" aria-label="Regarder le projet vidéo 02">
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <img src="https://i.ytimg.com/vi/r_yoi4I5fr0/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <div class="shade"></div>
+            <span class="tag">Vidéo</span>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <div class="info"><div><h3>Projet vidéo 02</h3><p class="cat">YouTube Shorts</p></div></div>
+          </a>
+          <a href="https://www.youtube.com/shorts/Kb-3bDBLm-w" target="_blank" rel="noopener" class="proj vid glass" data-video="Kb-3bDBLm-w" data-reveal style="--d:0.16s" aria-label="Regarder le projet vidéo 03">
+            <span class="vid-fallback" aria-hidden="true"><svg viewBox="-20 -10 900 540"><use href="#aw-mark"/></svg></span>
+            <img src="https://i.ytimg.com/vi/Kb-3bDBLm-w/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <div class="shade"></div>
+            <span class="tag">Vidéo</span>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <div class="info"><div><h3>Projet vidéo 03</h3><p class="cat">YouTube Shorts</p></div></div>
+          </a>
+        </div>
+      </div>
+      <p class="kicker sub-kicker" data-reveal>Exemples de projets web et UI/UX</p>
       <div class="projects-grid">
         <a href="#contact" class="proj glass" data-reveal>
           <div class="mock m-dash" aria-hidden="true">
@@ -592,7 +668,7 @@
           <div class="info"><div><h3>Appli bien-être</h3><p class="cat">UI/UX mobile, campagne</p></div><span class="go"><svg><use href="#i-arrow"/></svg></span></div>
         </a>
       </div>
-      <p class="projects-note" data-reveal>Ces projets sont des exemples qui montrent notre style. Nos réalisations clients seront publiées ici.</p>
+      <p class="projects-note" data-reveal>Ces trois projets web et UI/UX sont des exemples qui montrent notre style.</p>
     </div>
   </section>
 
@@ -662,6 +738,15 @@
     </div>
   </section>
 </main>
+
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Lecteur vidéo" hidden>
+  <div class="vmodal-backdrop" data-close></div>
+  <div class="vmodal-box">
+    <div class="vmodal-frame"></div>
+    <a class="vmodal-yt" href="#" target="_blank" rel="noopener">Ouvrir sur YouTube</a>
+    <button class="vmodal-close" type="button" data-close aria-label="Fermer la vidéo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -752,6 +837,32 @@
     status.textContent = "Votre messagerie s'est ouverte : il ne reste qu'à envoyer le message.";
   });
   $('#year').textContent = new Date().getFullYear();
+
+  /* ───────── Video player (YouTube Shorts in an overlay) ───────── */
+  const vm = $('#vmodal'), vFrame = $('.vmodal-frame', vm), vLink = $('.vmodal-yt', vm);
+  let vLastFocus = null;
+  function openVideo(id, href) {
+    vLastFocus = document.activeElement;
+    vFrame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1" title="Vidéo AlphaWave" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    vLink.href = href;
+    vm.hidden = false;
+    requestAnimationFrame(() => vm.classList.add('open'));
+    if (lenis) lenis.stop();
+    $('.vmodal-close', vm).focus();
+  }
+  function closeVideo() {
+    vm.classList.remove('open');
+    setTimeout(() => { vm.hidden = true; vFrame.innerHTML = ''; }, 350);
+    if (lenis) lenis.start();
+    if (vLastFocus) vLastFocus.focus();
+  }
+  $$('[data-video]').forEach(a => a.addEventListener('click', e => {
+    if (window.AW_NO_EMBED) return;
+    e.preventDefault();
+    openVideo(a.dataset.video, a.href);
+  }));
+  $$('[data-close]', vm).forEach(b => b.addEventListener('click', closeVideo));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !vm.hidden) closeVideo(); });
 
   /* ───────── Reveals and counters ───────── */
   const io = new IntersectionObserver(entries => entries.forEach(en => {
