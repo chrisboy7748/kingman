@@ -137,12 +137,11 @@
     font-size: 0.72rem !important;
     letter-spacing: 0.15em !important;
     text-transform: uppercase;
-    transition: background 0.3s, box-shadow 0.3s !important;
+    transition: background 0.3s !important;
   }
 
   .nav-cta:hover {
     background: #e0001e !important;
-    box-shadow: 0 0 24px var(--red-glow) !important;
   }
 
   .nav-cta::after { display: none !important; }
@@ -272,14 +271,13 @@
     font-family: var(--font-body);
     font-weight: 500;
     border-radius: 2px;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    transition: background 0.3s, transform 0.3s;
     border: none;
     cursor: pointer;
   }
 
   .btn-primary:hover {
     background: #e0001e;
-    box-shadow: 0 0 40px var(--red-glow);
     transform: translateY(-2px);
   }
 
@@ -354,7 +352,7 @@
   .scroll-line {
     width: 40px;
     height: 1px;
-    background: linear-gradient(90deg, var(--red), transparent);
+    background: var(--red);
     animation: scrollLine 2s ease-in-out infinite;
   }
 
@@ -484,7 +482,7 @@
 
   .metric-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--red), var(--gold));
+    background: var(--red);
     border-radius: 2px;
     transform: scaleX(0);
     transform-origin: left;
@@ -600,7 +598,7 @@
     position: absolute;
     bottom: 0; left: 0;
     width: 0; height: 2px;
-    background: linear-gradient(90deg, var(--red), var(--gold));
+    background: var(--red);
     transition: width 0.5s ease;
   }
 
@@ -810,10 +808,7 @@
     font-family: var(--font-display);
     font-size: 3.5rem;
     line-height: 1;
-    background: linear-gradient(135deg, var(--white), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gold);
   }
 
   .global-stat-label {
@@ -1213,14 +1208,13 @@
     text-decoration: none;
     font-size: 1.5rem;
     z-index: 999;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    transition: transform 0.3s;
     animation: bounce 3s ease-in-out infinite;
   }
 
   .whatsapp-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(37,211,102,0.6);
     animation: none;
   }
 
