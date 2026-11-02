@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1055">
+<title>AlphaWave Agency – Affiche</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+  :root {
+    --navy: #0B1B3F;
+    --navy-2: #16295A;
+    --orange: #FF6B00;
+    --orange-2: #FF8A2A;
+    --white: #FFFFFF;
+    --bg: #F3F5F9;
+    --text: #22304F;
+    --radius: 18px;
+    --shadow: 0 12px 30px rgba(11, 27, 63, .10), 0 2px 6px rgba(11, 27, 63, .06);
+    --f-title: "Oswald", "Bebas Neue", "Arial Narrow", sans-serif;
+    --f-text: "Inter", "Segoe UI", Arial, sans-serif;
+    --f-hand: "Caveat", "Kalam", cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page { size: A4; margin: 0; }
+
+  html, body {
+    width: 1055px;
+    height: 1491px;
+    overflow: hidden;
+    background: var(--bg);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body { font-family: var(--f-text); color: var(--text); }
+
+  .poster {
+    position: relative;
+    width: 1055px;
+    height: 1491px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background:
+      radial-gradient(900px 520px at 85% 8%, rgba(54, 104, 214, .13), transparent 62%),
+      radial-gradient(700px 600px at 5% 55%, rgba(54, 104, 214, .08), transparent 60%),
+      radial-gradient(800px 500px at 90% 78%, rgba(54, 104, 214, .07), transparent 60%),
+      linear-gradient(180deg, #F6F8FC 0%, var(--bg) 40%, #EEF2F9 100%);
+  }
+
+  /* ---------- Shared bits ---------- */
+  .chk {
+    flex: 0 0 auto;
+    width: 19px; height: 19px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: #fff;
+    display: inline-grid;
+    place-items: center;
+    font-size: 10px;
+    box-shadow: 0 3px 7px rgba(255, 107, 0, .30);
+  }
+  .nb { white-space: nowrap; }
+
+  /* ---------- 1. HEADER ---------- */
+  .header {
+    position: relative;
+    flex: 0 0 400px;
+  }
+
+  .hero {
+    position: absolute;
+    left: 0; top: 0;
+    width: 480px; height: 400px;
+    overflow: hidden;
+    background:
+      radial-gradient(160px 110px at 62% 38%, rgba(120, 170, 255, .55), transparent 70%),
+      radial-gradient(260px 200px at 30% 85%, rgba(255, 107, 0, .25), transparent 70%),
+      linear-gradient(135deg, #0B1B3F 0%, #1A377A 55%, #3A66C4 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 38%, rgba(0,0,0,.55) 62%, transparent 92%),
+                        linear-gradient(180deg, #000 72%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, #000 38%, rgba(0,0,0,.55) 62%, transparent 92%),
+                linear-gradient(180deg, #000 72%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .hero img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 35% center;
+  }
+
+  .skyline {
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 330px; height: 385px;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%),
+                        linear-gradient(90deg, transparent 0%, #000 45%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%),
+                linear-gradient(90deg, transparent 0%, #000 45%);
+    mask-composite: intersect;
+  }
+  .skyline svg, .skyline img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  .skyline img { object-fit: contain; object-position: right bottom; opacity: .9; }
+  .skyline.has-img .sky-fallback { display: none; }
+
+  .badge {
+    position: absolute;
+    top: 26px; right: 30px;
+    z-index: 3;
+  }
+  .badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--orange);
+    border-radius: 14px;
+    transform: translate(7px, 7px) rotate(3deg);
+  }
+  .badge span {
+    position: relative;
+    display: flex; align-items: center; gap: 9px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 14px;
+    padding: 11px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .badge i { color: var(--orange); font-size: 15px; }
+
+  .head-center {
+    position: absolute;
+    left: 268px; right: 238px;
+    top: 34px;
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+
+  .logo { display: flex; align-items: center; gap: 16px; color: var(--navy); }
+  .logo .mark { width: 104px; height: 56px; }
+  .logo .words { text-align: left; line-height: 1; }
+  .logo .name {
+    font-family: var(--f-title);
+    font-weight: 600;
+    font-size: 60px;
+    line-height: .95;
+    letter-spacing: .005em;
+    color: var(--navy);
+  }
+  .logo .agency {
+    margin-top: 13px;
+    font-family: var(--f-text);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2.5em;
+    margin-right: -2.5em;
+    color: var(--orange);
+  }
+
+  .tagline {
+    margin-top: 22px;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 20.5px;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .tagline .hl {
+    position: relative;
+    color: var(--orange);
+    font-weight: 800;
+    padding: 0 2px;
+  }
+  .tagline .hl svg {
+    position: absolute;
+    left: -4px; right: -4px; bottom: -8px;
+    width: calc(100% + 8px); height: 12px;
+  }
+
+  .pill {
+    margin-top: 18px;
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+    padding: 7px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    white-space: nowrap;
+    background: rgba(255,255,255,.6);
+  }
+  .pill b { color: var(--orange); padding: 0 6px; }
+
+  .title {
+    margin-top: 22px;
+    font-family: var(--f-title);
+    text-transform: uppercase;
+    line-height: 1.02;
+  }
+  .title .l1 {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    font-weight: 600;
+    font-size: 38px;
+    letter-spacing: .02em;
+    color: var(--navy);
+  }
+  .title .l2 {
+    font-weight: 700;
+    font-size: 58px;
+    letter-spacing: .01em;
+    color: var(--orange);
+  }
+  .title .dash { width: 30px; height: 24px; flex: 0 0 auto; }
+
+  /* ---------- 2. SERVICES ---------- */
+  .services {
+    flex: 0 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 322px;
+    gap: 18px 18px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 16px 18px;
+    display: flex; flex-direction: column;
+  }
+  .card-head { display: flex; align-items: center; gap: 13px; }
+  .ico {
+    flex: 0 0 auto;
+    width: 50px; height: 50px;
+    border-radius: 13px;
+    background: var(--navy);
+    color: #fff;
+    display: grid; place-items: center;
+    font-size: 20px;
+    box-shadow: 0 6px 14px rgba(11, 27, 63, .22);
+  }
+  .card h3 {
+    font-family: var(--f-title);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.04;
+    letter-spacing: .02em;
+    color: var(--navy);
+  }
+  .card h3 span { color: var(--orange); }
+
+  .media {
+    position: relative;
+    margin-top: 14px;
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .media .ph-ico { font-size: 34px; color: rgba(255,255,255,.35); }
+  .media img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .ph-motion    { background: radial-gradient(120px 80px at 75% 30%, rgba(255,140,40,.55), transparent 70%), linear-gradient(135deg, #0B1B3F 0%, #24468F 65%, #FF6B00 130%); }
+  .ph-uiux      { background: radial-gradient(120px 80px at 25% 30%, rgba(255,255,255,.35), transparent 70%), linear-gradient(135deg, #1C3A7A 0%, #4F7BD9 60%, #A9C1F0 100%); }
+  .ph-web       { background: radial-gradient(120px 80px at 70% 70%, rgba(80,170,230,.55), transparent 70%), linear-gradient(135deg, #0B1B3F 0%, #133E73 55%, #2E8BC0 100%); }
+  .ph-marketing { background: radial-gradient(120px 80px at 30% 70%, rgba(255,255,255,.28), transparent 70%), linear-gradient(135deg, #FF6B00 0%, #FF9A3D 45%, #1A2F66 100%); }
+  .ph-community { background: radial-gradient(120px 80px at 70% 30%, rgba(255,140,40,.45), transparent 70%), linear-gradient(135deg, #2B4C9B 0%, #0B1B3F 60%, #4A2A2A 130%); }
+
+  .card ul {
+    list-style: none;
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* ---------- 3. PROMO ---------- */
+  .promo {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    padding: 20px 20px 18px;
+    color: #fff;
+    background:
+      radial-gradient(240px 180px at 85% 10%, rgba(255, 210, 120, .55), transparent 70%),
+      linear-gradient(150deg, #FF9A2E 0%, #FF6B00 48%, #EE5200 100%);
+    box-shadow: 0 14px 30px rgba(255, 107, 0, .35), 0 2px 6px rgba(11, 27, 63, .08);
+    display: flex; flex-direction: column;
+  }
+  .promo .rays {
+    position: absolute;
+    top: 0; right: 0;
+    width: 130px; height: 90px;
+    pointer-events: none;
+  }
+  .promo .megaphone {
+    position: absolute;
+    top: 16px; right: 22px;
+    font-size: 44px;
+    color: var(--navy);
+    transform: scaleX(-1) rotate(-14deg);
+    filter: drop-shadow(0 6px 8px rgba(11,27,63,.25));
+  }
+  .promo-title {
+    position: relative;
+    margin-top: 30px;
+    transform: rotate(-4deg);
+    transform-origin: left bottom;
+    font-family: var(--f-title);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .promo-title .t1 {
+    font-weight: 600;
+    font-size: 31px;
+    letter-spacing: .03em;
+  }
+  .promo-title .t2 {
+    margin-top: 2px;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: .95;
+    color: #fff;
+    text-shadow: 4px 4px 0 var(--navy);
+    white-space: nowrap;
+  }
+  .promo .from {
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 15.5px;
+    letter-spacing: .01em;
+  }
+  .promo .price {
+    margin-top: 8px;
+    background: #fff;
+    border-radius: 14px;
+    text-align: center;
+    padding: 4px 0 6px;
+    font-family: var(--f-title);
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 1;
+    color: var(--navy);
+    box-shadow: 0 8px 18px rgba(11, 27, 63, .22);
+    white-space: nowrap;
+  }
+  .promo .wa {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .promo .wa i { font-size: 21px; color: #25D366; }
+
+  /* ---------- 4. CLIENTÈLE ---------- */
+  .clients {
+    flex: 0 0 auto;
+    margin-top: 28px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .tab {
+    position: relative;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 16px 16px 0 0;
+    padding: 10px 40px 6px;
+    font-family: var(--f-title);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: .14em;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .tab::before, .tab::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 16px; height: 16px;
+  }
+  .tab::before { left: -16px;  background: radial-gradient(circle at 0 0, transparent 15.5px, var(--navy) 16px); }
+  .tab::after  { right: -16px; background: radial-gradient(circle at 100% 0, transparent 15.5px, var(--navy) 16px); }
+  .tab .dot { width: 7px; height: 7px; background: var(--orange); transform: rotate(45deg); }
+
+  .band {
+    width: 100%;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 16px 0 18px;
+  }
+  .client {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
+    color: #fff;
+  }
+  .client + .client::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--orange);
+    border-radius: 2px;
+  }
+  .client i { font-size: 27px; }
+  .client span { font-weight: 600; font-size: 15px; letter-spacing: .01em; }
+
+  /* ---------- 5. CONTACT ---------- */
+  .contact {
+    position: relative;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    min-height: 0;
+  }
+  .contact-wave {
+    position: absolute;
+    left: 0; top: 0;
+    width: 380px; height: 100%;
+  }
+  .contact-left {
+    position: relative;
+    z-index: 1;
+    width: 352px;
+    padding: 8px 0 0 34px;
+    color: #fff;
+  }
+  .contact-left h4 {
+    font-family: var(--f-title);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: .04em;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .contact-left ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .contact-left li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .contact-left li i {
+    width: 30px; height: 30px; flex: 0 0 auto;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    display: grid; place-items: center;
+    font-size: 13px; color: #fff;
+  }
+
+  .qr-block {
+    position: relative;
+    z-index: 1;
+    width: 150px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .qr-frame {
+    position: relative;
+    width: 132px; height: 132px;
+    padding: 8px;
+    background: #fff;
+    border: 3px solid var(--orange);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+  .qr-frame .qr-ph, .qr-frame img {
+    width: 100%; height: 100%;
+    border-radius: 8px;
+  }
+  .qr-frame .qr-ph {
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #E7ECF6 0%, #CBD6EC 100%);
+    color: var(--navy);
+    font-size: 62px;
+  }
+  .qr-frame img { position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); object-fit: contain; background: #fff; }
+  .qr-block p {
+    margin-top: 9px;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--navy);
+  }
+  .qr-block p i { color: #25D366; }
+
+  .assure {
+    list-style: none;
+    margin-left: 22px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .assure li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 600; color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .vline {
+    align-self: center;
+    width: 2px; height: 128px;
+    margin: 0 20px 0 22px;
+    background: linear-gradient(180deg, transparent, rgba(11,27,63,.35) 20%, rgba(11,27,63,.35) 80%, transparent);
+  }
+
+  .phrase {
+    width: 200px;
+    font-family: var(--f-hand);
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 1.02;
+    color: var(--navy);
+    transform: rotate(-6deg);
+  }
+  .phrase .u { position: relative; white-space: nowrap; }
+  .phrase .u svg {
+    position: absolute;
+    left: -4px; bottom: -9px;
+    width: calc(100% + 10px); height: 13px;
+  }
+
+  /* ---------- 6. BANDE FINALE ---------- */
+  .footer {
+    position: relative;
+    flex: 0 0 64px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 34px;
+    overflow: hidden;
+  }
+  .footer .wave { position: absolute; right: 0; bottom: 0; width: 470px; height: 64px; }
+  .motto {
+    position: relative;
+    font-family: var(--f-title);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .42em;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .motto b { color: var(--orange); font-weight: 700; letter-spacing: .2em; padding: 0 .2em 0 0; }
+  .brand {
+    position: relative;
+    display: flex; align-items: center; gap: 10px;
+    color: #fff;
+    font-family: var(--f-title);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: .04em;
+    margin-bottom: 8px;
+  }
+  .brand svg { width: 46px; height: 25px; }
+</style>
+</head>
+<body>
+
+<!-- Logo AW réutilisable : lettres en currentColor, point orange -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="aw-clip"><rect x="-20" y="0" width="200" height="72"/></clipPath>
+    <symbol id="aw" viewBox="0 0 168 72">
+      <g clip-path="url(#aw-clip)" fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="miter" stroke-miterlimit="10">
+        <path d="M-2 96 L32 4 L66 96"/>
+        <path d="M62 -24 L83 66 L104 14 L125 66 L146 -24"/>
+      </g>
+      <path d="M14 52 H52" stroke="currentColor" stroke-width="10"/>
+      <circle cx="159" cy="63" r="8.5" fill="#FF6B00"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="poster">
+
+  <!-- ===== 1. EN-TÊTE ===== -->
+  <header class="header">
+    <div class="hero">
+      <img src="assets/hero.jpg" alt="" onerror="this.remove()">
+    </div>
+
+    <div class="skyline" id="skyline">
+      <svg class="sky-fallback" viewBox="0 0 330 385" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0B1B3F" stop-opacity=".30"/>
+            <stop offset="1" stop-color="#0B1B3F" stop-opacity=".16"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#skyg)">
+          <!-- Burj Khalifa -->
+          <rect x="226.5" y="8" width="3" height="52"/>
+          <polygon points="224,60 232,60 233,104 223,104"/>
+          <polygon points="220,104 236,104 238,150 218,150"/>
+          <polygon points="214,150 242,150 245,205 211,205"/>
+          <polygon points="207,205 249,205 252,262 204,262"/>
+          <polygon points="199,262 257,262 261,385 195,385"/>
+          <rect x="190" y="300" width="10" height="85"/>
+          <rect x="256" y="292" width="10" height="93"/>
+          <!-- autres tours -->
+          <polygon points="18,385 18,300 30,286 42,300 42,385"/>
+          <rect x="48" y="262" width="26" height="123"/>
+          <polygon points="80,385 80,230 94,214 108,230 108,385"/>
+          <rect x="114" y="276" width="30" height="109"/>
+          <polygon points="150,385 150,214 162,200 174,214 174,385"/>
+          <rect x="178" y="250" width="14" height="135"/>
+          <rect x="268" y="232" width="22" height="153"/>
+          <polygon points="294,385 294,196 306,180 318,196 318,385"/>
+          <rect x="320" y="262" width="10" height="123"/>
+        </g>
+      </svg>
+      <img src="assets/skyline.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+    </div>
+
+    <div class="badge"><span><i class="fa-solid fa-location-dot"></i>Studio créatif à Dubaï</span></div>
+
+    <div class="head-center">
+      <div class="logo">
+        <svg class="mark" aria-hidden="true"><use href="#aw"/></svg>
+        <div class="words">
+          <div class="name">AlphaWave</div>
+          <div class="agency">AGENCY</div>
+        </div>
+      </div>
+
+      <p class="tagline">Votre image mérite <span class="hl">mieux<svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 20 3, 45 2, 70 4 S 92 7, 98 5" stroke="#FF6B00" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M8 10 C 30 7, 60 6, 90 8" stroke="#FF6B00" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/></svg></span> qu'un simple visuel.</p>
+
+      <div class="pill">Motion Design<b>•</b>Digital Marketing<b>•</b>Web &amp; Design</div>
+
+      <h1 class="title">
+        <span class="l1">
+          <svg class="dash" viewBox="0 0 30 24" aria-hidden="true"><g stroke="#FF6B00" stroke-width="3.2" stroke-linecap="round"><path d="M4 4 L13 9"/><path d="M2 13 H14"/><path d="M4 22 L13 17"/></g></svg>
+          Tous nos services,
+          <svg class="dash" viewBox="0 0 30 24" aria-hidden="true"><g stroke="#FF6B00" stroke-width="3.2" stroke-linecap="round"><path d="M26 4 L17 9"/><path d="M28 13 H16"/><path d="M26 22 L17 17"/></g></svg>
+        </span>
+        <span class="l2">Une seule agence&nbsp;!</span>
+      </h1>
+    </div>
+  </header>
+
+  <!-- ===== 2. SERVICES ===== -->
+  <section class="services">
+    <article class="card">
+      <div class="card-head">
+        <div class="ico"><i class="fa-solid fa-play"></i></div>
+        <h3>Motion<br><span>Design</span></h3>
+      </div>
+      <div class="media ph-motion"><i class="fa-solid fa-play ph-ico"></i><img src="assets/motion.jpg" alt="" onerror="this.remove()"></div>
+      <ul>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Vidéos promo et explicatives</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Logos animés</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Reels, TikTok et Shorts</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Publicités animées</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="ico"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3>UI/UX<br><span>Design</span></h3>
+      </div>
+      <div class="media ph-uiux"><i class="fa-solid fa-mobile-screen-button ph-ico"></i><img src="assets/uiux.jpg" alt="" onerror="this.remove()"></div>
+      <ul>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Maquettes d'applications</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Parcours utilisateur</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Prototypes interactifs</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Design system</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="ico"><i class="fa-solid fa-code"></i></div>
+        <h3>Développement<br><span>Web</span></h3>
+      </div>
+      <div class="media ph-web"><i class="fa-solid fa-code ph-ico"></i><img src="assets/web.jpg" alt="" onerror="this.remove()"></div>
+      <ul>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Sites vitrines</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Boutiques en ligne</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Pages de vente</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Référencement Google</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="ico"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Marketing<br><span>Digital</span></h3>
+      </div>
+      <div class="media ph-marketing"><i class="fa-solid fa-chart-line ph-ico"></i><img src="assets/marketing.jpg" alt="" onerror="this.remove()"></div>
+      <ul>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Publicités Meta et Google</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Stratégie de contenu</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>SEO et e-mailing</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Rapport chaque mois</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="ico"><i class="fa-solid fa-users"></i></div>
+        <h3>Community<br><span>Management</span></h3>
+      </div>
+      <div class="media ph-community"><i class="fa-solid fa-users ph-ico"></i><img src="assets/community.jpg" alt="" onerror="this.remove()"></div>
+      <ul>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Calendrier éditorial</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Création de publications</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Réponses et modération</li>
+        <li><span class="chk"><i class="fa-solid fa-check"></i></span>Suivi des statistiques</li>
+      </ul>
+    </article>
+
+    <!-- ===== 3. PROMO ===== -->
+    <aside class="promo">
+      <svg class="rays" viewBox="0 0 130 90" aria-hidden="true">
+        <g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9">
+          <path d="M52 20 L42 9"/>
+          <path d="M66 12 L64 2"/>
+          <path d="M46 34 L33 33"/>
+          <path d="M112 10 L120 4"/>
+        </g>
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".5">
+          <path d="M84 8 L88 1"/>
+          <path d="M120 70 L127 74"/>
+        </g>
+      </svg>
+      <i class="fa-solid fa-bullhorn megaphone"></i>
+
+      <div class="promo-title">
+        <div class="t1">Devis gratuit</div>
+        <div class="t2">Sous 48&nbsp;H</div>
+      </div>
+      <div class="from">Formules à partir de</div>
+      <div class="price">1&nbsp;500&nbsp;AED</div>
+      <div class="wa"><i class="fa-brands fa-whatsapp"></i>Réponse sous 24&nbsp;h sur WhatsApp</div>
+    </aside>
+  </section>
+
+  <!-- ===== 4. CLIENTÈLE ===== -->
+  <section class="clients">
+    <div class="tab"><span class="dot"></span><span>NOTRE CLIENTÈLE</span><span class="dot"></span></div>
+    <div class="band">
+      <div class="client"><i class="fa-solid fa-building"></i><span>Entreprises</span></div>
+      <div class="client"><i class="fa-solid fa-store"></i><span>Commerçants</span></div>
+      <div class="client"><i class="fa-solid fa-utensils"></i><span>Restaurants</span></div>
+      <div class="client"><i class="fa-solid fa-palette"></i><span>Artistes</span></div>
+      <div class="client"><i class="fa-solid fa-star"></i><span>Influenceurs</span></div>
+      <div class="client"><i class="fa-solid fa-calendar-days"></i><span>Événements</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 5. CONTACT ===== -->
+  <section class="contact">
+    <svg class="contact-wave" viewBox="0 0 380 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 H300 C 352 30, 286 80, 326 125 S 346 185, 312 200 H0 Z" fill="#0B1B3F"/>
+      <path d="M300 0 C 352 30, 286 80, 326 125 S 346 185, 312 200" fill="none" stroke="#FF6B00" stroke-width="4"/>
+    </svg>
+
+    <div class="contact-left">
+      <h4>CONTACTEZ-NOUS</h4>
+      <ul>
+        <li><i class="fa-solid fa-phone"></i><span class="nb">+971 56 521 3488</span></li>
+        <li><i class="fa-solid fa-envelope"></i>Chris.owen.cv77@gmail.com</li>
+        <li><i class="fa-solid fa-location-dot"></i>Al Nahda, Dubaï</li>
+      </ul>
+    </div>
+
+    <div class="qr-block">
+      <div class="qr-frame">
+        <div class="qr-ph"><i class="fa-solid fa-qrcode"></i></div>
+        <img src="assets/qr.png" alt="QR code WhatsApp" onerror="this.remove()">
+      </div>
+      <p>Scannez pour discuter sur WhatsApp</p>
+    </div>
+
+    <ul class="assure">
+      <li><span class="chk"><i class="fa-solid fa-check"></i></span>Qualité professionnelle</li>
+      <li><span class="chk"><i class="fa-solid fa-check"></i></span>Deux séries de retouches incluses</li>
+      <li><span class="chk"><i class="fa-solid fa-check"></i></span>Un seul interlocuteur</li>
+    </ul>
+
+    <div class="vline"></div>
+
+    <p class="phrase">Travaillons ensemble pour faire grandir <span class="u">votre projet&nbsp;!<svg viewBox="0 0 100 13" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 25 3, 55 2, 98 6" stroke="#FF6B00" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M12 12 C 40 8, 70 8, 92 10" stroke="#FF6B00" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".7"/></svg></span></p>
+  </section>
+
+  <!-- ===== 6. BANDE FINALE ===== -->
+  <footer class="footer">
+    <svg class="wave" viewBox="0 0 470 64" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 64 C 120 60, 170 36, 280 40 S 420 22, 470 6 V64 Z" fill="#FF6B00" opacity=".35"/>
+      <path d="M60 64 C 170 62, 220 46, 320 48 S 430 34, 470 22 V64 Z" fill="#FF6B00"/>
+    </svg>
+    <div class="motto">GROW <b>•</b> CONNECT <b>•</b> SUCCEED</div>
+    <div class="brand"><svg aria-hidden="true"><use href="#aw"/></svg>AlphaWave Agency</div>
+  </footer>
+
+</main>
+</body>
+</html>

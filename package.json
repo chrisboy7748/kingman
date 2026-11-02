@@ -1,0 +1,13 @@
+{
+  "name": "alphawave-poster",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Affiche A4 AlphaWave Agency (HTML/CSS) exportée en PNG x2 et PDF avec Playwright",
+  "scripts": {
+    "export": "node export.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "6.5.2",
+    "playwright": "1.63.0"
+  }
+}
