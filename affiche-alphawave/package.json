@@ -1,0 +1,6 @@
+{
+  "name": "affiche-alphawave",
+  "private": true,
+  "scripts": { "qr": "node generer-qr.cjs", "export": "node exporter.cjs" },
+  "dependencies": { "playwright": "^1.48.0", "qrcode": "^1.5.4" }
+}
