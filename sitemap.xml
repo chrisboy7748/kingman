@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- À mettre à jour avant la mise en ligne : remplacer VOTRE-DOMAINE.com par le vrai domaine
+     (et l'adresse de la page par "/" si le fichier est renommé en index.html) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://VOTRE-DOMAINE.com/alphawave-agency.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
