@@ -1,0 +1,2518 @@
+{
+ "updatedAt": "2026-11-13T16:11:33.854Z",
+ "templates": [
+  {
+   "id": "just-listed",
+   "version": 1,
+   "name": {
+    "en": "Just Listed",
+    "ar": "معروض حديثاً"
+   },
+   "category": "real-estate",
+   "usages": [
+    "real-estate"
+   ],
+   "tags": [
+    "listing",
+    "villa",
+    "new",
+    "property"
+   ],
+   "pro": false,
+   "publishedAt": "2026-11-09",
+   "trending": 96,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 900,
+     "h": 150,
+     "maxChars": 14,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 118,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 20,
+      "caps": false
+     }
+    },
+    {
+     "key": "address",
+     "assetId": "txt_address",
+     "label": {
+      "en": "Address",
+      "ar": "الموقع"
+     },
+     "w": 900,
+     "h": 72,
+     "maxChars": 34,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 50,
+      "color": "#d5dce6",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "price",
+     "assetId": "txt_price",
+     "label": {
+      "en": "Price",
+      "ar": "السعر"
+     },
+     "w": 580,
+     "h": 84,
+     "maxChars": 19,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 56,
+      "color": "#0e1a2b",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "details",
+     "assetId": "txt_details",
+     "label": {
+      "en": "Details",
+      "ar": "التفاصيل"
+     },
+     "w": 900,
+     "h": 60,
+     "maxChars": 43,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 40,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 1080,
+     "h": 1240,
+     "sample": "samples/villa.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#c9a227"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#0e1a2b"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "details": "5 Beds  ·  6 Baths  ·  7,200 sq.ft",
+      "price": "AED 12,500,000",
+      "address": "Palm Jumeirah, Dubai",
+      "title": "JUST LISTED"
+     }
+    },
+    "ar": {
+     "texts": {
+      "details": "5 غرف  ·  6 حمامات  ·  7,200 قدم²",
+      "price": "12,500,000 درهم",
+      "address": "نخلة جميرا، دبي",
+      "title": "معروض حديثاً"
+     }
+    }
+   },
+   "music": "luxe",
+   "file": "templates/just-listed.json"
+  },
+  {
+   "id": "property-tour",
+   "version": 1,
+   "name": {
+    "en": "Property Tour",
+    "ar": "جولة في العقار"
+   },
+   "category": "real-estate",
+   "usages": [
+    "real-estate"
+   ],
+   "tags": [
+    "tour",
+    "photos",
+    "slideshow",
+    "property"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-10",
+   "trending": 88,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 360,
+   "duration": 12,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 900,
+     "h": 160,
+     "maxChars": 14,
+     "maxLines": 1,
+     "style": {
+      "family": "El Messiri",
+      "weight": 700,
+      "size": 120,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line1",
+     "assetId": "txt_line1",
+     "label": {
+      "en": "Line 1",
+      "ar": "سطر 1"
+     },
+     "w": 900,
+     "h": 120,
+     "maxChars": 20,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 84,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line2",
+     "assetId": "txt_line2",
+     "label": {
+      "en": "Line 2",
+      "ar": "سطر 2"
+     },
+     "w": 900,
+     "h": 120,
+     "maxChars": 20,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 84,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line3",
+     "assetId": "txt_line3",
+     "label": {
+      "en": "Line 3",
+      "ar": "سطر 3"
+     },
+     "w": 900,
+     "h": 120,
+     "maxChars": 20,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 84,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 640,
+     "h": 80,
+     "maxChars": 23,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 52,
+      "color": "#111111",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/villa.jpg"
+    },
+    {
+     "key": "photo2",
+     "label": {
+      "en": "Photo 2",
+      "ar": "صورة 2"
+     },
+     "assetId": "img_photo2",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/living.jpg"
+    },
+    {
+     "key": "photo3",
+     "label": {
+      "en": "Photo 3",
+      "ar": "صورة 3"
+     },
+     "assetId": "img_photo3",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/bedroom.jpg"
+    },
+    {
+     "key": "photo4",
+     "label": {
+      "en": "Photo 4",
+      "ar": "صورة 4"
+     },
+     "assetId": "img_photo4",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/pool.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#e8b04b"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#111111"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "Book a viewing",
+      "line3": "Private Pool",
+      "line2": "Master Bedroom",
+      "line1": "Living Room",
+      "title": "Property Tour"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "احجز موعد المعاينة",
+      "line3": "مسبح خاص",
+      "line2": "غرفة النوم الرئيسية",
+      "line1": "غرفة المعيشة",
+      "title": "جولة في العقار"
+     }
+    }
+   },
+   "music": "golden-hour",
+   "file": "templates/property-tour.json"
+  },
+  {
+   "id": "sold",
+   "version": 1,
+   "name": {
+    "en": "Sold!",
+    "ar": "تم البيع!"
+   },
+   "category": "real-estate",
+   "usages": [
+    "real-estate"
+   ],
+   "tags": [
+    "sold",
+    "closing",
+    "thank you"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-02",
+   "trending": 72,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 210,
+   "duration": 7,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 720,
+     "h": 230,
+     "maxChars": 7,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 190,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 60,
+      "caps": false
+     }
+    },
+    {
+     "key": "address",
+     "assetId": "txt_address",
+     "label": {
+      "en": "Address",
+      "ar": "الموقع"
+     },
+     "w": 940,
+     "h": 90,
+     "maxChars": 31,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 58,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 900,
+     "h": 140,
+     "maxChars": 74,
+     "maxLines": 2,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 46,
+      "color": "#e9e9e9",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/tower.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#e63946"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "subtitle": "Thank you to our wonderful clients!",
+      "address": "Downtown Dubai · 2 BR Apartment",
+      "title": "SOLD"
+     }
+    },
+    "ar": {
+     "texts": {
+      "subtitle": "شكراً لعملائنا الكرام!",
+      "address": "وسط مدينة دبي · شقة غرفتين",
+      "title": "تم البيع"
+     }
+    }
+   },
+   "music": "pop-promo",
+   "file": "templates/sold.json"
+  },
+  {
+   "id": "price-features",
+   "version": 1,
+   "name": {
+    "en": "Price & Features",
+    "ar": "السعر والمميزات"
+   },
+   "category": "real-estate",
+   "usages": [
+    "real-estate"
+   ],
+   "tags": [
+    "price",
+    "features",
+    "villa"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-10",
+   "trending": 80,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 300,
+   "duration": 10,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 920,
+     "h": 120,
+     "maxChars": 18,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 700,
+      "size": 96,
+      "color": "#1d1d1f",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "price",
+     "assetId": "txt_price",
+     "label": {
+      "en": "Price",
+      "ar": "السعر"
+     },
+     "w": 480,
+     "h": 90,
+     "maxChars": 14,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 64,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line1",
+     "assetId": "txt_line1",
+     "label": {
+      "en": "Line 1",
+      "ar": "سطر 1"
+     },
+     "w": 860,
+     "h": 70,
+     "maxChars": 35,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 46,
+      "color": "#2b2b2b",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line2",
+     "assetId": "txt_line2",
+     "label": {
+      "en": "Line 2",
+      "ar": "سطر 2"
+     },
+     "w": 860,
+     "h": 70,
+     "maxChars": 35,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 46,
+      "color": "#2b2b2b",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "line3",
+     "assetId": "txt_line3",
+     "label": {
+      "en": "Line 3",
+      "ar": "سطر 3"
+     },
+     "w": 860,
+     "h": 70,
+     "maxChars": 35,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 46,
+      "color": "#2b2b2b",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 960,
+     "h": 900,
+     "sample": "samples/pool.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#1f6f5c"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#f4efe6"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "line3": "Ready to move in",
+      "line2": "Smart home system",
+      "line1": "Private beach access",
+      "price": "AED 8.9M",
+      "title": "Luxury Villa"
+     }
+    },
+    "ar": {
+     "texts": {
+      "line3": "جاهزة للسكن",
+      "line2": "نظام منزل ذكي",
+      "line1": "وصول خاص إلى الشاطئ",
+      "price": "8.9 مليون درهم",
+      "title": "فيلا فاخرة"
+     }
+    }
+   },
+   "music": "luxe",
+   "file": "templates/price-features.json"
+  },
+  {
+   "id": "open-house",
+   "version": 1,
+   "name": {
+    "en": "Open House",
+    "ar": "يوم مفتوح"
+   },
+   "category": "real-estate",
+   "usages": [
+    "real-estate"
+   ],
+   "tags": [
+    "open house",
+    "event",
+    "viewing",
+    "landscape"
+   ],
+   "pro": true,
+   "publishedAt": "2026-10-26",
+   "trending": 41,
+   "format": "16:9",
+   "width": 1920,
+   "height": 1080,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 640,
+     "h": 140,
+     "maxChars": 11,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 110,
+      "color": "#ffffff",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "date",
+     "assetId": "txt_date",
+     "label": {
+      "en": "Date",
+      "ar": "التاريخ"
+     },
+     "w": 640,
+     "h": 80,
+     "maxChars": 22,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 54,
+      "color": "#f2a541",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "address",
+     "assetId": "txt_address",
+     "label": {
+      "en": "Address",
+      "ar": "الموقع"
+     },
+     "w": 640,
+     "h": 70,
+     "maxChars": 27,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 44,
+      "color": "#e0e6ee",
+      "justify": "left",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 1100,
+     "h": 1080,
+     "sample": "samples/living.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#f2a541"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#1b263b"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "address": "Dubai Hills Estate",
+      "date": "Saturday · 2 – 5 PM",
+      "title": "OPEN HOUSE"
+     }
+    },
+    "ar": {
+     "texts": {
+      "address": "دبي هيلز استيت",
+      "date": "السبت · 2 – 5 مساءً",
+      "title": "يوم مفتوح"
+     }
+    }
+   },
+   "music": "golden-hour",
+   "file": "templates/open-house.json"
+  },
+  {
+   "id": "promo-20",
+   "version": 1,
+   "name": {
+    "en": "Flash Sale −20%",
+    "ar": "تخفيض سريع −20%"
+   },
+   "category": "promos",
+   "usages": [
+    "retail",
+    "creator"
+   ],
+   "tags": [
+    "sale",
+    "discount",
+    "promo",
+    "offer"
+   ],
+   "pro": false,
+   "publishedAt": "2026-11-11",
+   "trending": 99,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 210,
+   "duration": 7,
+   "texts": [
+    {
+     "key": "discount",
+     "assetId": "txt_discount",
+     "label": {
+      "en": "Discount",
+      "ar": "الخصم"
+     },
+     "w": 520,
+     "h": 230,
+     "maxChars": 5,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 190,
+      "color": "#1a1a1a",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 980,
+     "h": 160,
+     "maxChars": 15,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 120,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "details",
+     "assetId": "txt_details",
+     "label": {
+      "en": "Details",
+      "ar": "التفاصيل"
+     },
+     "w": 900,
+     "h": 80,
+     "maxChars": 32,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 54,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 500,
+     "h": 84,
+     "maxChars": 17,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 54,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 640,
+     "h": 640,
+     "sample": "samples/product.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#ff4d5a"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#ffd23f"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "Shop now",
+      "details": "This weekend only",
+      "title": "SUMMER SALE",
+      "discount": "-20%"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "تسوق الآن",
+      "details": "نهاية هذا الأسبوع فقط",
+      "title": "تخفيضات الصيف",
+      "discount": "-20%"
+     }
+    }
+   },
+   "music": "pop-promo",
+   "file": "templates/promo-20.json"
+  },
+  {
+   "id": "new-arrival",
+   "version": 1,
+   "name": {
+    "en": "New Arrival",
+    "ar": "وصل حديثاً"
+   },
+   "category": "promos",
+   "usages": [
+    "retail"
+   ],
+   "tags": [
+    "new",
+    "collection",
+    "fashion",
+    "arrival"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-12",
+   "trending": 77,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 1000,
+     "h": 170,
+     "maxChars": 14,
+     "maxLines": 1,
+     "style": {
+      "family": "El Messiri",
+      "weight": 700,
+      "size": 130,
+      "color": "#2e2a24",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 900,
+     "h": 90,
+     "maxChars": 28,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 400,
+      "size": 60,
+      "color": "#5b544a",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 900,
+     "h": 60,
+     "maxChars": 43,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 40,
+      "color": "#2e2a24",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 80,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 500,
+     "h": 1100,
+     "sample": "samples/fashion1.jpg"
+    },
+    {
+     "key": "photo2",
+     "label": {
+      "en": "Photo 2",
+      "ar": "صورة 2"
+     },
+     "assetId": "img_photo2",
+     "w": 500,
+     "h": 1100,
+     "sample": "samples/fashion2.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#2e2a24"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#f3f0ea"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "In store & online",
+      "subtitle": "The Autumn Collection",
+      "title": "NEW ARRIVAL"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "في المتجر وعبر الإنترنت",
+      "subtitle": "تشكيلة الخريف",
+      "title": "وصل حديثاً"
+     }
+    }
+   },
+   "music": "golden-hour",
+   "file": "templates/new-arrival.json"
+  },
+  {
+   "id": "menu-of-the-day",
+   "version": 1,
+   "name": {
+    "en": "Today's Menu",
+    "ar": "قائمة اليوم"
+   },
+   "category": "food",
+   "usages": [
+    "retail"
+   ],
+   "tags": [
+    "menu",
+    "restaurant",
+    "food",
+    "daily"
+   ],
+   "pro": false,
+   "publishedAt": "2026-11-11",
+   "trending": 90,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 300,
+   "duration": 10,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 980,
+     "h": 150,
+     "maxChars": 17,
+     "maxLines": 1,
+     "style": {
+      "family": "El Messiri",
+      "weight": 700,
+      "size": 110,
+      "color": "#3b2416",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "item1",
+     "assetId": "txt_item1",
+     "label": {
+      "en": "Line 1",
+      "ar": "سطر 1"
+     },
+     "w": 960,
+     "h": 76,
+     "maxChars": 36,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 50,
+      "color": "#3b2416",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "item2",
+     "assetId": "txt_item2",
+     "label": {
+      "en": "Line 2",
+      "ar": "سطر 2"
+     },
+     "w": 960,
+     "h": 76,
+     "maxChars": 36,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 50,
+      "color": "#3b2416",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "item3",
+     "assetId": "txt_item3",
+     "label": {
+      "en": "Line 3",
+      "ar": "سطر 3"
+     },
+     "w": 960,
+     "h": 76,
+     "maxChars": 36,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 50,
+      "color": "#3b2416",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 580,
+     "h": 76,
+     "maxChars": 24,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 46,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 740,
+     "h": 740,
+     "sample": "samples/dish.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#d9622b"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#fff4e4"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "Order on WhatsApp",
+      "item3": "Luqaimat — 20 AED",
+      "item2": "Lamb Ouzi — 65 AED",
+      "item1": "Chicken Machboos — 45 AED",
+      "title": "Today's Menu"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "اطلب عبر واتساب",
+      "item3": "لقيمات — 20 درهم",
+      "item2": "أوزي لحم — 65 درهم",
+      "item1": "مجبوس دجاج — 45 درهم",
+      "title": "قائمة اليوم"
+     }
+    }
+   },
+   "music": "desert-groove",
+   "file": "templates/menu-of-the-day.json"
+  },
+  {
+   "id": "special-hours",
+   "version": 1,
+   "name": {
+    "en": "Special Hours",
+    "ar": "ساعات عمل خاصة"
+   },
+   "category": "food",
+   "usages": [
+    "retail"
+   ],
+   "tags": [
+    "hours",
+    "ramadan",
+    "opening",
+    "schedule"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-03",
+   "trending": 55,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 210,
+   "duration": 7,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 980,
+     "h": 150,
+     "maxChars": 16,
+     "maxLines": 1,
+     "style": {
+      "family": "El Messiri",
+      "weight": 700,
+      "size": 112,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "hours",
+     "assetId": "txt_hours",
+     "label": {
+      "en": "Opening hours",
+      "ar": "ساعات العمل"
+     },
+     "w": 980,
+     "h": 90,
+     "maxChars": 30,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 62,
+      "color": "#f0c674",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 980,
+     "h": 76,
+     "maxChars": 39,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 48,
+      "color": "#cfe3e0",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#f0c674"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#0f2a2e"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "subtitle": "During the holy month",
+      "hours": "Open 8 PM – 2 AM",
+      "title": "Special Hours"
+     }
+    },
+    "ar": {
+     "texts": {
+      "subtitle": "خلال الشهر الفضيل",
+      "hours": "مفتوح من 8 مساءً حتى 2 صباحاً",
+      "title": "ساعات عمل خاصة"
+     }
+    }
+   },
+   "music": "calm",
+   "file": "templates/special-hours.json"
+  },
+  {
+   "id": "salon-offer",
+   "version": 1,
+   "name": {
+    "en": "Salon Offer",
+    "ar": "عرض الصالون"
+   },
+   "category": "beauty",
+   "usages": [
+    "retail"
+   ],
+   "tags": [
+    "salon",
+    "beauty",
+    "spa",
+    "offer"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-12",
+   "trending": 70,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 270,
+   "duration": 9,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 980,
+     "h": 150,
+     "maxChars": 16,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 700,
+      "size": 112,
+      "color": "#5a2e35",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "details",
+     "assetId": "txt_details",
+     "label": {
+      "en": "Details",
+      "ar": "التفاصيل"
+     },
+     "w": 980,
+     "h": 80,
+     "maxChars": 36,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 52,
+      "color": "#7a4f56",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "price",
+     "assetId": "txt_price",
+     "label": {
+      "en": "Price",
+      "ar": "السعر"
+     },
+     "w": 700,
+     "h": 100,
+     "maxChars": 17,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 76,
+      "color": "#b76e79",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 400,
+     "h": 70,
+     "maxChars": 16,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 46,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 700,
+     "h": 1060,
+     "sample": "samples/salon.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#b76e79"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#f7e8e4"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "Book now",
+      "price": "AED 299",
+      "details": "Facial + Hair spa",
+      "title": "Glow Package"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "احجز الآن",
+      "price": "299 درهم",
+      "details": "تنظيف بشرة + حمام شعر",
+      "title": "باقة النضارة"
+     }
+    }
+   },
+   "music": "calm",
+   "file": "templates/salon-offer.json"
+  },
+  {
+   "id": "beauty-before-after",
+   "version": 1,
+   "name": {
+    "en": "Fresh Look",
+    "ar": "إطلالة جديدة"
+   },
+   "category": "beauty",
+   "usages": [
+    "retail",
+    "creator"
+   ],
+   "tags": [
+    "hair",
+    "makeup",
+    "look",
+    "fashion"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-04",
+   "trending": 63,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 980,
+     "h": 180,
+     "maxChars": 13,
+     "maxLines": 1,
+     "style": {
+      "family": "Reem Kufi",
+      "weight": 700,
+      "size": 140,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 980,
+     "h": 90,
+     "maxChars": 29,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 400,
+      "size": 64,
+      "color": "#f5c2c7",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "cta",
+     "assetId": "txt_cta",
+     "label": {
+      "en": "Call to action",
+      "ar": "دعوة لاتخاذ إجراء"
+     },
+     "w": 980,
+     "h": 64,
+     "maxChars": 44,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 42,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 60,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [
+    {
+     "key": "photo1",
+     "label": {
+      "en": "Photo 1",
+      "ar": "صورة 1"
+     },
+     "assetId": "img_photo1",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/fashion2.jpg"
+    },
+    {
+     "key": "photo2",
+     "label": {
+      "en": "Photo 2",
+      "ar": "صورة 2"
+     },
+     "assetId": "img_photo2",
+     "w": 1080,
+     "h": 1920,
+     "sample": "samples/salon.jpg"
+    }
+   ],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#f5c2c7"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#1e1b24"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "cta": "Walk-ins welcome",
+      "subtitle": "by our stylists",
+      "title": "Fresh Look"
+     }
+    },
+    "ar": {
+     "texts": {
+      "cta": "نستقبلكم بدون موعد",
+      "subtitle": "بلمسة خبرائنا",
+      "title": "إطلالة جديدة"
+     }
+    }
+   },
+   "music": "golden-hour",
+   "file": "templates/beauty-before-after.json"
+  },
+  {
+   "id": "ramadan-kareem",
+   "version": 1,
+   "name": {
+    "en": "Ramadan Kareem",
+    "ar": "رمضان كريم"
+   },
+   "category": "events",
+   "usages": [
+    "personal",
+    "retail",
+    "real-estate",
+    "creator"
+   ],
+   "tags": [
+    "ramadan",
+    "eid",
+    "greetings",
+    "seasonal"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-12",
+   "trending": 85,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 1000,
+     "h": 190,
+     "maxChars": 13,
+     "maxLines": 1,
+     "style": {
+      "family": "Reem Kufi",
+      "weight": 700,
+      "size": 140,
+      "color": "#f6d47a",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 980,
+     "h": 140,
+     "maxChars": 30,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 400,
+      "size": 62,
+      "color": "#e8edf5",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#f6d47a"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#0b1d3a"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "subtitle": "Wishing you a blessed month",
+      "title": "Ramadan Kareem"
+     }
+    },
+    "ar": {
+     "texts": {
+      "subtitle": "نتمنى لكم شهراً مباركاً",
+      "title": "رمضان كريم"
+     }
+    }
+   },
+   "music": "desert-groove",
+   "file": "templates/ramadan-kareem.json"
+  },
+  {
+   "id": "uae-national-day",
+   "version": 1,
+   "name": {
+    "en": "UAE National Day",
+    "ar": "اليوم الوطني الإماراتي"
+   },
+   "category": "events",
+   "usages": [
+    "personal",
+    "retail",
+    "real-estate",
+    "creator"
+   ],
+   "tags": [
+    "national day",
+    "uae",
+    "2 december",
+    "seasonal",
+    "flag"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-13",
+   "trending": 92,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 1000,
+     "h": 300,
+     "maxChars": 32,
+     "maxLines": 2,
+     "style": {
+      "family": "Reem Kufi",
+      "weight": 700,
+      "size": 120,
+      "color": "#0b0b0b",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.1,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 900,
+     "h": 100,
+     "maxChars": 24,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 700,
+      "size": 70,
+      "color": "#00732f",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "brand",
+     "assetId": "txt_brand",
+     "label": {
+      "en": "Brand name",
+      "ar": "اسم العلامة"
+     },
+     "w": 900,
+     "h": 70,
+     "maxChars": 37,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 46,
+      "color": "#333333",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "brand": "From all of us",
+      "subtitle": "2 December",
+      "title": "Happy National Day"
+     }
+    },
+    "ar": {
+     "texts": {
+      "brand": "من أسرتنا إليكم",
+      "subtitle": "2 ديسمبر",
+      "title": "عيد اتحاد سعيد"
+     }
+    }
+   },
+   "music": "pop-promo",
+   "file": "templates/uae-national-day.json"
+  },
+  {
+   "id": "invitation",
+   "version": 1,
+   "name": {
+    "en": "You're Invited",
+    "ar": "أنتم مدعوون"
+   },
+   "category": "events",
+   "usages": [
+    "personal"
+   ],
+   "tags": [
+    "wedding",
+    "invitation",
+    "birthday",
+    "party",
+    "post"
+   ],
+   "pro": true,
+   "publishedAt": "2026-10-28",
+   "trending": 58,
+   "format": "4:5",
+   "width": 1080,
+   "height": 1350,
+   "fps": 30,
+   "frames": 300,
+   "duration": 10,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 860,
+     "h": 100,
+     "maxChars": 23,
+     "maxLines": 1,
+     "style": {
+      "family": "Amiri",
+      "weight": 400,
+      "size": 70,
+      "color": "#6b5b45",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "name",
+     "assetId": "txt_name",
+     "label": {
+      "en": "Name",
+      "ar": "الاسم"
+     },
+     "w": 880,
+     "h": 330,
+     "maxChars": 26,
+     "maxLines": 2,
+     "style": {
+      "family": "El Messiri",
+      "weight": 700,
+      "size": 130,
+      "color": "#3a2f23",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "date",
+     "assetId": "txt_date",
+     "label": {
+      "en": "Date",
+      "ar": "التاريخ"
+     },
+     "w": 860,
+     "h": 70,
+     "maxChars": 35,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 46,
+      "color": "#3a2f23",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "place",
+     "assetId": "txt_place",
+     "label": {
+      "en": "Place",
+      "ar": "Place"
+     },
+     "w": 860,
+     "h": 120,
+     "maxChars": 82,
+     "maxLines": 2,
+     "style": {
+      "family": "Cairo",
+      "weight": 400,
+      "size": 40,
+      "color": "#6b5b45",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#b08d57"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#fbf7f0"
+    }
+   ],
+   "hasLogo": false,
+   "defaults": {
+    "en": {
+     "texts": {
+      "place": "Jumeirah Beach Hotel, Dubai",
+      "date": "Saturday, 12 December 2026",
+      "name": "Sara & Omar",
+      "title": "You're invited"
+     }
+    },
+    "ar": {
+     "texts": {
+      "place": "فندق جميرا بيتش، دبي",
+      "date": "السبت، 12 ديسمبر 2026",
+      "name": "سارة وعمر",
+      "title": "أنتم مدعوون"
+     }
+    }
+   },
+   "music": "calm",
+   "file": "templates/invitation.json"
+  },
+  {
+   "id": "quote-card",
+   "version": 1,
+   "name": {
+    "en": "Quote Card",
+    "ar": "بطاقة اقتباس"
+   },
+   "category": "quotes",
+   "usages": [
+    "creator",
+    "personal",
+    "retail"
+   ],
+   "tags": [
+    "quote",
+    "text",
+    "motivation",
+    "square"
+   ],
+   "pro": false,
+   "publishedAt": "2026-11-05",
+   "trending": 66,
+   "format": "1:1",
+   "width": 1080,
+   "height": 1080,
+   "fps": 30,
+   "frames": 240,
+   "duration": 8,
+   "texts": [
+    {
+     "key": "quote",
+     "assetId": "txt_quote",
+     "label": {
+      "en": "Quote",
+      "ar": "الاقتباس"
+     },
+     "w": 900,
+     "h": 420,
+     "maxChars": 60,
+     "maxLines": 3,
+     "style": {
+      "family": "Amiri",
+      "weight": 700,
+      "size": 84,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.3,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "author",
+     "assetId": "txt_author",
+     "label": {
+      "en": "Author",
+      "ar": "الكاتب"
+     },
+     "w": 800,
+     "h": 70,
+     "maxChars": 33,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 46,
+      "color": "#e5e5e5",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 60,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#fca311"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#14213d"
+    }
+   ],
+   "hasLogo": false,
+   "defaults": {
+    "en": {
+     "texts": {
+      "author": "Aristotle",
+      "quote": "Quality is not an act, it is a habit."
+     }
+    },
+    "ar": {
+     "texts": {
+      "author": "أرسطو",
+      "quote": "الجودة ليست فعلاً، بل عادة."
+     }
+    }
+   },
+   "music": "calm",
+   "file": "templates/quote-card.json"
+  },
+  {
+   "id": "link-in-bio",
+   "version": 1,
+   "name": {
+    "en": "Link in Bio",
+    "ar": "الرابط في البايو"
+   },
+   "category": "quotes",
+   "usages": [
+    "creator",
+    "retail"
+   ],
+   "tags": [
+    "link",
+    "bio",
+    "creator",
+    "cta",
+    "story"
+   ],
+   "pro": true,
+   "publishedAt": "2026-11-13",
+   "trending": 74,
+   "format": "9:16",
+   "width": 1080,
+   "height": 1920,
+   "fps": 30,
+   "frames": 180,
+   "duration": 6,
+   "texts": [
+    {
+     "key": "title",
+     "assetId": "txt_title",
+     "label": {
+      "en": "Title",
+      "ar": "العنوان الرئيسي"
+     },
+     "w": 800,
+     "h": 140,
+     "maxChars": 14,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 800,
+      "size": 104,
+      "color": "#1a1033",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    },
+    {
+     "key": "subtitle",
+     "assetId": "txt_subtitle",
+     "label": {
+      "en": "Subtitle",
+      "ar": "العنوان الفرعي"
+     },
+     "w": 900,
+     "h": 90,
+     "maxChars": 30,
+     "maxLines": 1,
+     "style": {
+      "family": "Cairo",
+      "weight": 500,
+      "size": 56,
+      "color": "#ffffff",
+      "justify": "center",
+      "valign": "top",
+      "lineHeight": 1.15,
+      "tracking": 0,
+      "caps": false
+     }
+    }
+   ],
+   "photos": [],
+   "colors": [
+    {
+     "key": "primary",
+     "label": {
+      "en": "Main color",
+      "ar": "اللون الرئيسي"
+     },
+     "default": "#ffe14d"
+    },
+    {
+     "key": "secondary",
+     "label": {
+      "en": "Second color",
+      "ar": "اللون الثانوي"
+     },
+     "default": "#6c2bd9"
+    }
+   ],
+   "hasLogo": true,
+   "defaults": {
+    "en": {
+     "texts": {
+      "subtitle": "Tap to discover more",
+      "title": "Link in bio"
+     }
+    },
+    "ar": {
+     "texts": {
+      "subtitle": "اضغط لاكتشاف المزيد",
+      "title": "الرابط في البايو"
+     }
+    }
+   },
+   "music": "pop-promo",
+   "file": "templates/link-in-bio.json"
+  }
+ ]
+}

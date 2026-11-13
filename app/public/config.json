@@ -1,0 +1,14 @@
+{
+  "appName": "Lamsa",
+  "catalogUrl": "catalog/catalog.json",
+  "pricing": {
+    "currency": "USD",
+    "monthly": { "id": "pro_monthly", "price": 10.99, "aed": 40 },
+    "annual": { "id": "pro_annual", "price": 54.99, "aed": 200, "trialDays": 3 }
+  },
+  "links": {
+    "terms": "legal/terms.html",
+    "privacy": "legal/privacy.html",
+    "support": "mailto:support@example.com"
+  }
+}
